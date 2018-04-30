@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Python+高德API | daisy&#39;s space</title>
+  <title>Python+高德API解决租房问题 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -17,15 +17,17 @@
   <meta name="description" content="本文记录了学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中遇到如下问题:  1.TypeError: a bytes-like object is required, not ‘str’ 2.">
 <meta name="keywords" content="python,爬虫,高德API,高德API+Python解决租房问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python+高德API">
+<meta property="og:title" content="Python+高德API解决租房问题">
 <meta property="og:url" content="http://daisy0x00.github.io/2018/PythonAndGaoDeAPI/index.html">
 <meta property="og:site_name" content="daisy&#39;s space">
 <meta property="og:description" content="本文记录了学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中遇到如下问题:  1.TypeError: a bytes-like object is required, not ‘str’ 2.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-26T15:59:27.090Z">
+<meta property="og:image" content="http://daisy0x00.github.io/photo/PythonGaoDeAPI/q1.png">
+<meta property="og:updated_time" content="2018-04-30T09:19:03.261Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+高德API">
+<meta name="twitter:title" content="Python+高德API解决租房问题">
 <meta name="twitter:description" content="本文记录了学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中遇到如下问题:  1.TypeError: a bytes-like object is required, not ‘str’ 2.">
+<meta name="twitter:image" content="http://daisy0x00.github.io/photo/PythonGaoDeAPI/q1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -177,7 +179,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      Python+高德API
+      Python+高德API解决租房问题
     </h1>
   
 
@@ -198,8 +200,7 @@ var _hmt = _hmt || [];
 </ul>
 <a id="more"></a>
 <h2 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h2><ul>
-<li><p>问题描述: 编写完<code>crawl.py</code>运行报错:TypeError: a bytes-like object is required, not ‘str’.详情如图:</p>
-</li>
+<li>问题描述: 编写完<code>crawl.py</code>运行报错:TypeError: a bytes-like object is required, not ‘str’.详情如图:<br><img src="\photo\PythonGaoDeAPI\q1.png" alt="avatar"></li>
 <li><p>问题分析: python2.x版本中写入csv时,csv文件的创建必须加上参数’b’,即csv_file = open(‘rent.csv’,’wb’),表示用二进制进行文件写入,否则会出现隔行的现象。但是中python3.x版本中对csv文件读写时,打开方式都是w或r，没有用wb.</p>
 </li>
 <li><p>解决方案: 修改几处代码为即可:</p>
