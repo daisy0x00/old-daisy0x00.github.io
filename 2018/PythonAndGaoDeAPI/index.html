@@ -14,19 +14,19 @@
 
 	
   
-  <meta name="description" content="本文记录了学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中遇到如下问题:  1.TypeError: a bytes-like object is required, not ‘str’ 2.">
+  <meta name="description" content="本文记录了学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中遇到如下问题:  1.TypeError: a bytes-like object is required, not ‘str’">
 <meta name="keywords" content="python,爬虫,高德API,高德API+Python解决租房问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python+高德API解决租房问题">
 <meta property="og:url" content="http://daisy0x00.github.io/2018/PythonAndGaoDeAPI/index.html">
 <meta property="og:site_name" content="daisy&#39;s space">
-<meta property="og:description" content="本文记录了学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中遇到如下问题:  1.TypeError: a bytes-like object is required, not ‘str’ 2.">
+<meta property="og:description" content="本文记录了学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中遇到如下问题:  1.TypeError: a bytes-like object is required, not ‘str’">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://daisy0x00.github.io/photo/PythonGaoDeAPI/q1.png">
-<meta property="og:updated_time" content="2018-04-30T09:19:03.261Z">
+<meta property="og:updated_time" content="2018-05-02T05:31:15.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+高德API解决租房问题">
-<meta name="twitter:description" content="本文记录了学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中遇到如下问题:  1.TypeError: a bytes-like object is required, not ‘str’ 2.">
+<meta name="twitter:description" content="本文记录了学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中遇到如下问题:  1.TypeError: a bytes-like object is required, not ‘str’">
 <meta name="twitter:image" content="http://daisy0x00.github.io/photo/PythonGaoDeAPI/q1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
@@ -196,7 +196,6 @@ var _hmt = _hmt || [];
         <p>本文记录了学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。<br>实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中遇到如下问题:</p>
 <ul>
 <li>1.TypeError: a bytes-like object is required, not ‘str’</li>
-<li>2.</li>
 </ul>
 <a id="more"></a>
 <h2 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h2><ul>
@@ -204,17 +203,10 @@ var _hmt = _hmt || [];
 <li><p>问题分析: python2.x版本中写入csv时,csv文件的创建必须加上参数’b’,即csv_file = open(‘rent.csv’,’wb’),表示用二进制进行文件写入,否则会出现隔行的现象。但是中python3.x版本中对csv文件读写时,打开方式都是w或r，没有用wb.</p>
 </li>
 <li><p>解决方案: 修改几处代码为即可:</p>
-<blockquote>
-<p>csv_file = open(‘rent.csv’,’w’)</p>
-</blockquote>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">csv_file = open(<span class="string">'rent.csv'</span>,<span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line">house_title = house.select(<span class="string">"h2"</span>)[<span class="number">0</span>].string</span><br><span class="line"></span><br><span class="line">house_money = house.select(<span class="string">".money"</span>)[<span class="number">0</span>].select(<span class="string">"b"</span>)[<span class="number">0</span>].string</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<blockquote>
-<p>house_title = house.select(“h2”)[0].string</p>
-</blockquote>
-<blockquote>
-<p>house_money = house.select(“.money”)[0].select(“b”)[0].string</p>
-</blockquote>
 
       
 
@@ -335,6 +327,20 @@ var _hmt = _hmt || [];
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2018/PythonFromListToClass1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python基础学习总结（一）
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -480,6 +486,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">python面试题</a>
               </li>
             
             <div class="clearfix"></div>
