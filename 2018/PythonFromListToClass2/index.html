@@ -6,26 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Python基础学习总结（一） | daisy&#39;s space</title>
+  <title>daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
-	<meta name="keywords" content="python,python基础，filter函数，匿名函数，切片，列表,">
-
-	
   
-  <meta name="description" content="本文以题来引出python中的特色知识点，一方面是为了巩固一下基础，另一方面为下一阶段学习打好基础。本文涉及到的主要知识点有列表及对列表的相关操作、切片、filter函数、匿名函数及字典等，题目预览如下：  1.将列表倒序输出 2.删除列表偶数项数据 3.删除列表中的偶数 4.字典值的更新">
-<meta name="keywords" content="python,python基础，filter函数，匿名函数，切片，列表">
+  <meta name="description" content="title:Python基础学习总结（二）date:2018-05-03 20:06:30keywords:python,python基础，python内置函数,globals()函数，locals()函数，名字空间tags：  学习 python基础 python内置函数 gloabls()函数 locals()函数   本文讲述了python内置函数locals和globals以及与之相关的知">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python基础学习总结（一）">
-<meta property="og:url" content="http://daisy0x00.github.io/2018/PythonFromListToClass1/index.html">
+<meta property="og:title" content="daisy&#39;s space">
+<meta property="og:url" content="http://daisy0x00.github.io/2018/PythonFromListToClass2/index.html">
 <meta property="og:site_name" content="daisy&#39;s space">
-<meta property="og:description" content="本文以题来引出python中的特色知识点，一方面是为了巩固一下基础，另一方面为下一阶段学习打好基础。本文涉及到的主要知识点有列表及对列表的相关操作、切片、filter函数、匿名函数及字典等，题目预览如下：  1.将列表倒序输出 2.删除列表偶数项数据 3.删除列表中的偶数 4.字典值的更新">
+<meta property="og:description" content="title:Python基础学习总结（二）date:2018-05-03 20:06:30keywords:python,python基础，python内置函数,globals()函数，locals()函数，名字空间tags：  学习 python基础 python内置函数 gloabls()函数 locals()函数   本文讲述了python内置函数locals和globals以及与之相关的知">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-02T05:38:24.519Z">
+<meta property="og:updated_time" content="2018-05-03T10:13:41.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python基础学习总结（一）">
-<meta name="twitter:description" content="本文以题来引出python中的特色知识点，一方面是为了巩固一下基础，另一方面为下一阶段学习打好基础。本文涉及到的主要知识点有列表及对列表的相关操作、切片、filter函数、匿名函数及字典等，题目预览如下：  1.将列表倒序输出 2.删除列表偶数项数据 3.删除列表中的偶数 4.字典值的更新">
+<meta name="twitter:title" content="daisy&#39;s space">
+<meta name="twitter:description" content="title:Python基础学习总结（二）date:2018-05-03 20:06:30keywords:python,python基础，python内置函数,globals()函数，locals()函数，名字空间tags：  学习 python基础 python内置函数 gloabls()函数 locals()函数   本文讲述了python内置函数locals和globals以及与之相关的知">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -170,105 +166,109 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PythonFromListToClass1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-PythonFromListToClass2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Python基础学习总结（一）
-    </h1>
-  
-
-        
-        <a href="/2018/PythonFromListToClass1/" class="archive-article-date">
-  	<time datetime="2018-05-02T00:51:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-02</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <p>本文以题来引出python中的特色知识点，一方面是为了巩固一下基础，另一方面为下一阶段学习打好基础。本文涉及到的主要知识点有列表及对列表的相关操作、切片、filter函数、匿名函数及字典等，题目预览如下：</p>
+        <p>title:Python基础学习总结（二）<br>date:2018-05-03 20:06:30<br>keywords:python,python基础，python内置函数,globals()函数，locals()函数，名字空间<br>tags：</p>
 <ul>
-<li>1.将列表倒序输出</li>
-<li>2.删除列表偶数项数据</li>
-<li>3.删除列表中的偶数</li>
-<li>4.字典值的更新<a id="more"></a>
+<li>学习</li>
+<li>python基础</li>
+<li>python内置函数</li>
+<li>gloabls()函数</li>
+<li>locals()函数</li>
+</ul>
+<hr>
+<p>本文讲述了python内置函数locals和globals以及与之相关的知识点。</p>
+<a id="more"></a>
+<h2 id="Python内置函数locals-和globals"><a href="#Python内置函数locals-和globals" class="headerlink" title="Python内置函数locals()和globals()"></a>Python内置函数locals()和globals()</h2><p>Python内置函数locals()和globals()主要提供基于字典的访问局部变量和全局变量的方式。</p>
+<h3 id="名字空间"><a href="#名字空间" class="headerlink" title="名字空间"></a>名字空间</h3><p>在理解这两个函数之前，首先要先理解一下python中的名字空间的概念。</p>
+<ol>
+<li>python使用叫做名字空间的对象来记录变量的轨迹。</li>
+<li>名字空间是一个字典，它的键就是字符串形式的变量名称，它的值就是变量的实际值。</li>
+<li>名字空间可以像python的dictionary一样进行访问。</li>
+<li><p>在一个python程序中的任何一个地方，都存在几个可用的名字空间。</p>
+<ul>
+<li>每个函数都有着自己的名字空间，叫做局部名字空间。它记录了函数的变量，包括函数的参数和局部定义的变量。</li>
+<li>每个模块拥有它自己的名字空间，叫做全局名字空间。它记录了模块的变量，包括函数、类、其他导入的模块、模块级的变量和常量。</li>
+<li>还有内置名字空间，任何模块均可访问它。它存放着内置的函数和异常。</li>
+</ul>
 </li>
-</ul>
-<h2 id="一-将列表倒序输出"><a href="#一-将列表倒序输出" class="headerlink" title="一.将列表倒序输出"></a>一.将列表倒序输出</h2><h3 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h3><p>假设当前给定列表mylist = [1,2,3,4,5,6,7,8,9,0],要求最终输出为[0,9,8,7,6,5,4,3,2,1],请问如何解决。</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>python中有三种将列表逆序的方法 ，此处的三种方法均为python的内建模块的方法，不包括第三方实现的方法，比如自己写一个循环之类的方法。三种方法如下所示：</p>
-<h4 id="方法一：使用切片-1"><a href="#方法一：使用切片-1" class="headerlink" title="方法一：使用切片[::-1]"></a>方法一：使用切片[::-1]</h4><p>在此简单说明一下切片的使用：<br><code>mylist[start:end:step]</code><br>上述操作表示取mylist的第start（默认值为0）个到第end（默认值为len(mylist)）个元素，且每隔step（step默认为1）个元素取一个。以上start，end，step均为可选项。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">mylist = [1,2,3,4,5,6,7,8,9,0]</span><br><span class="line">mylist[::-1]</span><br></pre></td></tr></table></figure>
-<p>将输出:</p>
-<blockquote>
-<p>[0,9,8,7,6,5,4,3,2,1]</p>
-</blockquote>
-<p>该方法的优缺点：</p>
+<li><p>当一行代码要使用变量x的值时，Python会到所有可用的名字空间去查找变量，按照如下顺序：</p>
 <ul>
-<li>没有改变原来的列表，且操作方便。</li>
-<li>另外创建副本来保存列表中的所有元素，故需要更多的内存空间。</li>
-<li>由于使用了切片的特性，故可读性较差。</li>
+<li>局部名字空间-特指当前函数或类的方法，如果函数定义了一个局部变量x或者是一个参数x，python将使用它，然后停止搜索。</li>
+<li>全局名字空间-特指当前的模块，如果模块定义了一个名为x的变量，函数或类，python将使用它，然后停止搜索。</li>
+<li>内置名字空间-对每个模块都是全局的。作为最后的尝试，python将假设x是内置函数或变量。</li>
+<li>如果python在这些名字空间找不到x，它将放弃查找并引发一个<code>NameError</code>异常，同时传递<code>name &#39;x&#39; is not defined</code>这样一条信息。</li>
 </ul>
-<h4 id="方法二：使用mylist-reverse-方法"><a href="#方法二：使用mylist-reverse-方法" class="headerlink" title="方法二：使用mylist.reverse()方法"></a>方法二：使用mylist.reverse()方法</h4><p>python的<code>mylist.reverse()</code>方法会直接在原来的列表里面将元素进行逆序排列，不需要创建新的副本用来存储结果。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mylist = [1,2,3,4,5,6,7,8,9,0]</span><br><span class="line">mylist.reverse()</span><br><span class="line">mylist</span><br></pre></td></tr></table></figure>
-<p>输出结果为：</p>
-<blockquote>
-<p>[0,9,8,7,6,5,4,3,2,1]</p>
-</blockquote>
-<p>该方法的优缺点：</p>
+</li>
+<li><p>名字空间在运行时直接可以访问。局部名字空间可以通过内置的<code>locals()</code>函数来访问。全局（模块级别）名字空间可以通过内置的<code>globals()</code>函数来访问。<code>locals()</code>函数对局部（函数）名字空间做了些什么，<code>globals（）</code>函数就对全局（模块）名字空间做了什么。<code>globals()</code>要更强大一些，因为一个模块的名字空间包含了模块级的变量和常量，它还包括了所有在模块中定义的函数和类，以及任何被导入到模块中的东西。</p>
+</li>
+</ol>
+<h3 id="解释from-module-import-和import-module之间为什么不同"><a href="#解释from-module-import-和import-module之间为什么不同" class="headerlink" title="解释from module import *和import module之间为什么不同"></a>解释from module import *和import module之间为什么不同</h3><ol>
+<li><p>使用上的区别</p>
 <ul>
-<li>不必申请新的内存空间来保存结果，节省了内存的使用。</li>
-<li>修改了原来的数据，不利于后续使用原数据。</li>
+<li>如果采用的是<code>from module import *</code>,则可在代码中直接使用方法名</li>
+<li>如果采用<code>import module</code>,则在代码中必须写<code>module.function</code>的形式</li>
+<li>举个例子，<code>from math import sqrt</code>是把<code>sqrt</code>作为本文件的方法导入进来了，使用的时候只需要直接调用sqrt。而如果导入方式是<code>import math</code>，那么调用的时候要采用<code>math.sqrt</code>的方式。</li>
 </ul>
-<h4 id="方法三：使用reversed-方法"><a href="#方法三：使用reversed-方法" class="headerlink" title="方法三：使用reversed()方法"></a>方法三：使用reversed()方法</h4><p><code>reversed()</code>方法会将列表逆序的结果存储到迭代器里面，这种方法不会改变原来的列表，也不会创建原来列表的完整副本，而是会多出迭代器对象所占的空间。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mylist = [1,2,3,4,5,6,7,8,9,0]</span><br><span class="line">for item in reversed(mylist):</span><br><span class="line">	print(item)</span><br></pre></td></tr></table></figure>
-<p>输出结果为：</p>
-<blockquote>
-<p>0</p>
-<p>9</p>
-<p>8</p>
-<p>7</p>
-<p>6</p>
-<p>5</p>
-<p>4</p>
-<p>3</p>
-<p>2</p>
-<p>1</p>
-</blockquote>
-<p>该方法的优缺点：</p>
+</li>
+<li><p>使用上为什么有区别？</p>
 <ul>
-<li>不会改变原来的列表，也无需创建原来列表的完整副本，只会多出迭代器对象所占的空间，相对而言比较高效。</li>
-<li>可读性较好。</li>
-<li>但是如果需要得到一个逆序列表的话，该方法的优点便会失效。</li>
+<li>导入<code>import module</code>,即模块自身被导入，但是它保持着自己的名字空间。此时就需要使用模块名来访问它的函数或属性，即<code>module.functon</code></li>
+<li>导入<code>from module import *</code>,即从另一个模块中将指定的函数和属性导入到你自己的名字空间，此时你就可以直接访问它们而不需要引用它们所来源的模块。使用<code>globals()</code>函数观察一下，我们会更加深刻的理解这两者的区别。</li>
 </ul>
-<h2 id="二-输出列表的偶数项数据"><a href="#二-输出列表的偶数项数据" class="headerlink" title="二.输出列表的偶数项数据"></a>二.输出列表的偶数项数据</h2><h3 id="问题描述：-1"><a href="#问题描述：-1" class="headerlink" title="问题描述："></a>问题描述：</h3><p>给出列表mylist = [1,2,3,4,’a’,’b’,’c’,’d’,9,0],要求输出mylist中的所有偶数项数据即：[2,4,’b’,’d’,0]。</p>
-<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><p>使用切片来解决问题</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mylist = [1,2,3,4,'a','b','c','d',9,0]</span><br><span class="line">mylist[1:len(mylist):2]</span><br></pre></td></tr></table></figure>
-<p>输出结果为：</p>
+</li>
+<li><p>用globals()函数来直观的解释两者的区别(以<code>math</code>模块为例)</p>
+<ul>
+<li>先看导入<code>import math</code>的情况</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> math.sqrt(x)</span><br></pre></td></tr></table></figure>
+<p>此时输入<code>globals()</code>查看当前位置的全部全局变量，查看到的内容如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;'__name__': '__main__', </span><br><span class="line">'__doc__': None, </span><br><span class="line">'__package__': None,</span><br><span class="line">'__loader__':&lt;class'_frozen_importlib.BuiltinImporter'&gt;,</span><br><span class="line">'__spec__': None,</span><br><span class="line">'__annotations__': &#123;&#125;, </span><br><span class="line">'__builtins__': &lt;module 'builtins' (built-in)&gt;,</span><br><span class="line">'__file__': 'D:/PythonWorkSpace/GlobalsTest/GlobalsTest1.py', </span><br><span class="line">'math': &lt;module 'math' (built-in)&gt;, </span><br><span class="line">'foo': &lt;function foo at 0x000001C512FE1268&gt;&#125;</span><br></pre></td></tr></table></figure>
+<p>其中的<code>&#39;math&#39;: &lt;module &#39;math&#39; (built-in)&gt;</code>表明此时导入进来的是<code>math</code>模块自身，如果需要使用sqrt，则需要从math模块里面取。</p>
+<ul>
+<li>再看导入<code>from math import sqrt</code>的情况</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo1</span><span class="params">(y)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> sqrt(y)</span><br></pre></td></tr></table></figure>
+<p>此时输入globals()查看当前位置的全部全局变量，查看到的内容如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;'__name__': '__main__', </span><br><span class="line">'__doc__': None, </span><br><span class="line">'__package__': None, </span><br><span class="line">'__loader__': &lt;class'_frozen_importlib.BuiltinImporter'&gt;, </span><br><span class="line">'__spec__': None,</span><br><span class="line">'__annotations__': &#123;&#125;,</span><br><span class="line">'__builtins__': &lt;module 'builtins' (built-in)&gt;, </span><br><span class="line">'__file__': 'D:/PythonWorkSpace/GlobalsTest/GlobalsTest2.py', </span><br><span class="line">'sqrt': &lt;built-in function sqrt&gt;, </span><br><span class="line">'foo1': &lt;function foo1 at 0x000001B916FB1268&gt;&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到其中的<code>&#39;sqrt&#39;: &lt;built-in function sqrt&gt;</code>表明导入进来的是<code>sqrt()</code>这个函数，此时就可以直接使用该函数了。</p>
+<h3 id="locals-函数与globals函数"><a href="#locals-函数与globals函数" class="headerlink" title="locals()函数与globals函数"></a>locals()函数与globals函数</h3><ol>
+<li>locals()实例，该例子可以表明我们可以通过<code>locals()</code>函数获取当前位置的包括参数在内的所有局部变量。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo1</span><span class="params">(arg,a)</span>:</span></span><br><span class="line">   	x = <span class="number">100</span></span><br><span class="line">  		y = <span class="string">'Hello python!'</span></span><br><span class="line">   	<span class="keyword">for</span> item <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">       	j = <span class="number">1</span></span><br><span class="line">       	k = item</span><br><span class="line">  		print(locals())</span><br><span class="line"></span><br><span class="line">foo1(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<p>上述例子运行结果为：</p>
 <blockquote>
-<p>[2,4,’b’,’d’,0]</p>
+<p>{‘k’: 9, ‘j’: 1, ‘item’: 9, ‘y’: ‘Hello python!’, ‘x’: 100, ‘a’: 2, ‘arg’: 1}</p>
 </blockquote>
-<h2 id="三-删除列表中的所有偶数"><a href="#三-删除列表中的所有偶数" class="headerlink" title="三.删除列表中的所有偶数"></a>三.删除列表中的所有偶数</h2><h3 id="问题描述：-2"><a href="#问题描述：-2" class="headerlink" title="问题描述："></a>问题描述：</h3><p>给出列表mylist = [12,21,3,42,52,61,7,8,99,0],要求删除mylist中的所有偶数值，输出[21,3,61,7,99]。代码不超过两行。</p>
-<h3 id="解决方案：使用filter-函数和匿名函数"><a href="#解决方案：使用filter-函数和匿名函数" class="headerlink" title="解决方案：使用filter()函数和匿名函数"></a>解决方案：使用filter()函数和匿名函数</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mylist = [12,21,3,42,52,61,7,8,99,0]</span><br><span class="line">list(filter(lambda x: x % 2 == 1,mylist))</span><br></pre></td></tr></table></figure>
-<p>输出结果如下：</p>
+<p>2.locals()是只读的，不可修改，而globals可以修改。下面来解释原因。</p>
+<ul>
+<li>locals()实际上并没有返回局部名字空间，它返回的是一个拷贝。所以对它进行修改，修改的是拷贝，而对实际的局部名字空间中的变量并没有什么影响。</li>
+<li>globals()与locals()函数的行为完全相反，它返回的是实际的全局名字空间，而不是一个拷贝。所以对globals()所返回的dictionary的任何改动都会直接影响到全局变量的取值。</li>
+<li>下面将给出实例来说明这个问题。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line">z = <span class="number">7</span> <span class="comment">#定义一个全局变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(arg)</span>:</span></span><br><span class="line">	x = <span class="number">1</span></span><br><span class="line">	print(locals())</span><br><span class="line">	print(<span class="string">'x = '</span>,x)</span><br><span class="line">	locals()[<span class="string">'x'</span>] = <span class="number">2</span>   <span class="comment">#修改的是局部名字空间的拷贝，而实际的局部名字空间中的变量并未受到影响</span></span><br><span class="line">	print(locals())   </span><br><span class="line">	print(<span class="string">'x = '</span>,x)</span><br><span class="line"></span><br><span class="line">foo(<span class="number">3</span>)</span><br><span class="line">print(globals())</span><br><span class="line">print(<span class="string">'z = '</span>,z)</span><br><span class="line">globals()[<span class="string">'z'</span>] = <span class="number">8</span>  <span class="comment">#globals()返回的是实际的全部名字空间，此时修改了变量z的值</span></span><br><span class="line">print(globals())</span><br><span class="line">print(<span class="string">'z = '</span>,z)</span><br></pre></td></tr></table></figure>
+<p>输出结果如下所示：</p>
 <blockquote>
-<p>[21,3,61,7,99]</p>
+<p>{‘x’: 1, ‘arg’: 3}</p>
+<p>x =  1</p>
+<p>{‘x’: 1, ‘arg’: 3}</p>
+<p>x =  1</p>
+<p>{‘<strong>name</strong>‘: ‘<strong>main</strong>‘, ‘<strong>doc</strong>‘: None, ‘<strong>package</strong>‘: None, ‘<strong>loader</strong>‘: <class '_frozen_importlib.builtinimporter'="">, ‘<strong>spec</strong>‘: None, ‘<strong>annotations</strong>‘: {}, ‘<strong>builtins</strong>‘: <module 'builtins'="" (built-in)="">, ‘<strong>file</strong>‘: ‘D:/PythonWorkSpace/LocalsTest/LocalsTest2.py’, ‘z’: 7, ‘foo’: <function foo="" at="" 0x000002a204e6f268="">}</function></module></class></p>
 </blockquote>
-<p>匿名函数<code>lambda x : x % 2 != 0</code>实际上就等于：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_odd</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> x % <span class="number">2</span> == <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>关键字<code>lambda</code>表示匿名函数，冒号前面的x表示匿名函数的参数，匿名函数有个限制就是只能有一个表达式，不用写<code>return</code>，返回值就是该表达式的结果。</p>
-<p>python内建的<code>filter()</code>函数用于过滤序列.<code>filter()</code>函数接受一个函数和一个序列，并把传入的函数依次作用于每个元素，然后根据返回值是<code>True</code>还是<code>False</code>决定保留还是丢弃该元素。</p>
-<p>由于<code>filter()</code>函数返回的是一个<code>Iterator</code>，也就是一个惰性序列，所以要强迫<code>filter()</code>完成运算结果，需要用<code>list()</code>函数获得所有结果并返回list</p>
-<h2 id="四-字典值更新"><a href="#四-字典值更新" class="headerlink" title="四.字典值更新"></a>四.字典值更新</h2><h3 id="问题描述：-3"><a href="#问题描述：-3" class="headerlink" title="问题描述："></a>问题描述：</h3><p>给出字典mydict = {‘a’: 1,’b’: 2},要求更改为mydict = {‘a’: 3,’b’: 4},仅用一行代码实现 。</p>
-<h3 id="解决方案：-1"><a href="#解决方案：-1" class="headerlink" title="解决方案："></a>解决方案：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mydict.update(&#123;'a': 3,'b': 4&#125;)</span><br><span class="line">mydict</span><br></pre></td></tr></table></figure>
-<p>输出结果如下：</p>
+<p>z =  7</p>
 <blockquote>
-<p>{‘a’: 3,’b’: 4}</p>
 </blockquote>
+<p>{‘<strong>name</strong>‘: ‘<strong>main</strong>‘, ‘<strong>doc</strong>‘: None, ‘<strong>package</strong>‘: None, ‘<strong>loader</strong>‘: <class '_frozen_importlib.builtinimporter'="">, ‘<strong>spec</strong>‘: None, ‘<strong>annotations</strong>‘: {}, ‘<strong>builtins</strong>‘: <module 'builtins'="" (built-in)="">, ‘<strong>file</strong>‘: ‘D:/PythonWorkSpace/LocalsTest/LocalsTest2.py’, ‘z’: 8, ‘foo’: <function foo="" at="" 0x000002a204e6f268="">}</function></module></class></p>
+<blockquote>
+<p>z =  8</p>
+</blockquote>
+<p>从输出结果可以看出对locals()修改，并不会对实际的局部名字空间中的值造成影响，而对globals返回的字典中的值进行修改，就直接影响到了全局变量的取值。</p>
 
       
 
@@ -308,25 +308,6 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python面试题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -377,7 +358,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/PythonFromListToClass1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/PythonFromListToClass2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -391,18 +372,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2018/PythonFromListToClass2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/PythonAndGaoDeAPI/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python+高德API解决租房问题</div>
+    <a href="/2018/PythonFromListToClass1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python基础学习总结（一）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -441,7 +413,7 @@ var _hmt = _hmt || [];
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://daisy0x00.github.io/2018/PythonFromListToClass1/",
+  id: "http://daisy0x00.github.io/2018/PythonFromListToClass2/",
   owner: 'daisy0x00',
   repo: 'daisy0x00.github.io',
   oauth: {
