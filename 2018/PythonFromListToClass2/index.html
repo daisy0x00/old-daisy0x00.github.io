@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="daisy&#39;s space">
 <meta property="og:description" content="本文讲述了python内置函数locals和globals以及与之相关的知识点。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-03T10:30:34.451Z">
+<meta property="og:updated_time" content="2018-05-03T10:40:53.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python基础学习总结（二）">
 <meta name="twitter:description" content="本文讲述了python内置函数locals和globals以及与之相关的知识点。">
@@ -194,19 +194,19 @@ var _hmt = _hmt || [];
         <p>本文讲述了python内置函数locals和globals以及与之相关的知识点。</p>
 <a id="more"></a>
 <h2 id="Python内置函数locals-和globals"><a href="#Python内置函数locals-和globals" class="headerlink" title="Python内置函数locals()和globals()"></a>Python内置函数locals()和globals()</h2><p>Python内置函数locals()和globals()主要提供基于字典的访问局部变量和全局变量的方式。</p>
-<h3 id="名字空间"><a href="#名字空间" class="headerlink" title="名字空间"></a>名字空间</h3><p>在理解这两个函数之前，首先要先理解一下python中的名字空间的概念。</p>
-<ol>
-<li>python使用叫做名字空间的对象来记录变量的轨迹。</li>
-<li>名字空间是一个字典，它的键就是字符串形式的变量名称，它的值就是变量的实际值。</li>
-<li>名字空间可以像python的dictionary一样进行访问。</li>
-<li><p>在一个python程序中的任何一个地方，都存在几个可用的名字空间。</p>
+<h3 id="名字空间"><a href="#名字空间" class="headerlink" title="名字空间"></a>名字空间</h3><p>在理解这两个函数之前，首先要先理解一下python中的名字空间的概念。 </p>
+<ul>
+<li>1.python使用叫做名字空间的对象来记录变量的轨迹。</li>
+<li>2.名字空间是一个字典，它的键就是字符串形式的变量名称，它的值就是变量的实际值。</li>
+<li>3.名字空间可以像python的dictionary一样进行访问。</li>
+<li><p>4.在一个python程序中的任何一个地方，都存在几个可用的名字空间。</p>
 <ul>
 <li>每个函数都有着自己的名字空间，叫做局部名字空间。它记录了函数的变量，包括函数的参数和局部定义的变量。</li>
 <li>每个模块拥有它自己的名字空间，叫做全局名字空间。它记录了模块的变量，包括函数、类、其他导入的模块、模块级的变量和常量。</li>
 <li>还有内置名字空间，任何模块均可访问它。它存放着内置的函数和异常。</li>
 </ul>
 </li>
-<li><p>当一行代码要使用变量x的值时，Python会到所有可用的名字空间去查找变量，按照如下顺序：</p>
+<li><p>5.当一行代码要使用变量x的值时，Python会到所有可用的名字空间去查找变量，按照如下顺序：</p>
 <ul>
 <li>局部名字空间-特指当前函数或类的方法，如果函数定义了一个局部变量x或者是一个参数x，python将使用它，然后停止搜索。</li>
 <li>全局名字空间-特指当前的模块，如果模块定义了一个名为x的变量，函数或类，python将使用它，然后停止搜索。</li>
@@ -214,57 +214,53 @@ var _hmt = _hmt || [];
 <li>如果python在这些名字空间找不到x，它将放弃查找并引发一个<code>NameError</code>异常，同时传递<code>name &#39;x&#39; is not defined</code>这样一条信息。</li>
 </ul>
 </li>
-<li><p>名字空间在运行时直接可以访问。局部名字空间可以通过内置的<code>locals()</code>函数来访问。全局（模块级别）名字空间可以通过内置的<code>globals()</code>函数来访问。<code>locals()</code>函数对局部（函数）名字空间做了些什么，<code>globals（）</code>函数就对全局（模块）名字空间做了什么。<code>globals()</code>要更强大一些，因为一个模块的名字空间包含了模块级的变量和常量，它还包括了所有在模块中定义的函数和类，以及任何被导入到模块中的东西。</p>
+<li><p>6.名字空间在运行时直接可以访问。局部名字空间可以通过内置的<code>locals()</code>函数来访问。全局（模块级别）名字空间可以通过内置的<code>globals()</code>函数来访问。<code>locals()</code>函数对局部（函数）名字空间做了些什么，<code>globals（）</code>函数就对全局（模块）名字空间做了什么。<code>globals()</code>要更强大一些，因为一个模块的名字空间包含了模块级的变量和常量，它还包括了所有在模块中定义的函数和类，以及任何被导入到模块中的东西。</p>
 </li>
-</ol>
-<h3 id="解释from-module-import-和import-module之间为什么不同"><a href="#解释from-module-import-和import-module之间为什么不同" class="headerlink" title="解释from module import *和import module之间为什么不同"></a>解释from module import *和import module之间为什么不同</h3><ol>
-<li><p>使用上的区别</p>
+</ul>
+<h3 id="解释from-module-import-和import-module之间为什么不同"><a href="#解释from-module-import-和import-module之间为什么不同" class="headerlink" title="解释from module import *和import module之间为什么不同"></a>解释from module import *和import module之间为什么不同</h3><ul>
+<li><p>1.使用上的区别</p>
 <ul>
 <li>如果采用的是<code>from module import *</code>,则可在代码中直接使用方法名</li>
 <li>如果采用<code>import module</code>,则在代码中必须写<code>module.function</code>的形式</li>
 <li>举个例子，<code>from math import sqrt</code>是把<code>sqrt</code>作为本文件的方法导入进来了，使用的时候只需要直接调用sqrt。而如果导入方式是<code>import math</code>，那么调用的时候要采用<code>math.sqrt</code>的方式。</li>
 </ul>
 </li>
-<li><p>使用上为什么有区别？</p>
+<li><p>2.使用上为什么有区别？</p>
 <ul>
 <li>导入<code>import module</code>,即模块自身被导入，但是它保持着自己的名字空间。此时就需要使用模块名来访问它的函数或属性，即<code>module.functon</code></li>
 <li>导入<code>from module import *</code>,即从另一个模块中将指定的函数和属性导入到你自己的名字空间，此时你就可以直接访问它们而不需要引用它们所来源的模块。使用<code>globals()</code>函数观察一下，我们会更加深刻的理解这两者的区别。</li>
 </ul>
 </li>
-<li><p>用globals()函数来直观的解释两者的区别(以<code>math</code>模块为例)</p>
-<ul>
-<li>先看导入<code>import math</code>的情况</li>
-</ul>
+<li><p>3.用globals()函数来直观的解释两者的区别(以<code>math</code>模块为例)</p>
+<p>先看导入<code>import math</code>的情况</p>
 </li>
-</ol>
+</ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> math.sqrt(x)</span><br></pre></td></tr></table></figure>
 <p>此时输入<code>globals()</code>查看当前位置的全部全局变量，查看到的内容如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;'__name__': '__main__', </span><br><span class="line">'__doc__': None, </span><br><span class="line">'__package__': None,</span><br><span class="line">'__loader__':&lt;class'_frozen_importlib.BuiltinImporter'&gt;,</span><br><span class="line">'__spec__': None,</span><br><span class="line">'__annotations__': &#123;&#125;, </span><br><span class="line">'__builtins__': &lt;module 'builtins' (built-in)&gt;,</span><br><span class="line">'__file__': 'D:/PythonWorkSpace/GlobalsTest/GlobalsTest1.py', </span><br><span class="line">'math': &lt;module 'math' (built-in)&gt;, </span><br><span class="line">'foo': &lt;function foo at 0x000001C512FE1268&gt;&#125;</span><br></pre></td></tr></table></figure>
 <p>其中的<code>&#39;math&#39;: &lt;module &#39;math&#39; (built-in)&gt;</code>表明此时导入进来的是<code>math</code>模块自身，如果需要使用sqrt，则需要从math模块里面取。</p>
-<ul>
-<li>再看导入<code>from math import sqrt</code>的情况</li>
-</ul>
+<p>再看导入<code>from math import sqrt</code>的情况</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo1</span><span class="params">(y)</span>:</span></span><br><span class="line">	<span class="keyword">return</span> sqrt(y)</span><br></pre></td></tr></table></figure>
 <p>此时输入globals()查看当前位置的全部全局变量，查看到的内容如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;'__name__': '__main__', </span><br><span class="line">'__doc__': None, </span><br><span class="line">'__package__': None, </span><br><span class="line">'__loader__': &lt;class'_frozen_importlib.BuiltinImporter'&gt;, </span><br><span class="line">'__spec__': None,</span><br><span class="line">'__annotations__': &#123;&#125;,</span><br><span class="line">'__builtins__': &lt;module 'builtins' (built-in)&gt;, </span><br><span class="line">'__file__': 'D:/PythonWorkSpace/GlobalsTest/GlobalsTest2.py', </span><br><span class="line">'sqrt': &lt;built-in function sqrt&gt;, </span><br><span class="line">'foo1': &lt;function foo1 at 0x000001B916FB1268&gt;&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看到其中的<code>&#39;sqrt&#39;: &lt;built-in function sqrt&gt;</code>表明导入进来的是<code>sqrt()</code>这个函数，此时就可以直接使用该函数了。</p>
-<h3 id="locals-函数与globals函数"><a href="#locals-函数与globals函数" class="headerlink" title="locals()函数与globals函数"></a>locals()函数与globals函数</h3><ol>
-<li>locals()实例，该例子可以表明我们可以通过<code>locals()</code>函数获取当前位置的包括参数在内的所有局部变量。</li>
-</ol>
+<h3 id="locals-函数与globals函数"><a href="#locals-函数与globals函数" class="headerlink" title="locals()函数与globals函数"></a>locals()函数与globals函数</h3><ul>
+<li>1.locals()实例，该例子可以表明我们可以通过<code>locals()</code>函数获取当前位置的包括参数在内的所有局部变量。</li>
+</ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo1</span><span class="params">(arg,a)</span>:</span></span><br><span class="line">   	x = <span class="number">100</span></span><br><span class="line">  		y = <span class="string">'Hello python!'</span></span><br><span class="line">   	<span class="keyword">for</span> item <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">       	j = <span class="number">1</span></span><br><span class="line">       	k = item</span><br><span class="line">  		print(locals())</span><br><span class="line"></span><br><span class="line">foo1(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 <p>上述例子运行结果为：</p>
 <blockquote>
 <p>{‘k’: 9, ‘j’: 1, ‘item’: 9, ‘y’: ‘Hello python!’, ‘x’: 100, ‘a’: 2, ‘arg’: 1}</p>
 </blockquote>
-<ol start="2">
-<li><p>locals()是只读的，不可修改，而globals可以修改。下面来解释原因。</p>
+<ul>
+<li><p>2.locals()是只读的，不可修改，而globals可以修改。下面来解释原因。</p>
 <ul>
 <li>locals()实际上并没有返回局部名字空间，它返回的是一个拷贝。所以对它进行修改，修改的是拷贝，而对实际的局部名字空间中的变量并没有什么影响。</li>
 <li>globals()与locals()函数的行为完全相反，它返回的是实际的全局名字空间，而不是一个拷贝。所以对globals()所返回的dictionary的任何改动都会直接影响到全局变量的取值。</li>
-<li>下面将给出实例来说明这个问题。</li>
 </ul>
 </li>
-</ol>
+<li>3.下面将给出实例来说明上述问题。</li>
+</ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line">z = <span class="number">7</span> <span class="comment">#定义一个全局变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(arg)</span>:</span></span><br><span class="line">	x = <span class="number">1</span></span><br><span class="line">	print(locals())</span><br><span class="line">	print(<span class="string">'x = '</span>,x)</span><br><span class="line">	locals()[<span class="string">'x'</span>] = <span class="number">2</span>   <span class="comment">#修改的是局部名字空间的拷贝，而实际的局部名字空间中的变量并未受到影响</span></span><br><span class="line">	print(locals())   </span><br><span class="line">	print(<span class="string">'x = '</span>,x)</span><br><span class="line"></span><br><span class="line">foo(<span class="number">3</span>)</span><br><span class="line">print(globals())</span><br><span class="line">print(<span class="string">'z = '</span>,z)</span><br><span class="line">globals()[<span class="string">'z'</span>] = <span class="number">8</span>  <span class="comment">#globals()返回的是实际的全部名字空间，此时修改了变量z的值</span></span><br><span class="line">print(globals())</span><br><span class="line">print(<span class="string">'z = '</span>,z)</span><br></pre></td></tr></table></figure>
 <p>输出结果如下所示：</p>
 <blockquote>
