@@ -6,21 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Tag: python内置函数 | daisy&#39;s space</title>
+  <title>Python+高德API解决租房问题（一） | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="python,csv文件,Python+高德API解决租房问题,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy&#39;s space">
-<meta property="og:url" content="http://daisy0x00.github.io/tags/python内置函数/index.html">
+  <meta name="description" content="本文记录了自己学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中难免会有因python版本差异而造成代码无法正常运行。详情请君移步正文。  1.TypeError: a bytes-like object is required, not ‘str’">
+<meta name="keywords" content="python,csv文件,Python+高德API解决租房问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python+高德API解决租房问题（一）">
+<meta property="og:url" content="http://daisy0x00.github.io/2018/PythonAndGaoDeAPI1/index.html">
 <meta property="og:site_name" content="daisy&#39;s space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本文记录了自己学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中难免会有因python版本差异而造成代码无法正常运行。详情请君移步正文。  1.TypeError: a bytes-like object is required, not ‘str’">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://daisy0x00.github.io/photo/PythonGaoDeAPI/q1.png">
+<meta property="og:updated_time" content="2018-05-05T02:24:27.953Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy&#39;s space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="Python+高德API解决租房问题（一）">
+<meta name="twitter:description" content="本文记录了自己学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中难免会有因python版本差异而造成代码无法正常运行。详情请君移步正文。  1.TypeError: a bytes-like object is required, not ‘str’">
+<meta name="twitter:image" content="http://daisy0x00.github.io/photo/PythonGaoDeAPI/q1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -165,36 +172,80 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-PythonAndGaoDeAPI1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonFromListToClass2/" class="archive-article-date">
-  	<time datetime="2018-05-03T12:06:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonFromListToClass2/">Python基础学习总结（二）</a>
+    <h1 class="article-title" itemprop="name">
+      Python+高德API解决租房问题（一）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/PythonAndGaoDeAPI1/" class="archive-article-date">
+  	<time datetime="2018-04-26T13:50:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>本文记录了自己学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。<br>实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中难免会有因python版本差异而造成代码无法正常运行。详情请君移步正文。</p>
+<ul>
+<li>1.TypeError: a bytes-like object is required, not ‘str’</li>
+</ul>
+<a id="more"></a>
+<h2 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h2><ul>
+<li>问题描述: 编写完<code>crawl.py</code>运行报错:TypeError: a bytes-like object is required, not ‘str’.详情如图:<br><img src="\photo\PythonGaoDeAPI\q1.png" alt="avatar"></li>
+<li><p>问题分析: python2.x版本中写入csv时,csv文件的创建必须加上参数’b’,即csv_file = open(‘rent.csv’,’wb’),表示用二进制进行文件写入,否则会出现隔行的现象。但是中python3.x版本中对csv文件读写时,打开方式都是w或r，没有用wb.</p>
+</li>
+<li><p>解决方案: 修改几处代码为即可:</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">csv_file = open(<span class="string">'rent.csv'</span>,<span class="string">'w'</span>)</span><br><span class="line"></span><br><span class="line">house_title = house.select(<span class="string">"h2"</span>)[<span class="number">0</span>].string</span><br><span class="line"></span><br><span class="line">house_money = house.select(<span class="string">".money"</span>)[<span class="number">0</span>].select(<span class="string">"b"</span>)[<span class="number">0</span>].string</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -204,37 +255,136 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">python内置函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gloabls()函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">locals()函数</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">csv文件</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/PythonAndGaoDeAPI1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/PythonFromListToClass1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python基础学习总结（一）
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2018/PythonAndGaoDeAPI1/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -257,9 +407,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
