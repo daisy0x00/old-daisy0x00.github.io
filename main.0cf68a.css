@@ -2077,6 +2077,18 @@ pre .css~* .id,pre .id {
 .linenums>li {
     position: relative;
 }
+p code, li:not(.L0):not(.L1):not(.L2):not(.L3):not(.L4):not(.L5):not(.L6):not(.L7):not(.L8):not(.L9) code{
+	font-size: 12px;
+    font-family: Consolas,monospace,serif;
+    color: #D05;
+    white-space: nowrap;
+    padding: 0 4px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #fafafa;
+	
+}
+
 pre code {
     word-break: break-all;
     white-space: pre-wrap;
