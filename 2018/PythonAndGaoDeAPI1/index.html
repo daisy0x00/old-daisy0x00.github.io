@@ -25,7 +25,7 @@
 
 1.TypeError: a bytes-like object is required, not ‘str’">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\PythonGaoDeAPI\q1.png">
-<meta property="og:updated_time" content="2018-05-05T02:24:27.953Z">
+<meta property="og:updated_time" content="2018-05-07T16:45:59.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+高德API解决租房问题（一）">
 <meta name="twitter:description" content="本文记录了自己学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中难免会有因python版本差异而造成代码无法正常运行。详情请君移步正文。
@@ -210,15 +210,14 @@ var _hmt = _hmt || [];
 </li>
 <li><p>解决方案: 修改几处代码为即可:</p>
 </li>
-<li><pre><code class="python">
-  csv_file = open(&#39;rent.csv&#39;,&#39;w&#39;)
-
-  house_title = house.select(&quot;h2&quot;)[0].string
-
-  house_money = house.select(&quot;.money&quot;)[0].select(&quot;b&quot;)[0].string
-</code></pre>
-</li>
 </ul>
+<pre><code class="python">
+    csv_file = open(&#39;rent.csv&#39;,&#39;w&#39;)
+
+    house_title = house.select(&quot;h2&quot;)[0].string
+
+    house_money = house.select(&quot;.money&quot;)[0].select(&quot;b&quot;)[0].string
+</code></pre>
 
       
 
@@ -735,11 +734,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color5">python面试题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,14 +755,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">select方法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python面试题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -776,6 +771,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">locals()函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
               </li>
             
             <div class="clearfix"></div>
