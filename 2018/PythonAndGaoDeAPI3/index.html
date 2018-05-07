@@ -24,7 +24,7 @@
 <meta property="og:description" content="本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。
 
 1.Beautiful中的select方法">
-<meta property="og:updated_time" content="2018-05-07T16:45:09.539Z">
+<meta property="og:updated_time" content="2018-05-07T16:53:40.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python+高德API解决租房问题（三）">
 <meta name="twitter:description" content="本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。
@@ -211,7 +211,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>2.创建一个字符串，后面的例子都会用它来演示。</li>
 </ul>
-<pre><code>
+<pre><code class="python">
     &gt;&gt;&gt;html = &quot;&quot;&quot;
     &lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;&lt;/head&gt;
     &lt;body&gt;
@@ -223,21 +223,25 @@ var _hmt = _hmt || [];
     and they lived at the bottom of a well.&lt;/p&gt;
     &lt;p class = &quot;story&quot;&gt;...&lt;/p&gt;
     &quot;&quot;&quot;
-</code></pre><ul>
+</code></pre>
+<ul>
 <li>3.创建BeautifulSoup对象</li>
 </ul>
-<pre><code>
+<pre><code class="python">
     &gt;&gt;&gt;soup = BeautifulSoup(html)
-</code></pre><p>除此以外，我们还可以用本地HTML文件来创建对象，例如：</p>
-<pre><code>
+</code></pre>
+<p>除此以外，我们还可以用本地HTML文件来创建对象，例如：</p>
+<pre><code class="python">
     &gt;&gt;&gt;soup = BeautifulSoup(open(&#39;index.html&#39;)) #将本地index.html文件打开，用它来创建soup对象。
-</code></pre><ul>
+</code></pre>
+<ul>
 <li>4.格式化打印soup对象的内容</li>
 </ul>
-<pre><code>
+<pre><code class="python">
     &gt;&gt;&gt;print(soup.prettify())
-</code></pre><p>输出如下：</p>
-<pre><code>
+</code></pre>
+<p>输出如下：</p>
+<pre><code class="python">
     &lt;html&gt;
       &lt;head&gt;
         &lt;title&gt;
@@ -271,11 +275,12 @@ var _hmt = _hmt || [];
        &lt;/p&gt;
       &lt;/body&gt;
      &lt;/html&gt;
-</code></pre><h3 id="select-方法"><a href="#select-方法" class="headerlink" title="select()方法"></a>select()方法</h3><p> 在写css时，标签名不加任何修饰，雷鸣前面要加点<code>.</code>,id名前面要加<code>#</code>。我们可以用类似的方法来筛选元素，用到的方法就是soup.select().</p>
+</code></pre>
+<h3 id="select-方法"><a href="#select-方法" class="headerlink" title="select()方法"></a>select()方法</h3><p> 在写css时，标签名不加任何修饰，雷鸣前面要加点<code>.</code>,id名前面要加<code>#</code>。我们可以用类似的方法来筛选元素，用到的方法就是soup.select().</p>
 <ul>
 <li>1.通过标签名查找</li>
 </ul>
-<pre><code>
+<pre><code class="python">
     &gt;&gt;&gt;print(soup.select(&#39;title&#39;))
     [&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;]  #运行结果
 
@@ -285,44 +290,51 @@ var _hmt = _hmt || [];
     &gt;&gt;&gt;print(soup.select(&#39;b&#39;))
     [&lt;b&gt;The Dormouse&#39;s story&lt;/b&gt;]
 
-</code></pre><ul>
+</code></pre>
+<ul>
 <li>2.通过类名查找</li>
 </ul>
-<pre><code>
+<pre><code class="python">
     &gt;&gt;&gt;print(soup.select(&#39;.sister&#39;))
     [&lt;a class = &quot;sister&quot; href = &quot;http://example.com/elsie&quot; id = &quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;,&lt;a class = &quot;sister&quot; href = &quot;http://example.com/lacie&quot; id = &quot;link2&quot;&gt;Lacie&lt;/a&gt;,&lt;a class = &quot;sister&quot; href = &quot;http://example.com/tillie&quot; id = &quot;link3&quot;&gt;Tillie&lt;/a&gt;]
-</code></pre><ul>
+</code></pre>
+<ul>
 <li>3.通过id名查找</li>
 </ul>
-<pre><code>
+<pre><code class="python">
     &gt;&gt;&gt;print(soup.select(&#39;#link1&#39;))
     [&lt;a href = &quot;http://example.com/elsie&quot; class = &quot;sister&quot; id = &quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;]
-</code></pre><ul>
+</code></pre>
+<ul>
 <li>4.组合查找</li>
 </ul>
 <p>组合查找实际上和写class文件时，标签名与类名、id名进行的组合原理一样。例如查找p标签中，id等于link1的内容，二者需要用空格分开。</p>
-<pre><code>
+<pre><code class="python">
     &gt;&gt;&gt;print(soup.select(&quot;p #link1&quot;))
     [&lt;a href=&quot;http://example.com/elsie&quot; class = &quot;sister&quot; id =&quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;]
-</code></pre><p>直接子标签查找</p>
-<pre><code>
+</code></pre>
+<p>直接子标签查找</p>
+<pre><code class="python">
     &gt;&gt;&gt;print(soup.select(&quot;head &gt; title&quot;))
     [&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;]
-</code></pre><ul>
+</code></pre>
+<ul>
 <li>5.属性查找</li>
 </ul>
 <p>查找时还可以加入属性元素，属性需要用中括号括起来，注意属性和标签属于同一节点，所以中间不能加空格，否则会无法匹配到。</p>
-<pre><code>
+<pre><code class="python">
     &gt;&gt;&gt;print(soup.select(&quot;head &gt; title&quot;))
     [&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;]
 
     &gt;&gt;&gt;print(soup.select(&#39;a[href=&quot;http://example.com/elsie&quot;]&#39;))
     [&lt;a href = &quot;http://example.com/elsie&quot; class = &quot;sister&quot; id = &quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;]
-</code></pre><p>属性仍然可以与上述查找方式组合，不在同一节点的用空格隔开，在同一节点的则不加空格。</p>
-<pre><code>
+</code></pre>
+<p>属性仍然可以与上述查找方式组合，不在同一节点的用空格隔开，在同一节点的则不加空格。</p>
+<pre><code class="python">
     &gt;&gt;&gt;print(soup.select(&#39;p a[href=&quot;http://example.com/elsie&quot;]&#39;))
     [&lt;a href=&quot;http://example.com/elsie&quot; class= &quot;sister&quot; id=&quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;]
-</code></pre><p>注：在选择器中空格是一个有意义的字符，所以选择器表达式中不要随意出现空格。</p>
+</code></pre>
+<p>注：在选择器中空格是一个有意义的字符，所以选择器表达式中不要随意出现空格。</p>
 
       
 
@@ -839,14 +851,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">python面试题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -855,15 +859,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">python面试题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BeautifulSoup</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">select方法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -876,10 +892,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">locals()函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
               </li>
             
             <div class="clearfix"></div>
