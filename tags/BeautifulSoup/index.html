@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>daisy&#39;s space</title>
+  <title>Tag: BeautifulSoup | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -14,7 +14,7 @@
   <meta name="description" content="daisy&apos;s space">
 <meta property="og:type" content="website">
 <meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/index.html">
+<meta property="og:url" content="http://daisy0x00.github.io/tags/BeautifulSoup/index.html">
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="daisy&apos;s space">
 <meta name="twitter:card" content="summary">
@@ -168,161 +168,34 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-PythonAndGaoDeAPI3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/PythonAndGaoDeAPI3/" class="archive-article-date">
+  	<time datetime="2018-05-07T09:53:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/PythonAndGaoDeAPI3/">Python+高德API解决租房问题（三）</a>
+      <a class="archive-article-title" href="/2018/PythonAndGaoDeAPI3/">Python+高德API解决租房问题（三）</a>
     </h1>
   
 
-        
-        <a href="/2018/PythonAndGaoDeAPI3/" class="archive-article-date">
-  	<time datetime="2018-05-07T09:53:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-        <p>本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。</p>
-<ul>
-<li>1.Beautiful中的select方法</li>
-</ul>
-<hr>
-<h3 id="创建BeautifulSoup对象"><a href="#创建BeautifulSoup对象" class="headerlink" title="创建BeautifulSoup对象"></a>创建BeautifulSoup对象</h3><ul>
-<li>1.首先必须导入bs4库</li>
-</ul>
-<pre><code class="python">
-    &gt;&gt;&gt;from bs4 import BeautifulSoup
-</code></pre>
-<ul>
-<li>2.创建一个字符串，后面的例子都会用它来演示。</li>
-</ul>
-<pre><code>
-    &gt;&gt;&gt;html = &quot;&quot;&quot;
-    &lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;&lt;/head&gt;
-    &lt;body&gt;
-    &lt;p class = &quot;title&quot; name = &quot;dromouse&quot;&gt;&lt;b&gt;The Dormouse&#39;s story&lt;/b&gt;&lt;/p&gt;
-    &lt;p class = &quot;story&quot;&gt;Once upon a time there were three littlr sisters;and their names were
-    &lt;a href = &quot;http://example.com/elsie&quot; class = &quot;sister&quot; id = &quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;,
-    &lt;a href = &quot;http://example.com/lacie&quot; class = &quot;sister&quot; id = &quot;link2&quot;&gt;Lacie&lt;/a&gt; and 
-    &lt;a href = &quot;http://example.com/tillie&quot; class = &quot;sister&quot; id = &quot;link3&quot;&gt;Tillie&lt;/a&gt;;
-    and they lived at the bottom of a well.&lt;/p&gt;
-    &lt;p class = &quot;story&quot;&gt;...&lt;/p&gt;
-    &quot;&quot;&quot;
-</code></pre><ul>
-<li>3.创建BeautifulSoup对象</li>
-</ul>
-<pre><code>
-    &gt;&gt;&gt;soup = BeautifulSoup(html)
-</code></pre><p>除此以外，我们还可以用本地HTML文件来创建对象，例如：</p>
-<pre><code>
-    &gt;&gt;&gt;soup = BeautifulSoup(open(&#39;index.html&#39;)) #将本地index.html文件打开，用它来创建soup对象。
-</code></pre><ul>
-<li>4.格式化打印soup对象的内容</li>
-</ul>
-<pre><code>
-    &gt;&gt;&gt;print(soup.prettify())
-</code></pre><p>输出如下：</p>
-<pre><code>
-    &lt;html&gt;
-      &lt;head&gt;
-        &lt;title&gt;
-       The Dormouse&#39;s story
-      &lt;/title&gt;
-     &lt;/head&gt;
-    &lt;body&gt;
-     &lt;p class=&quot;title&quot; name=&quot;dromouse&quot;&gt;
-      &lt;b&gt;
-       The Dormouse&#39;s story
-      &lt;/b&gt;
-     &lt;/p&gt;
-     &lt;p class=&quot;story&quot;&gt;
-      Once upon a time there were three little sisters; and their names were
-      &lt;a class=&quot;sister&quot; href=&quot;http://example.com/elsie&quot; id=&quot;link1&quot;&gt;
-        &lt;!-- Elsie --&gt;
-      &lt;/a&gt;
-      ,
-      &lt;a class=&quot;sister&quot; href=&quot;http://example.com/lacie&quot; id=&quot;link2&quot;&gt;
-       Lacie
-      &lt;/a&gt;
-       and
-      &lt;a class=&quot;sister&quot; href=&quot;http://example.com/tillie&quot; id=&quot;link3&quot;&gt;
-       Tillie
-      &lt;/a&gt;
-       ;
-     and they lived at the bottom of a well.
-       &lt;/p&gt;
-       &lt;p class=&quot;story&quot;&gt;
-        ...
-       &lt;/p&gt;
-      &lt;/body&gt;
-     &lt;/html&gt;
-</code></pre><h3 id="select-方法"><a href="#select-方法" class="headerlink" title="select()方法"></a>select()方法</h3><p> 在写css时，标签名不加任何修饰，雷鸣前面要加点<code>.</code>,id名前面要加<code>#</code>。我们可以用类似的方法来筛选元素，用到的方法就是soup.select().</p>
-<ul>
-<li>1.通过标签名查找</li>
-</ul>
-<pre><code>
-    &gt;&gt;&gt;print(soup.select(&#39;title&#39;))
-    [&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;]  #运行结果
-
-    &gt;&gt;&gt;print(soup.select(&#39;a&#39;))
-    [&lt;a href = &quot;http://example.com/elsie&quot; class = &quot;sister&quot; id = &quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;,&lt;a href = &quot;http://example.com/lacie&quot; class = &quot;sister&quot; id = &quot;link2&quot;&gt;Lacie&lt;/a&gt;, &lt;a href = &quot;http://example.com/tillie&quot; class = &quot;sister&quot; id = &quot;link3&quot;&gt;Tillie&lt;/a&gt;]
-
-    &gt;&gt;&gt;print(soup.select(&#39;b&#39;))
-    [&lt;b&gt;The Dormouse&#39;s story&lt;/b&gt;]
-
-</code></pre><ul>
-<li>2.通过类名查找</li>
-</ul>
-<pre><code>
-    &gt;&gt;&gt;print(soup.select(&#39;.sister&#39;))
-    [&lt;a class = &quot;sister&quot; href = &quot;http://example.com/elsie&quot; id = &quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;,&lt;a class = &quot;sister&quot; href = &quot;http://example.com/lacie&quot; id = &quot;link2&quot;&gt;Lacie&lt;/a&gt;,&lt;a class = &quot;sister&quot; href = &quot;http://example.com/tillie&quot; id = &quot;link3&quot;&gt;Tillie&lt;/a&gt;]
-</code></pre><ul>
-<li>3.通过id名查找</li>
-</ul>
-<pre><code>
-    &gt;&gt;&gt;print(soup.select(&#39;#link1&#39;))
-    [&lt;a href = &quot;http://example.com/elsie&quot; class = &quot;sister&quot; id = &quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;]
-</code></pre><ul>
-<li>4.组合查找</li>
-</ul>
-<p>组合查找实际上和写class文件时，标签名与类名、id名进行的组合原理一样。例如查找p标签中，id等于link1的内容，二者需要用空格分开。</p>
-<pre><code>
-    &gt;&gt;&gt;print(soup.select(&quot;p #link1&quot;))
-    [&lt;a href=&quot;http://example.com/elsie&quot; class = &quot;sister&quot; id =&quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;]
-</code></pre><p>直接子标签查找</p>
-<pre><code>
-    &gt;&gt;&gt;print(soup.select(&quot;head &gt; title&quot;))
-    [&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;]
-</code></pre><ul>
-<li>5.属性查找</li>
-</ul>
-<p>查找时还可以加入属性元素，属性需要用中括号括起来，注意属性和标签属于同一节点，所以中间不能加空格，否则会无法匹配到。</p>
-<pre><code>
-    &gt;&gt;&gt;print(soup.select(&quot;head &gt; title&quot;))
-    [&lt;title&gt;The Dormouse&#39;s story&lt;/title&gt;]
-
-    &gt;&gt;&gt;print(soup.select(&#39;a[href=&quot;http://example.com/elsie&quot;]&#39;))
-    [&lt;a href = &quot;http://example.com/elsie&quot; class = &quot;sister&quot; id = &quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;]
-</code></pre><p>属性仍然可以与上述查找方式组合，不在同一节点的用空格隔开，在同一节点的则不加空格。</p>
-<pre><code>
-    &gt;&gt;&gt;print(soup.select(&#39;p a[href=&quot;http://example.com/elsie&quot;]&#39;))
-    [&lt;a href=&quot;http://example.com/elsie&quot; class= &quot;sister&quot; id=&quot;link1&quot;&gt;&lt;!--Elsie --&gt;&lt;/a&gt;]
-</code></pre><p>注：在选择器中空格是一个有意义的字符，所以选择器表达式中不要随意出现空格。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -346,496 +219,19 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/PythonAndGaoDeAPI3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-Leetcode728" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/Leetcode728/">LeetCode728_Python</a>
-    </h1>
-  
-
-        
-        <a href="/2018/Leetcode728/" class="archive-article-date">
-  	<time datetime="2018-05-05T13:26:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>用python语言解答LeetCode的728题</p>
-        
-          <a class="article-more-a" href="/2018/Leetcode728/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python面试题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/Leetcode728/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PythonAndGaoDeAPI2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/PythonAndGaoDeAPI2/">Python+高德API解决租房问题（二）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/PythonAndGaoDeAPI2/" class="archive-article-date">
-  	<time datetime="2018-05-04T15:24:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。</p>
-<ul>
-<li>1.format()函数</li>
-<li>2.csv模块</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/PythonAndGaoDeAPI2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">format()函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/PythonAndGaoDeAPI2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PythonFromListToClass2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/PythonFromListToClass2/">Python基础学习总结（二）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/PythonFromListToClass2/" class="archive-article-date">
-  	<time datetime="2018-05-03T12:06:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本文讲述了python内置函数locals和globals以及与之相关的知识点。</p>
-        
-          <a class="article-more-a" href="/2018/PythonFromListToClass2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">python内置函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gloabls()函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">locals()函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/PythonFromListToClass2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PythonFromListToClass1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/PythonFromListToClass1/">Python基础学习总结（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/PythonFromListToClass1/" class="archive-article-date">
-  	<time datetime="2018-05-02T00:51:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本文以题来引出python中的特色知识点，一方面是为了巩固一下基础，另一方面为下一阶段学习打好基础。本文涉及到的主要知识点有列表及对列表的相关操作、切片、filter函数、匿名函数及字典等，题目预览如下：</p>
-<ul>
-<li>1.将列表倒序输出</li>
-<li>2.删除列表偶数项数据</li>
-<li>3.删除列表中的偶数</li>
-<li>4.字典值的更新
-        
-          <a class="article-more-a" href="/2018/PythonFromListToClass1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python面试题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/PythonFromListToClass1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PythonAndGaoDeAPI1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/PythonAndGaoDeAPI1/">Python+高德API解决租房问题（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/PythonAndGaoDeAPI1/" class="archive-article-date">
-  	<time datetime="2018-04-26T13:50:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本文记录了自己学习实验楼的Python+GaodeAPI中遇到的问题和解决方法。<br>实验楼的作者开发环境为python2.x版本,而本文作者用的是python3.6版本,所以在完成开发的过程中难免会有因python版本差异而造成代码无法正常运行。详情请君移步正文。</p>
-<ul>
-<li>1.TypeError: a bytes-like object is required, not ‘str’</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/PythonAndGaoDeAPI1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">csv文件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/PythonAndGaoDeAPI1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -1094,10 +490,10 @@ var _hmt = _hmt || [];
 	});
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
