@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Tag: python内置函数 | daisy&#39;s space</title>
+  <title>LeetCode728_Python | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="python，LeetCode,自除数,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/tags/python内置函数/index.html">
+  <meta name="description" content="用python语言解答LeetCode的728题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode728_Python">
+<meta property="og:url" content="http://daisy0x00.github.io/2018/LeetCode728/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="用python语言解答LeetCode的728题">
+<meta property="og:updated_time" content="2018-05-06T01:45:35.680Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="LeetCode728_Python">
+<meta name="twitter:description" content="用python语言解答LeetCode的728题">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,36 +170,128 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LeetCode728" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonFromListToClass2/" class="archive-article-date">
-  	<time datetime="2018-05-03T12:06:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonFromListToClass2/">Python基础学习总结（二）</a>
+    <h1 class="article-title" itemprop="name">
+      LeetCode728_Python
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/LeetCode728/" class="archive-article-date">
+  	<time datetime="2018-05-05T13:26:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>用python语言解答LeetCode的728题</p>
+<a id="more"></a>
+<h2 id="LeetCode728-自除数"><a href="#LeetCode728-自除数" class="headerlink" title="LeetCode728. 自除数"></a>LeetCode728. 自除数</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>自除数 是指可以被它包含的每一位数除尽的数。</p>
+<p>例如，128 是一个自除数，因为<code>128 % 1 == 0</code>，<code>128 % 2 == 0</code>，<code>128 % 8 == 0</code>。</p>
+<p>还有，自除数不允许包含 0 。</p>
+<p>给定上边界和下边界数字，输出一个列表，列表的元素是边界（含边界）内所有的自除数。</p>
+<p>示例 1：</p>
+<pre><code class="shell">
+    输入：
+    上边界left = 1,下边界right = 22
+    输出： {1，2，3，4，5，6，7，8，9，11，12，15，22}
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>每个输入参数的边界满足<code>1 &lt;= left &lt;= right &lt;= 10000</code>。</li>
+</ul>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><pre><code class="python">
+    class Solution(object):
+        def selfDividingNumbers(self, left, right):
+            &quot;&quot;&quot;
+
+            :type left: int
+            :type right: int
+            :rtype: List[int]
+            &quot;&quot;&quot;
+            return list(filter(lambda y:y,map(lambda x: x if all([False if i == &#39;0&#39; else int(x) % int(i) == 0 for i in str(x)]) else False,range(left,right + 1))))
+
+
+</code></pre>
+<p>说实话，这份代码可读性确实不怎么地，但是里面包含的python知识点很多，所以我觉得还是很有参考价值的。下来我来讲解一下这个看了第一眼不想再看第二眼的代码。</p>
+<ul>
+<li>1.列表生成式<code>[False if i == &#39;0&#39; else int(x) % int(i) == 0 for i in str(x)]</code><ul>
+<li><code>for i in str(x)</code>表示先将数字x转化为字符串形式，并对它的每一位数进行判断，</li>
+<li><code>i == &#39;0&#39;</code>表示判断该数字中的位数中是否含有零，如果该位数为零直接返回False</li>
+<li>若该位数不等于零，则本次返回<code>int(x) % int(i) == 0</code>的运算结果，即<code>int(x) % int(i)</code> 等于0则返回True，<code>int(x) % int(i)</code>不等于0则返回False。</li>
+<li>该列表生成式最后会返回一组元素为Ture或False的列表</li>
+</ul>
+</li>
+<li><p>2.<code>all([False if i == &#39;0&#39; else int(x) % int(i) == 0 for i in str(x)])</code></p>
+<ul>
+<li><code>all()</code>函数用于判断给定的可迭代参数iterable中的所有元素是否不为0、”、False或者iterable为空，如果是返回<code>True</code>，否则返回<code>False</code>。</li>
+<li>如果数字x中有某一位为零，或者说数字x中的某一位不能被x整除，那么这个<code>all()</code>函数的返回结果都将是<code>False</code></li>
+</ul>
+</li>
+<li><p>3.匿名函数<code>lambda x:x if all([False if i == &#39;0&#39; else int(x) % int(i) == 0 for i in str(x)]) else False</code>表示如果数字x满足了上述要求也就是满足了自除数的要求，则返回这个数字，否则直接返回<code>False</code>。</p>
+</li>
+<li>4.<code>map(lambda x: ...,range(left,right + 1))</code><ul>
+<li><code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>，<code>map</code>将传入的函数依次作用到序列的每个元素，并把结果作为新的<code>Iterator</code>返回.</li>
+<li>显然，此时的函数就是这个匿名函数<code>lambda x:...</code>，<code>Iterable</code>就是<code>range(left,right + 1)</code>。</li>
+<li><code>map(lambda x: ...,range(left,right + 1))</code>最后的返回序列中要不就是合格的x，要不就是<code>False</code>。</li>
+</ul>
+</li>
+<li>5.<code>filter(lambda y:y,map(...))</code><ul>
+<li><code>filter()</code>函数用于过滤序列。和<code>map()</code>类似，<code>filter()</code>也接受一个函数和一个序列，和<code>map()</code>不同的是，<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是<code>True</code>还是<code>False</code>决定保留还是丢弃该元素。</li>
+<li>这里用<code>filter()</code>函数把<code>map()</code>函数产生的序列中的<code>False</code>元素全部丢弃掉，剩下的就是当前范围内满足自除数条件的所有数字了。</li>
+</ul>
+</li>
+<li>6.<code>list(filter(...))</code><ul>
+<li><code>filter()</code>函数返回的是一个<code>Iterator</code>,也就是一个惰性序列，所以要强迫<code>filter()</code>完成计算结果，需要<code>list()</code>函数获得结果并返回list。</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -205,37 +301,141 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python面试题</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">python内置函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gloabls()函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">locals()函数</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/LeetCode728/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/PythonAndGaoDeAPI3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python+高德API解决租房问题（三）
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/PythonAndGaoDeAPI2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python+高德API解决租房问题（二）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2018/LeetCode728/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -495,9 +695,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
