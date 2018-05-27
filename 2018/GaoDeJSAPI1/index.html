@@ -6,30 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Python+高德API解决租房问题（四） | daisy&#39;s space</title>
+  <title>高德JavaScript API示例中心（一） | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
-	<meta name="keywords" content="python,urllib.parse.urljoin(),">
+	<meta name="keywords" content="高德JavaScript API示例中心，地图显示，meta,http-equiv,">
 
 	
   
-  <meta name="description" content="本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。
-
-urllib.parse.urljoin()">
+  <meta name="description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——地图显示】">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python+高德API解决租房问题（四）">
-<meta property="og:url" content="http://daisy0x00.github.io/2018/PythonAndGaoDeAPI4/index.html">
+<meta property="og:title" content="高德JavaScript API示例中心（一）">
+<meta property="og:url" content="http://daisy0x00.github.io/2018/GaoDeJSAPI1/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。
-
-urllib.parse.urljoin()">
-<meta property="og:updated_time" content="2018-05-09T12:36:24.033Z">
+<meta property="og:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——地图显示】">
+<meta property="og:updated_time" content="2018-05-27T14:18:34.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+高德API解决租房问题（四）">
-<meta name="twitter:description" content="本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。
-
-urllib.parse.urljoin()">
+<meta name="twitter:title" content="高德JavaScript API示例中心（一）">
+<meta name="twitter:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——地图显示】">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -176,20 +170,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PythonAndGaoDeAPI4" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-GaoDeJSAPI1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Python+高德API解决租房问题（四）
+      高德JavaScript API示例中心（一）
     </h1>
   
 
         
-        <a href="/2018/PythonAndGaoDeAPI4/" class="archive-article-date">
-  	<time datetime="2018-05-08T15:53:23.760Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
+        <a href="/2018/GaoDeJSAPI1/" class="archive-article-date">
+  	<time datetime="2018-05-27T09:25:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-27</time>
 </a>
         
       </header>
@@ -197,35 +191,85 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <p>本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。</p>
-<ul>
-<li>urllib.parse.urljoin()</li>
-</ul>
+        <p>本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——地图显示】</p>
 <a id="more"></a>
-<h3 id="urllib-parse-urljoin"><a href="#urllib-parse-urljoin" class="headerlink" title="urllib.parse.urljoin()"></a>urllib.parse.urljoin()</h3><p>首先导入模块，使用help查看相关文档</p>
-<pre><code class="python">
-    &gt;&gt;&gt;from urllib.parse import urljoin
-    &gt;&gt;&gt;help(urljoin)
-    Help on function urljoin in module urllib.parse:
+<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><pre><code class="html">
+    &lt;!doctype html&gt;
+    &lt;html&gt;
+        &lt;head&gt;
+            &lt;meta charset=&quot;utf-8&quot;&gt;
+            &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+               &lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, user-scalable=no, width=device-width&quot;&gt;
+            &lt;title&gt;基本地图展示&lt;/title&gt;
+            &lt;link rel=&quot;stylesheet&quot; href=&quot;http://cache.amap.com/lbs/static/main1119.css&quot;/&gt;
+            &lt;script src=&quot;http://cache.amap.com/lbs/static/es5.min.js&quot;&gt;&lt;/script&gt;
+            &lt;script src=&quot;http://webapi.amap.com/maps?v=1.4.6&amp;key=您申请的key值&quot;&gt;&lt;/script&gt;
+            &lt;script type=&quot;text/javascript&quot; src=&quot;http://cache.amap.com/lbs/static/addToolbar.js&quot;&gt;&lt;/script&gt;
+        &lt;/head&gt;
 
-    urljoin(base,url,allow_fragments=True)    
-        Join a base URL and a possibly relative URL to form an absolute
-        interpretation of the latter.
+        &lt;body&gt;
+            &lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
+
+            &lt;script&gt;
+                var map = new AMap.Map(&#39;container&#39;, {
+                    resizeEnable: true,
+                    zoom:11,
+                       center: [116.397428, 39.90923]
+                    });
+
+            &lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+
 </code></pre>
-<p>意思就是将基地址与一个相对地址连接起来转化为绝对地址。例子如下：</p>
-<pre><code class="python">
-    &gt;&gt;&gt;urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;bbbb.html&quot;)
-    &gt;&#39;http://www.google.com/1/bbbb.html&#39;
-    &gt;&gt;&gt;urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;2/bbbb.html&quot;)
-    &gt;&#39;http://www.google.com/1/2/bbbb.html&#39;
-    &gt;&gt;&gt;urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;/2/bbbb.html&quot;)
-    &gt;&#39;http://www.google.com/2/bbbb.html&#39;
-    &gt;&gt;&gt; urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;http://www.google.com/3/ccc.html&quot;)
-    &gt;&#39;http://www.google.com/3/ccc.html&#39;
-    &gt;&gt;&gt;urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;http://www.google.com/ccc.html&quot;)
-    &gt;&#39;http://www.google.com/ccc.html&#39;
-    &gt;&gt;&gt; urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;javascript:void(0)&quot;)
-    &gt;&#39;javascript:void(0)&#39;
+<h2 id="知识点1-meta元素"><a href="#知识点1-meta元素" class="headerlink" title="知识点1.meta元素"></a>知识点1.meta元素</h2><h3 id="meta元素"><a href="#meta元素" class="headerlink" title="meta元素"></a>meta元素</h3><ul>
+<li>1.<code>&lt;meta&gt;</code>元素可提供有关页面的元信息(meta-information),比如针对搜索引擎和更新频度的描述和关键词。</li>
+<li>2.<code>&lt;meta&gt;</code>标签永远位于文档的头部，不包含任何内容。<code>&lt;meta&gt;</code>标签的属性定义了与文档相关联的名称/值对。</li>
+</ul>
+<h3 id="http-equiv属性和content属性"><a href="#http-equiv属性和content属性" class="headerlink" title="http-equiv属性和content属性"></a>http-equiv属性和content属性</h3><ul>
+<li>1.http-equiv把content属性关联到HTTP头部。</li>
+<li>2.http-equiv属性为名称/值对提供了名称，并指示服务器在发送实际的文档之前先在要传送给浏览器的MIME文档头部包含名称/值对。</li>
+<li>3.使用带有http-equiv属性的<code>&lt;meta&gt;</code>标签时，服务器将把名称/值对添加到发送给浏览器的内容头部。</li>
+<li>4.content属性提供了名称/值对中的值。该值可以是任何有效的字符串。</li>
+<li>5.content属性始终要和name属性或者http-equiv属性一起使用。</li>
+<li>6.在这块举个栗子帮助理解，添加</li>
+</ul>
+<pre><code class="html">
+    &lt;meta http-equiv = &quot;charset&quot; content = &quot;utf-8&quot;&gt;
+    &lt;meta http-equiv = &quot;expires&quot; content = &quot;31 Dec 2008&gt; 
+</code></pre>
+<p>这样发送到浏览器的头部就应该包括：</p>
+<pre><code class="html">
+    content-type: text/html
+    charset: utf-8
+    expires: 31 Dec 2008
+</code></pre>
+<p>当然，只有浏览器可以接受这些附加的头部字段，并能以适当的方式使用它们时，这些字段才有意义。</p>
+<ul>
+<li>7.解释本例中的代码：</li>
+</ul>
+<pre><code class="html">
+    &lt;meta http-equiv = &quot;X-UA-Compatible&quot; content = &quot;IE = edge&quot;&gt;
+</code></pre>
+<p>这是一个文档兼容模式的定义，其中X-UA-Compatible是IE8的一个专有<code>&lt;meta&gt;</code>属性，它告诉IE8采用何种IE版本去渲染网页。在html的<code>&lt;head&gt;</code>标签中使用。IE = edge 告诉IE使用最新的引擎渲染网页。</p>
+<h3 id="charset属性"><a href="#charset属性" class="headerlink" title="charset属性"></a>charset属性</h3><ul>
+<li>1.charset属性规定HTML文档的字符编码。</li>
+<li>2.UTF-8是Unicode字符编码。</li>
+<li>3.charset属性是HTML5中的新属性，且替换了：<code>&lt;meta http-equiv = &quot;Content-Type&quot; content = &quot;text/html;charset = UTF-8&quot;&gt;</code>。当然仍然允许使用http-equiv属性来规定字符集，但是使用新方法可以减少代码量。</li>
+</ul>
+<h3 id="name属性"><a href="#name属性" class="headerlink" title="name属性"></a>name属性</h3><ul>
+<li>1.name把content属性关联到一个名称。</li>
+<li>2.name属性提供了名称/值对中的名称。HTML和XHTML标签都没有指定任何预先定义的<code>&lt;meta&gt;</code>名称。通常情况下，你可以自由使用对自己和源文档的读者来说富有意义的名称。</li>
+<li>3.解释本例中的代码<ul>
+<li>其中name等于viewport（显示窗口）</li>
+<li>content属性值initial-scale是初始缩放比例，也即是当页面第一次load时的缩放比例。取值为1.0则页面按照实际尺寸显示，无任何缩放</li>
+<li>content属性值user-scable是用户是否可以手动缩放，取值为no即禁止缩放</li>
+<li>content属性值width是显示窗口的宽度，取值为device-width则宽度为客户端的屏幕宽度，即满屏。</li>
+</ul>
+</li>
+</ul>
+<pre><code class="html">
+    &lt;meta name = &quot;viewport&quot; content = &quot;initial-scale = 1.0,user-scable = no,width = device-width&quot;&gt;
 </code></pre>
 
       
@@ -271,15 +315,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">高德JavaScript API示例中心</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">urllib.parse.urljoin()</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">地图显示</a>
         		</li>
       		
 		</ul>
@@ -335,7 +375,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/PythonAndGaoDeAPI4/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/GaoDeJSAPI1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -349,18 +389,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2018/PythonAndGaoDeAPI5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Python+高德API解决租房问题（五）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/LeetCode283/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode283_Python</div>
+    <a href="/2018/PythonAndGaoDeAPI5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python+高德API解决租房问题（五）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -399,7 +430,7 @@ var _hmt = _hmt || [];
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://daisy0x00.github.io/2018/PythonAndGaoDeAPI4/",
+  id: "http://daisy0x00.github.io/2018/GaoDeJSAPI1/",
   owner: 'daisy0x00',
   repo: 'daisy0x00.github.io',
   oauth: {

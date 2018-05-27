@@ -6,30 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Python+高德API解决租房问题（四） | daisy&#39;s space</title>
+  <title>Python+高德API解决租房问题（五） | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
-	<meta name="keywords" content="python,urllib.parse.urljoin(),">
+	<meta name="keywords" content="高德API示例中心学习,html,css,js,">
 
 	
   
-  <meta name="description" content="本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。
+  <meta name="description" content="当前依旧在解读Python+高德API的代码，爬虫部分已经搞定，但是index.html部分代码尚未看懂，前几日简单学习了html+css+js的基本知识。近期的主要学习高德JavaScript API示例中心的代码。
 
-urllib.parse.urljoin()">
+1.CSS中class和id的区别">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python+高德API解决租房问题（四）">
-<meta property="og:url" content="http://daisy0x00.github.io/2018/PythonAndGaoDeAPI4/index.html">
+<meta property="og:title" content="Python+高德API解决租房问题（五）">
+<meta property="og:url" content="http://daisy0x00.github.io/2018/PythonAndGaoDeAPI5/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。
+<meta property="og:description" content="当前依旧在解读Python+高德API的代码，爬虫部分已经搞定，但是index.html部分代码尚未看懂，前几日简单学习了html+css+js的基本知识。近期的主要学习高德JavaScript API示例中心的代码。
 
-urllib.parse.urljoin()">
-<meta property="og:updated_time" content="2018-05-09T12:36:24.033Z">
+1.CSS中class和id的区别">
+<meta property="og:updated_time" content="2018-05-27T09:31:43.334Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python+高德API解决租房问题（四）">
-<meta name="twitter:description" content="本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。
+<meta name="twitter:title" content="Python+高德API解决租房问题（五）">
+<meta name="twitter:description" content="当前依旧在解读Python+高德API的代码，爬虫部分已经搞定，但是index.html部分代码尚未看懂，前几日简单学习了html+css+js的基本知识。近期的主要学习高德JavaScript API示例中心的代码。
 
-urllib.parse.urljoin()">
+1.CSS中class和id的区别">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -176,20 +176,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PythonAndGaoDeAPI4" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-PythonAndGaoDeAPI5" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Python+高德API解决租房问题（四）
+      Python+高德API解决租房问题（五）
     </h1>
   
 
         
-        <a href="/2018/PythonAndGaoDeAPI4/" class="archive-article-date">
-  	<time datetime="2018-05-08T15:53:23.760Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
+        <a href="/2018/PythonAndGaoDeAPI5/" class="archive-article-date">
+  	<time datetime="2018-05-27T05:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-27</time>
 </a>
         
       </header>
@@ -197,36 +197,19 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <p>本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。</p>
+        <p>当前依旧在解读Python+高德API的代码，爬虫部分已经搞定，但是index.html部分代码尚未看懂，前几日简单学习了html+css+js的基本知识。近期的主要学习高德JavaScript API示例中心的代码。</p>
 <ul>
-<li>urllib.parse.urljoin()</li>
+<li>1.CSS中class和id的区别</li>
 </ul>
 <a id="more"></a>
-<h3 id="urllib-parse-urljoin"><a href="#urllib-parse-urljoin" class="headerlink" title="urllib.parse.urljoin()"></a>urllib.parse.urljoin()</h3><p>首先导入模块，使用help查看相关文档</p>
-<pre><code class="python">
-    &gt;&gt;&gt;from urllib.parse import urljoin
-    &gt;&gt;&gt;help(urljoin)
-    Help on function urljoin in module urllib.parse:
-
-    urljoin(base,url,allow_fragments=True)    
-        Join a base URL and a possibly relative URL to form an absolute
-        interpretation of the latter.
-</code></pre>
-<p>意思就是将基地址与一个相对地址连接起来转化为绝对地址。例子如下：</p>
-<pre><code class="python">
-    &gt;&gt;&gt;urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;bbbb.html&quot;)
-    &gt;&#39;http://www.google.com/1/bbbb.html&#39;
-    &gt;&gt;&gt;urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;2/bbbb.html&quot;)
-    &gt;&#39;http://www.google.com/1/2/bbbb.html&#39;
-    &gt;&gt;&gt;urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;/2/bbbb.html&quot;)
-    &gt;&#39;http://www.google.com/2/bbbb.html&#39;
-    &gt;&gt;&gt; urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;http://www.google.com/3/ccc.html&quot;)
-    &gt;&#39;http://www.google.com/3/ccc.html&#39;
-    &gt;&gt;&gt;urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;http://www.google.com/ccc.html&quot;)
-    &gt;&#39;http://www.google.com/ccc.html&#39;
-    &gt;&gt;&gt; urljoin(&quot;http://www.google.com/1/aaa.html&quot;,&quot;javascript:void(0)&quot;)
-    &gt;&#39;javascript:void(0)&#39;
-</code></pre>
+<h2 id="一-CSS中class和id的区别"><a href="#一-CSS中class和id的区别" class="headerlink" title="一.CSS中class和id的区别"></a>一.CSS中class和id的区别</h2><p>在样式表定义一个样式的时候，可以定义id也可以定义class,二者的区别如下所示。</p>
+<ul>
+<li>1.在CSS文件里书写时，ID加前缀<code>#</code> ;CLASS用<code>.</code></li>
+<li>2.ID一个页面只可以使用一次；CLASS可以多次引用。即ID是一对一的，CLASS是一对多的。</li>
+<li>3.ID是一个标签，用于区分不同的结构和内容，就像一个名字，如果一个屋子有两个人同名，就会出现混淆；CLASS是一个样式，可以套用在任何结构和内容上，就像是一件衣服。</li>
+<li>4.从概念上来说是不一样的：id是先找到结构/内容，再给它定义样式；CLASS是先定义好一种样式，再套给多个结构/内容。</li>
+<li>5.目前的浏览器还都允许用多个相同ID，一般情况下也能正常显示，不过如果需要用JavaScript通过ID来控制DIV时就会出现错误</li>
+</ul>
 
       
 
@@ -275,11 +258,15 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">urllib.parse.urljoin()</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		
 		</ul>
@@ -335,7 +322,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/PythonAndGaoDeAPI4/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/PythonAndGaoDeAPI5/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -349,18 +336,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2018/PythonAndGaoDeAPI5/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/GaoDeJSAPI1/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Python+高德API解决租房问题（五）
+          高德JavaScript API示例中心（一）
         
       </div>
     </a>
   
   
-    <a href="/2018/LeetCode283/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode283_Python</div>
+    <a href="/2018/PythonAndGaoDeAPI4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python+高德API解决租房问题（四）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -399,7 +386,7 @@ var _hmt = _hmt || [];
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://daisy0x00.github.io/2018/PythonAndGaoDeAPI4/",
+  id: "http://daisy0x00.github.io/2018/PythonAndGaoDeAPI5/",
   owner: 'daisy0x00',
   repo: 'daisy0x00.github.io',
   oauth: {
