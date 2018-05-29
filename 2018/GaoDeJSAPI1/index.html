@@ -20,7 +20,7 @@
 <meta property="og:url" content="http://daisy0x00.github.io/2018/GaoDeJSAPI1/index.html">
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——地图显示】">
-<meta property="og:updated_time" content="2018-05-27T14:18:34.228Z">
+<meta property="og:updated_time" content="2018-05-28T09:35:27.467Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高德JavaScript API示例中心（一）">
 <meta name="twitter:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——地图显示】">
@@ -193,13 +193,14 @@ var _hmt = _hmt || [];
       
         <p>本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——地图显示】</p>
 <a id="more"></a>
-<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><pre><code class="html">
+<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><p>地图显示：使用AMap.Map类创建和展示地图对象。</p>
+<pre><code class="html">
     &lt;!doctype html&gt;
     &lt;html&gt;
         &lt;head&gt;
             &lt;meta charset=&quot;utf-8&quot;&gt;
             &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-               &lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, user-scalable=no, width=device-width&quot;&gt;
+            &lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1.0, user-scalable=no, width=device-width&quot;&gt;
             &lt;title&gt;基本地图展示&lt;/title&gt;
             &lt;link rel=&quot;stylesheet&quot; href=&quot;http://cache.amap.com/lbs/static/main1119.css&quot;/&gt;
             &lt;script src=&quot;http://cache.amap.com/lbs/static/es5.min.js&quot;&gt;&lt;/script&gt;
@@ -214,15 +215,15 @@ var _hmt = _hmt || [];
                 var map = new AMap.Map(&#39;container&#39;, {
                     resizeEnable: true,
                     zoom:11,
-                       center: [116.397428, 39.90923]
-                    });
+                    center: [116.397428, 39.90923]
+                 });
 
             &lt;/script&gt;
         &lt;/body&gt;
     &lt;/html&gt;
 
 </code></pre>
-<h2 id="知识点1-meta元素"><a href="#知识点1-meta元素" class="headerlink" title="知识点1.meta元素"></a>知识点1.meta元素</h2><h3 id="meta元素"><a href="#meta元素" class="headerlink" title="meta元素"></a>meta元素</h3><ul>
+<h2 id="知识点1-meta标签"><a href="#知识点1-meta标签" class="headerlink" title="知识点1.meta标签"></a>知识点1.meta标签</h2><h3 id="meta元素"><a href="#meta元素" class="headerlink" title="meta元素"></a>meta元素</h3><ul>
 <li>1.<code>&lt;meta&gt;</code>元素可提供有关页面的元信息(meta-information),比如针对搜索引擎和更新频度的描述和关键词。</li>
 <li>2.<code>&lt;meta&gt;</code>标签永远位于文档的头部，不包含任何内容。<code>&lt;meta&gt;</code>标签的属性定义了与文档相关联的名称/值对。</li>
 </ul>
@@ -271,6 +272,28 @@ var _hmt = _hmt || [];
 <pre><code class="html">
     &lt;meta name = &quot;viewport&quot; content = &quot;initial-scale = 1.0,user-scable = no,width = device-width&quot;&gt;
 </code></pre>
+<h2 id="知识点2-link标签"><a href="#知识点2-link标签" class="headerlink" title="知识点2.link标签"></a>知识点2.link标签</h2><p>rel属性规定当前文档与被链接文档之间的关系</p>
+<pre><code class="html">
+    &lt;link rel = &quot;stylesheet&quot; href = &quot;http://cache.amap.com/lbs/static/main1119.css&quot;/&gt;
+</code></pre>
+<p>本例代码中，rel属性指示被链接的文档是一个样式表。</p>
+<h2 id="知识点3-script标签"><a href="#知识点3-script标签" class="headerlink" title="知识点3.script标签"></a>知识点3.script标签</h2><pre><code class="html">
+    &lt;script src = &quot;http://cache.amap.com/lbs/static/es5.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src = &quot;http://webapi.amap.com/maps?v=1.3&amp;key=22d3816e107f199992666d6412fa0691&quot;&gt;&lt;/script&gt;
+    &lt;script type = &quot;text/javascript&quot; src = &quot;http://cache.amap.com/lbs/static/addToolbar.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>src属性规定外部脚本文件的URL。有时候，我们需要在网站的多个页面中运行JavaScript。不需要重复编写相同的脚本，只需在单独的文件中创建JavaScript，并以.js为后缀保存，然后使用<code>&lt;script&gt;</code>标签中的src属性引用该文件即可。</p>
+<h2 id="知识点4-div标签"><a href="#知识点4-div标签" class="headerlink" title="知识点4.div标签"></a>知识点4.div标签</h2><pre><code class="html">
+    &lt;div id = &quot;container&quot;&gt;&lt;/div&gt;
+</code></pre>
+<ul>
+<li>1.<code>&lt;div&gt;</code>可定义文档中的分区或节。<code>&lt;div&gt;</code>标签可以把文档分割为独立的、不同的部分。它可以用作严格的组织工具，并且不适用任何格式与其关联。如果用id或class来标记<div>,那么该标签的作用会变得更加有效。</div></li>
+<li>2.<code>&lt;div&gt;</code>是一个块级元素。这意味着它的内容自动地开始一个新行。实际上，换行是<code>&lt;div&gt;</code>固有的唯一格式表现。可以通过<code>&lt;div&gt;</code>的class或id应用额外的样式。</li>
+<li>3.不必为每个<code>&lt;div&gt;</code>都加上类或者id，虽然这样做也有一定的好处。</li>
+<li>4.可以对同一个<code>&lt;div&gt;</code>元素应用class或id属性，但是更常见的情况是只应用其中一种。这两者的主要差异是，class用于元素组（类似的元素，或者可以理解为某一类元素），而id用于标识单独的唯一的元素。</li>
+<li>5.说的通俗易懂点，div的属性id或者class可以理解为这个div的“名字”。</li>
+<li>6.此处的<code>&lt;div id = &quot;container&quot;&gt;</code>就是一个ID为container的div</li>
+</ul>
 
       
 
@@ -388,6 +411,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/GaoDeJSAPI2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          高德JavaScript API示例中心（二）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/PythonAndGaoDeAPI5/" id="article-nav-older" class="article-nav-link-wrap">
@@ -775,6 +807,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">高德JavaScript API示例中心</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">地图显示</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">英文、中英文地图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
              
@@ -791,7 +835,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">csv文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,38 +852,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">select方法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">urllib.parse.urljoin()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">python基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">python内置函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gloabls()函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">locals()函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">高德JavaScript API示例中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">地图显示</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -844,6 +864,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">urllib.parse.urljoin()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">python内置函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gloabls()函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">locals()函数</a>
               </li>
             
             <div class="clearfix"></div>
