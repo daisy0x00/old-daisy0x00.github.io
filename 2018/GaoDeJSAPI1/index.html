@@ -20,7 +20,7 @@
 <meta property="og:url" content="http://daisy0x00.github.io/2018/GaoDeJSAPI1/index.html">
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——地图显示】">
-<meta property="og:updated_time" content="2018-05-28T09:35:27.467Z">
+<meta property="og:updated_time" content="2018-06-03T15:18:43.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高德JavaScript API示例中心（一）">
 <meta name="twitter:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——地图显示】">
@@ -292,7 +292,21 @@ var _hmt = _hmt || [];
 <li>3.不必为每个<code>&lt;div&gt;</code>都加上类或者id，虽然这样做也有一定的好处。</li>
 <li>4.可以对同一个<code>&lt;div&gt;</code>元素应用class或id属性，但是更常见的情况是只应用其中一种。这两者的主要差异是，class用于元素组（类似的元素，或者可以理解为某一类元素），而id用于标识单独的唯一的元素。</li>
 <li>5.说的通俗易懂点，div的属性id或者class可以理解为这个div的“名字”。</li>
-<li>6.此处的<code>&lt;div id = &quot;container&quot;&gt;</code>就是一个ID为container的div</li>
+<li>6.此处的<code>&lt;div id = &quot;container&quot;&gt;</code>就是一个ID为container的div。</li>
+</ul>
+<h2 id="知识点5-Map类"><a href="#知识点5-Map类" class="headerlink" title="知识点5. Map类"></a>知识点5. Map类</h2><p>地图对象类，封装了地图的属性设置、图层变更、事件交互等接口的类。</p>
+<pre><code class="html">
+    var map = new AMap.Map(&#39;container&#39; ,{
+        resizeEnable: true,
+        zoom: 11,
+        center: [116.397428,39.90923]
+    });
+</code></pre>
+<ul>
+<li>构造函数为：<code>AMap.Map(container:String/HTMLDivElement,opts:MapOptions)</code></li>
+<li>该构造函数构造一个地图对象，参数container中传入地图容器的DIV的ID值或者DIV对象，opts地图初始化参数对象。<br>-<code>resizeEnable</code>的数值类型为Boolean,作用是：是否监控地图容器尺寸变化，默认值为false。在高德API的参考手册中，有一个resize事件，即地图容器大小改变事件。resizeEnable就是表示是否监听resize事件的发生，若resizeEnable的值为false,则表示不监听resize事件，反之亦然。事件一般和函数配合起来使用，比如某个事件发生之后会执行特定的函数。</li>
+<li><code>zoom</code>的数值类型为Number，表示地图显示的缩放级别，</li>
+<li><code>center</code>的数值类型为Lnglat(即经纬度)，表示地图中心坐标值。此处使用的是北京的经纬度</li>
 </ul>
 
       
@@ -811,10 +825,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">地图显示</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">英文、中英文地图</a>
               </li>
              
@@ -831,6 +841,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">地图显示</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -843,15 +857,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BeautifulSoup</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">select方法</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">urllib.parse.urljoin()</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -871,15 +885,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">BeautifulSoup</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color4">select方法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">urllib.parse.urljoin()</a>
               </li>
             
             <div class="clearfix"></div>
