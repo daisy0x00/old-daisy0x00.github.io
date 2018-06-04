@@ -20,7 +20,7 @@
 <meta property="og:url" content="http://daisy0x00.github.io/2018/GaoDeJSAPI2/index.html">
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——英文、中英文地图】">
-<meta property="og:updated_time" content="2018-06-03T15:25:18.070Z">
+<meta property="og:updated_time" content="2018-06-04T14:36:22.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高德JavaScript API示例中心（二）">
 <meta name="twitter:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——英文、中英文地图】">
@@ -245,7 +245,56 @@ var _hmt = _hmt || [];
 <li>type规定了input元素的类型，<code>type = button</code>定义可点击按钮（多数情况下，用于通过JavaScript启动脚本）</li>
 <li>value属性为input属性设定值，这里value是用来定义按钮上显示的文本。</li>
 </ul>
-<h2 id="知识点2"><a href="#知识点2" class="headerlink" title="知识点2."></a>知识点2.</h2>
+<h2 id="知识点2-forEach方法"><a href="#知识点2-forEach方法" class="headerlink" title="知识点2.forEach方法"></a>知识点2.forEach方法</h2><pre><code class="html">
+    [&#39;en&#39;,&#39;zh_en&#39;,&#39;zh_cn&#39;].forEach(function(btn){
+        var button = document.getElementById(btn);
+        AMap.event.addDomListener(button,&#39;click&#39;,clickListener)
+    });
+
+    function clickListener(){
+        map.setLang(this.id);
+    }
+</code></pre>
+<ul>
+<li>1.forEach()方法用于调用数组的每个元素，并将元素传递给回调函数。</li>
+<li>2.语法为<code>array.forEach(function(currentValue,index,arr),thisValue)</code></li>
+<li>3.其中参数function(currentValue,index,arr)为必选项。数组array中每个元素都需要调用的函数。该函数中的参数currentValue为必选项，表示当前元素值，参数index为可选项，表示当前元素的索引值，参数arr为可选项，表示当前元素所属的数组对象。</li>
+<li>参数thisValue为可选项，传递给函数的值一般用”this”值。如果这个参数为空，”undefined”会传递给”this”值</li>
+<li>此处用到的参数值为<code>array.forEach(function(currentValue))</code></li>
+</ul>
+<h2 id="知识点3-getElementById-方法"><a href="#知识点3-getElementById-方法" class="headerlink" title="知识点3.getElementById()方法"></a>知识点3.getElementById()方法</h2><pre><code class="html">
+    function(btn){
+        var button = document.getElementById(btn);
+        AMap.event.addDomListener(button,&#39;click&#39;,clickListener)
+    }
+</code></pre>
+<ul>
+<li>1.其中<code>btn</code>即表示数组[‘en’,’zh_en’,’zh_cn’]中的每个元素。</li>
+<li>2.getElementById()方法可返回对拥有指定ID的第一个对象的引用。</li>
+<li>3.使用getElementById(btn)方法可以得到id为btn的标签的所有内容，包括其子标签等。</li>
+</ul>
+<pre><code class="html">
+    &lt;input id = &quot;en&quot; type = &quot;button&quot; class = &quot;button&quot; value = &quot;显示英文地图&quot;/&gt;
+
+    var button = document.getElementById(&#39;en&#39;);
+</code></pre>
+<p>就是从所有document里面选取id为en的元素，只有选取出来后才可以用JS操作它。</p>
+<h2 id="知识点4-AMap-event-addDomListener"><a href="#知识点4-AMap-event-addDomListener" class="headerlink" title="知识点4.AMap.event.addDomListener()"></a>知识点4.AMap.event.addDomListener()</h2><ul>
+<li>1.高德地图JS API的事件有两种使用方式，第一种是针对Map、覆盖物等常用类，直接使用这些类的对象的on、off成员方法来实现事件的简单绑定和移除。第二种是使用AMap.event命名空间，这里使用的就是第二种方法，使用AMap.event命名空间。</li>
+<li>2.<code>addDomListener(instance,eventName,handler,context)</code>方法的作用是注册DOM对象事件，即给DOM对象注册事件并返回eventListener。参数instance为必选项，表示需注册事件的DOM对象，参数eventName为必选项，表示事件名称，参数handler为必选项，表示事件功能函数，context为可选项，表示事件上下文，缺省时，handler中this指向参数instance引用的对象 ，否则this指向context引用的对象 。缺省也就是默认值的意思。</li>
+<li>3.这里需要注册事件的DOM对象是button，事件名称为click即点击事件，事件功能函数为clickListener，即点击事件监听函数。</li>
+</ul>
+<h2 id="知识点5，map-setLang"><a href="#知识点5，map-setLang" class="headerlink" title="知识点5，map.setLang()"></a>知识点5，map.setLang()</h2><pre><code class="html">
+    function clickListener(){
+        map.setLang(this.id);
+    }
+
+</code></pre>
+<ul>
+<li>map.setLang主要用来为地图设置语言.</li>
+<li>this就是触发事件的对象，通过this.id获取id的值。</li>
+</ul>
+
       
 
       
@@ -753,6 +802,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">地图显示</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">英文、中英文地图</a>
               </li>
              
@@ -769,10 +822,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">地图显示</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -782,6 +831,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BeautifulSoup</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">select方法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">urllib.parse.urljoin()</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -810,18 +871,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">locals()函数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BeautifulSoup</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">select方法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">urllib.parse.urljoin()</a>
               </li>
             
             <div class="clearfix"></div>
