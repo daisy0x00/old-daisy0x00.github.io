@@ -20,7 +20,7 @@
 <meta property="og:url" content="http://daisy0x00.github.io/2018/GaoDeJSAPI2/index.html">
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——英文、中英文地图】">
-<meta property="og:updated_time" content="2018-06-04T14:36:22.665Z">
+<meta property="og:updated_time" content="2018-06-04T14:40:31.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高德JavaScript API示例中心（二）">
 <meta name="twitter:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——英文、中英文地图】">
@@ -245,7 +245,7 @@ var _hmt = _hmt || [];
 <li>type规定了input元素的类型，<code>type = button</code>定义可点击按钮（多数情况下，用于通过JavaScript启动脚本）</li>
 <li>value属性为input属性设定值，这里value是用来定义按钮上显示的文本。</li>
 </ul>
-<h2 id="知识点2-forEach方法"><a href="#知识点2-forEach方法" class="headerlink" title="知识点2.forEach方法"></a>知识点2.forEach方法</h2><pre><code class="html">
+<h2 id="知识点2-forEach方法"><a href="#知识点2-forEach方法" class="headerlink" title="知识点2.forEach方法"></a>知识点2.forEach方法</h2><pre><code class="js">
     [&#39;en&#39;,&#39;zh_en&#39;,&#39;zh_cn&#39;].forEach(function(btn){
         var button = document.getElementById(btn);
         AMap.event.addDomListener(button,&#39;click&#39;,clickListener)
@@ -262,7 +262,7 @@ var _hmt = _hmt || [];
 <li>参数thisValue为可选项，传递给函数的值一般用”this”值。如果这个参数为空，”undefined”会传递给”this”值</li>
 <li>此处用到的参数值为<code>array.forEach(function(currentValue))</code></li>
 </ul>
-<h2 id="知识点3-getElementById-方法"><a href="#知识点3-getElementById-方法" class="headerlink" title="知识点3.getElementById()方法"></a>知识点3.getElementById()方法</h2><pre><code class="html">
+<h2 id="知识点3-getElementById-方法"><a href="#知识点3-getElementById-方法" class="headerlink" title="知识点3.getElementById()方法"></a>知识点3.getElementById()方法</h2><pre><code class="js">
     function(btn){
         var button = document.getElementById(btn);
         AMap.event.addDomListener(button,&#39;click&#39;,clickListener)
@@ -284,7 +284,7 @@ var _hmt = _hmt || [];
 <li>2.<code>addDomListener(instance,eventName,handler,context)</code>方法的作用是注册DOM对象事件，即给DOM对象注册事件并返回eventListener。参数instance为必选项，表示需注册事件的DOM对象，参数eventName为必选项，表示事件名称，参数handler为必选项，表示事件功能函数，context为可选项，表示事件上下文，缺省时，handler中this指向参数instance引用的对象 ，否则this指向context引用的对象 。缺省也就是默认值的意思。</li>
 <li>3.这里需要注册事件的DOM对象是button，事件名称为click即点击事件，事件功能函数为clickListener，即点击事件监听函数。</li>
 </ul>
-<h2 id="知识点5，map-setLang"><a href="#知识点5，map-setLang" class="headerlink" title="知识点5，map.setLang()"></a>知识点5，map.setLang()</h2><pre><code class="html">
+<h2 id="知识点5，map-setLang"><a href="#知识点5，map-setLang" class="headerlink" title="知识点5，map.setLang()"></a>知识点5，map.setLang()</h2><pre><code class="js">
     function clickListener(){
         map.setLang(this.id);
     }
@@ -411,6 +411,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/GaoDeJSAPI3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          高德JavaScript API示例中心
+        
+      </div>
+    </a>
   
   
     <a href="/2018/GaoDeJSAPI1/" id="article-nav-older" class="article-nav-link-wrap">
@@ -802,15 +811,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">地图显示</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">英文、中英文地图</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">地图显示</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">带功能控件的地图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -819,18 +840,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">csv文件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -855,6 +864,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">csv文件</a>
               </li>
              
               <li class="article-tag-list-item">
