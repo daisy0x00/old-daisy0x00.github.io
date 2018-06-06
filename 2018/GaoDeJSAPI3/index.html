@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>高德JavaScript API示例中心 | daisy&#39;s space</title>
+  <title>高德JavaScript API示例中心（三） | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   <meta name="description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——带功能控件的地图】">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高德JavaScript API示例中心">
+<meta property="og:title" content="高德JavaScript API示例中心（三）">
 <meta property="og:url" content="http://daisy0x00.github.io/2018/GaoDeJSAPI3/index.html">
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——带功能控件的地图】">
-<meta property="og:updated_time" content="2018-06-05T07:22:48.114Z">
+<meta property="og:updated_time" content="2018-06-06T15:43:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高德JavaScript API示例中心">
+<meta name="twitter:title" content="高德JavaScript API示例中心（三）">
 <meta name="twitter:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——带功能控件的地图】">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      高德JavaScript API示例中心
+      高德JavaScript API示例中心（三）
     </h1>
   
 
@@ -195,14 +195,55 @@ var _hmt = _hmt || [];
 
 </code></pre>
 <h2 id="知识点1-plugin插件"><a href="#知识点1-plugin插件" class="headerlink" title="知识点1.plugin插件"></a>知识点1.plugin插件</h2><pre><code class="html">
-    &lt;script src = &quot;http://webapi.amap.com/maps?v=1.4.6&amp;key=22d3816e107f199992666d6412fa0691&amp;&amp;plugin=AMap.Scale,AMap.Overview,AMap.ToolBar&gt;
+    &lt;script src = &quot;http://webapi.amap.com/maps?v=1.4.6&amp;key=22d3816e107f199992666d6412fa0691&amp;&amp;plugin=AMap.Scale,AMap.Overview,AMap.ToolBar&gt;&lt;/script&gt;
 </code></pre>
 <ul>
 <li>AMap.Scale(地图比例尺插件)：用于显示地图比例关系，添加之后默认位于地图左下角。</li>
 <li>AMap.OverView(地图鹰眼插件)：加载此插件后，会在地图右下角显示一个地图简略的概览，用于在更广阔的区域反映当前的地图视口，支持用户控制此鹰眼是打开状态还是关闭状态。添加之后默认位于地图右下角。</li>
 <li>AMap.ToolBar(地图工具条插件)：包括缩放控件，用户可控制缩放按钮是用滑动滚动条还是“+/-”按钮形式、方向键盘控件、自动定位控制。添加之后默认位于地图左上角。</li>
 </ul>
+<h2 id="知识点2-input标签"><a href="#知识点2-input标签" class="headerlink" title="知识点2.input标签"></a>知识点2.input标签</h2><pre><code class="html">
+    &lt;input type = &quot;checkbox&quot; onclick = &quot;toggleScale(this)&quot;/&gt;比例尺
+    &lt;input type = &quot;checkbox&quot; id = &quot;toolbar&quot; onclick = &quot;toggleToolBar(this)&quot;/&gt;工具条
+    &lt;input type = &quot;checkbox&quot; id = &quot;toolbarDirection&quot; disabled onclick = &quot;toggleToolBarDirection(this)&quot;/&gt;工具条方向盘
+    &lt;input type = &quot;checkbox&quot; id = &quot;toolbarRuler&quot; disabled onclick = &quot;toggleToolBarRuler(this)&quot;/&gt;工具条标尺
+    &lt;input type = &quot;checkbox&quot; id = &quot;overview&quot; onclick = &quot;toggleOverViewShow(this)&quot;/&gt;显示鹰眼
+    &lt;input type = &quot;checkbox&quot; id = &quot;overviewOpen&quot; disabled onclick = &quot;toggleOverViewOpen(this)&quot;/&gt;展开鹰眼
 
+</code></pre>
+<ul>
+<li>type规定了input元素的类型，此处<code>input = &quot;checkbox&quot;</code>是定义复选框。复选框允许用户在一定数目的选择中选取一个或多个选项。</li>
+<li>id是input标签的唯一标识。一般用于css和js中引用，这里主要用于JS的引用。</li>
+<li>disabled属性规定应该禁用的input元素。被禁用的input元素既不可用，也不可点击。可以设置disabled属性，直到满足某些其他的条件为止（比如选择了一个复选框等等）。然后，就需要通过JavaScript来删除disabled值，将input元素的值切换为可用。</li>
+<li>onclick属性由元素上的鼠标点击触发。语法为<code>&lt;element onclick = &quot;script&quot;&gt;</code>。属性值script表示onclick发生时运行的脚本。</li>
+</ul>
+<h2 id="知识点3-map-addControl"><a href="#知识点3-map-addControl" class="headerlink" title="知识点3.map.addControl()"></a>知识点3.map.addControl()</h2><p>在添加控件之前，地图需要进行初始化，要添加的控件也要进行初始化</p>
+<pre><code class="js">
+    //初始化要添加的控件，以及对地图进行初始化
+    var scale = new AMap.Scale({
+        visible: false
+    }),
+    toolBar = new AMap.ToolBar({
+        visible: false
+    }),
+    overView = new AMap.OverView({
+        visible: false
+    }),
+    map = new AMap.Map(&#39;container&#39;,{
+        resizeEnable: true
+    });
+
+    //添加控件
+    map.addControl(scale);
+    map.addControl(toolBar);
+    map.addControl(overView);
+</code></pre>
+<ul>
+<li><code>map.addControl(scale)</code>表示添加地图比例尺插件。</li>
+<li><code>map.addControl(toolBar)</code>表示添加地图工具条插件。</li>
+<li><code>map.addControl(overView)</code>表示添加地图鹰眼插件。</li>
+</ul>
+<h2 id="知识点4"><a href="#知识点4" class="headerlink" title="知识点4."></a>知识点4.</h2>
       
 
       
@@ -710,7 +751,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">英文、中英文地图</a>
+                <a href="javascript:void(0)" class="js-tag color4">带功能控件的地图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -718,19 +759,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">带功能控件的地图</a>
+                <a href="javascript:void(0)" class="js-tag color4">英文、中英文地图</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,15 +775,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">csv文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BeautifulSoup</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">select方法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">urllib.parse.urljoin()</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,7 +807,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">csv文件</a>
+                <a href="javascript:void(0)" class="js-tag color3">urllib.parse.urljoin()</a>
               </li>
              
               <li class="article-tag-list-item">
