@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://daisy0x00.github.io/2018/GaoDeJSAPI3/index.html">
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——带功能控件的地图】">
-<meta property="og:updated_time" content="2018-06-06T15:43:57.000Z">
+<meta property="og:updated_time" content="2018-06-07T16:41:01.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高德JavaScript API示例中心（三）">
 <meta name="twitter:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——带功能控件的地图】">
@@ -192,6 +192,127 @@ var _hmt = _hmt || [];
 <a id="more"></a>
 <h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><p>带功能控件的地图：给地图添加比例尺、缩放工具条、鹰眼等控件。</p>
 <pre><code class="html">
+    &lt;html&gt;
+
+    &lt;head&gt;
+        &lt;meta charset = &quot;utf-8&quot;&gt;
+        &lt;meta http-equiv = &quot;X-UA-Compatible&quot; content = &quot;IE = edge&quot;&gt;
+        &lt;meta name = &quot;viewport&quot; content = &quot;initial-scale = 1.0,user-scalable = no,width = device-width&quot;&gt;
+        &lt;title&gt;带功能控件的地图&lt;/title&gt;
+        &lt;link rel = &quot;stylesheet&quot; href = &quot;http://cache.amap.com/lbs/static/main1119.css&quot;/&gt;
+        &lt;script src = &quot;http://cache.amap.com/lbs/static/es5.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src = &quot;http://webapi.amap.com/maps?v=1.4.6&amp;key=22d3816e107f199992666d6412fa0691&amp;&amp;plugin=AMap.Scale,AMap.OverView,AMap.ToolBar&quot;&gt;&lt;/script&gt; 
+
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div id = &quot;container&quot;&gt;&lt;/div&gt;
+        &lt;div class = &quot;button-group&quot; style = &quot;background-color: #0d9bf2;right: 20px&quot;&gt;
+            &lt;input type = &quot;checkbox&quot; onclick = &quot;toggleScale(this)&quot;/&gt;比例尺
+            &lt;input type = &quot;checkbox&quot; id = &quot;toolbar&quot; onclick = &quot;toggleToolBar(this)&quot;/&gt;工具条
+            &lt;input type = &quot;checkbox&quot; id = &quot;toolbarDirection&quot; disabled onclick = &quot;toggleToolBarDirection(this)&quot;/&gt;工具条方向盘
+            &lt;input type = &quot;checkbox&quot; id = &quot;toolbarRuler&quot; disabled onclick = &quot;toggleToolBarRuler(this)&quot;/&gt;工具条标尺
+            &lt;input type = &quot;checkbox&quot; id = &quot;overview&quot; onclick = &quot;toggleOverViewShow(this)&quot;/&gt;显示鹰眼
+            &lt;input type = &quot;checkbox&quot; id = &quot;overviewOpen&quot; disabled onclick = &quot;toggleOverViewOpen(this)&quot;/&gt;展开鹰眼
+        &lt;/div&gt;
+
+        &lt;script&gt;
+            var scale = new AMap.Scale({
+                visible: false
+            }),
+            toolBar = new AMap.ToolBar({
+                visible: false
+            }),
+            overView = new AMap.OverView({
+                visible: false
+            }),
+            map = new AMap.Map(&quot;container&quot;,{
+                resizeEnable: true
+            });
+
+            map.addControl(scale);
+            map.addControl(toolBar);
+            map.addControl(overView);
+
+            function toggleScale(checkbox) {
+                if (checkbox.checked) {
+                    scale.show();
+                }else {
+                    scale.hide();
+                }
+            }
+            function toggleToolBar(checkbox) {
+                if (checkbox.checked) {
+                    showToolBar();
+                    showToolBarDirection();
+                    showToolBarRuler();
+                } else {
+                    hideToolBar();
+                    hideToolBarDirection();
+                    hideToolBarRuler();
+                }
+            }
+            function toggleToolBarDirection(checkbox) {
+                if (checkbox.checked) {
+                    toolBar.showDirection()
+                } else {
+                    toolBar.hideDirection()
+                }
+            }
+            function toggleToolBarRuler(checkbox) {
+                if (checkbox.checked) {
+                    toolBar.showRuler();
+                } else {
+                    toolBar.hideRuler();
+                }
+            }
+            function toggleOverViewShow(checkbox) {
+                if (checkbox.checked) {
+                    overView.show();
+                    document.getElementById(&#39;overviewOpen&#39;).disabled = false;
+                } else {
+                    overView.hide();
+                    document.getElementById(&#39;overviewOpen&#39;).disabled = true;
+                }
+            }
+            function toggleOverViewOpen(checkbox) {
+                if (checkbox.checked) {
+                    overView.open();
+                } else {
+                    overView.close();
+                }
+            }
+            function showToolBar() {
+                document.getElementById(&#39;toolbar&#39;).checked = true;
+                document.getElementById(&#39;toolbarDirection&#39;).disabled = false;
+                document.getElementById(&#39;toolbarRuler&#39;).disabled = false;
+                toolBar.show();
+            }
+            function hideToolBar() {
+                document.getElementById(&#39;toolbar&#39;).checked = false;
+                document.getElementById(&#39;toolbarDirection&#39;).disabled = true;
+                document.getElementById(&#39;toolbarRuler&#39;).disabled = true;
+                toolBar.hide();
+            }
+            function showToolBarDirection() {
+                document.getElementById(&#39;toolbarDirection&#39;).checked = true;
+                toolBar.showDirection();
+            }
+            function hideToolBarDirection() {
+                document.getElementById(&#39;toolbarDirection&#39;).checked = false;
+                toolBar.hideDirection();
+            }
+            function showToolBarRuler() {
+                document.getElementById(&#39;toolbarRuler&#39;).checked = true;
+                toolBar.showRuler();
+            }
+            function hideToolBarRuler() {
+                document.getElementById(&#39;toolbarRuler&#39;).checked = false;
+                toolBar.hideRuler();
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+    &lt;/html&gt; 
 
 </code></pre>
 <h2 id="知识点1-plugin插件"><a href="#知识点1-plugin插件" class="headerlink" title="知识点1.plugin插件"></a>知识点1.plugin插件</h2><pre><code class="html">
@@ -243,7 +364,91 @@ var _hmt = _hmt || [];
 <li><code>map.addControl(toolBar)</code>表示添加地图工具条插件。</li>
 <li><code>map.addControl(overView)</code>表示添加地图鹰眼插件。</li>
 </ul>
-<h2 id="知识点4"><a href="#知识点4" class="headerlink" title="知识点4."></a>知识点4.</h2>
+<h2 id="知识点4-AMap-Scale插件"><a href="#知识点4-AMap-Scale插件" class="headerlink" title="知识点4.AMap.Scale插件"></a>知识点4.AMap.Scale插件</h2><p>AMap.Scale插件是比例尺插件，位于地图右下角，用户可控制其显示与隐藏。相关代码示例如下。</p>
+<pre><code class="js">
+    var  scale = new AMap.Scale({
+        visible: false
+    }),
+    map = new AMap.Map(&quot;container&quot;,{
+        resizeEnable: true
+    });
+
+    map.addControl(scale);
+
+    function toggleScale(checkbox) {
+        if(checkbox.checked) {
+            scale.show();
+        }else {
+            scale.hide();
+        }
+    }
+</code></pre>
+<ul>
+<li>其构造函数为<code>AMap.Scale()</code>。</li>
+<li><code>show()</code>方法–显示比例尺。</li>
+<li><code>hide()</code>方法–隐藏比例尺。</li>
+</ul>
+<h2 id="知识点5-AMap-ToolBar插件"><a href="#知识点5-AMap-ToolBar插件" class="headerlink" title="知识点5.AMap.ToolBar插件"></a>知识点5.AMap.ToolBar插件</h2><p>AMap.ToolBar插件是地图操作工具条插件。可支持方向导航、位置定位、视野级别缩放、视野级别选择等操作。相关代码示例如下。</p>
+<pre><code class="js">
+    var toolBar = new AMap.ToolBar({
+        visible: false
+    }),
+    map = new AMap.Map(&quot;container&quot;,{
+        resizeEnable: true
+    });
+
+    map.addControl(toolBar);
+
+    function toggleToolBar(checkbox) {
+        if (checkbox.checked) {
+            showToolBar();
+            showToolBarDirection();
+            showToolBarRuler();
+        } else {
+            hideToolBar();
+            hideToolBarDirection();
+            hideToolBarRuler();
+        }
+    }
+
+    function showToolBar() {
+        document.getElementById(&#39;toolbar&#39;).checked = true;
+        document.getElementById(&#39;toolbarDirection&#39;).disabled = false;
+        document.getElementById(&#39;toolbarRuler&#39;).disabled = false;
+        toolBar.show();
+    }
+
+    function hideToolBar() {
+        document.getElementById(&#39;toolbar&#39;).checked = false;
+        document.getElementById(&#39;toolbarDirection&#39;).disabled = true;
+        document.getElementById(&#39;toolbarRuler&#39;).disabled = true;
+        toolBar.hide();
+    }
+
+    function showToolBarDirection() {
+        document.getElementById(&#39;toolbarDirection&#39;).checked = true;
+        toolBar.showDirection();
+    }
+
+    function hideToolBarDirection() {
+        document.getElementById(&#39;toolbarDirection&#39;).checked = false;
+        toolBar.hideDirection();
+    }
+
+    function showToolBarRuler() {
+        document.getElementById(&#39;toolbarRuler&#39;).checked = true;
+        toolBar.showRuler();
+    }
+
+    function hideToolBarRuler() {
+        document.getElementById(&#39;toolbarRuler&#39;).checked = false;
+        toolBar.hideRuler();
+    }
+</code></pre>
+<ul>
+<li>其构造函数为<code>AMap.ToolBar()</code>,地铁操作工具条，有放大缩小功能，地图左右平移，定位功能。</li>
+</ul>
+
       
 
       
