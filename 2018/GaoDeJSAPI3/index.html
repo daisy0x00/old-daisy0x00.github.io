@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://daisy0x00.github.io/2018/GaoDeJSAPI3/index.html">
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——带功能控件的地图】">
-<meta property="og:updated_time" content="2018-06-07T16:41:01.757Z">
+<meta property="og:updated_time" content="2018-06-09T13:17:34.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高德JavaScript API示例中心（三）">
 <meta name="twitter:description" content="本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——带功能控件的地图】">
@@ -446,8 +446,37 @@ var _hmt = _hmt || [];
     }
 </code></pre>
 <ul>
-<li>其构造函数为<code>AMap.ToolBar()</code>,地铁操作工具条，有放大缩小功能，地图左右平移，定位功能。</li>
+<li>其构造函数为<code>AMap.ToolBar()</code>,地图操作工具条，有放大缩小功能，地图左右平移，定位功能。</li>
 </ul>
+<h2 id="知识点6-AMap-OverView插件"><a href="#知识点6-AMap-OverView插件" class="headerlink" title="知识点6.AMap.OverView插件"></a>知识点6.AMap.OverView插件</h2><p>AMap.OverView插件：地图鹰眼插件。相关代码示例如下。</p>
+<pre><code class="js">
+    var overView = new AMap.OverView({
+        visible: false
+    }),
+    map = new AMap.Map(&quot;container&quot;,{
+        resizeEnable: true
+    });
+
+    map.addControl(overView);
+
+    function toggleOverViewShow(checkbox) {
+        if (checkbox.checked) {
+            overView.show();
+            document.getElementById(&#39;overviewOpen&#39;).disabled = false;
+        } else {
+            overView.hide();
+            document.getElementById(&#39;overviewOpen&#39;).disabled = true;
+        }
+    }
+
+    function toggleOverViewOpen(checkbox) {
+        if(checkbox.checked) {
+            overView.open();
+        } else {
+            overView.close();
+        }
+    }
+</code></pre>
 
       
 
@@ -565,6 +594,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/GaoDeJSAPI4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          高德JavaScript API示例中心（四）
+        
+      </div>
+    </a>
   
   
     <a href="/2018/GaoDeJSAPI2/" id="article-nav-older" class="article-nav-link-wrap">
@@ -1029,6 +1067,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">locals()函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">异步加载地图</a>
               </li>
             
             <div class="clearfix"></div>
