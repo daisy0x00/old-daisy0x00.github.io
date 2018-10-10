@@ -6,20 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Tag: python基础 | daisy&#39;s space</title>
+  <title>Noj3_L | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="踩气球，回溯法,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/tags/python基础/index.html">
+  <meta name="description" content="用回溯法解踩气球问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Noj3_L">
+<meta property="og:url" content="http://daisy0x00.github.io/2018/Noj3_L/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="用回溯法解踩气球问题">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\Noj3_L\Noj3_L_1.jpg">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\Noj3_L\Noj3_L_2.jpg">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\Noj3_L\Noj3_L_3.jpg">
+<meta property="og:updated_time" content="2018-10-10T12:07:52.643Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="Noj3_L">
+<meta name="twitter:description" content="用回溯法解踩气球问题">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\Noj3_L\Noj3_L_1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,122 +174,360 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Noj3_L" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonFromListToClass2/" class="archive-article-date">
-  	<time datetime="2018-05-03T12:06:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonFromListToClass2/">Python基础学习总结（二）</a>
+    <h1 class="article-title" itemprop="name">
+      Noj3_L
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/Noj3_L/" class="archive-article-date">
+  	<time datetime="2018-10-10T08:30:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>用回溯法解踩气球问题</p>
+<a id="more"></a>
+<h2 id="Noj3-L-踩气球"><a href="#Noj3-L-踩气球" class="headerlink" title="Noj3_L. 踩气球"></a>Noj3_L. 踩气球</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>Problem L<br>踩气球</p>
+<p>时限：1000ms 内存限制：10000K 总时限：3000ms</p>
+<p>描述：<br>六一儿童节，小朋友们做踩气球游戏，气球的编号是1～100，两位小朋友各踩了一些气球，要求他们报出自己所踩气球的编号的乘积。现在需要你编一个程序来判断他们的胜负，判断的规则是这样的：如果两人都说了真话，数字大的人赢；如果两人都说了假话，数字大的人赢；如果报小数字的人说的是真话而报大数字的人说谎，则报小数字的人赢（注意：只要所报的小数字是有可能的，即认为此人说了真话）。</p>
+<p>输入：<br>输入为两个数字，0 0表示结束；</p>
+<p>输出：<br>输出为获胜的数字。</p>
+<p>输入样例：<br>36 62<br>49 343<br>0 0</p>
+<p>输出样例：<br>62<br>49</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>第一，两个人都报数，会出现四种情况：</p>
+<ul>
+<li>1.小数和大数都说了真话，此时大数赢；</li>
+<li>2.小数和大数都说了假话，此时大数赢；</li>
+<li>3.小数说了假话而大数说了真话，此时大数赢；</li>
+<li>4.小数说了真话而大数说了假话，此时小数赢。</li>
+</ul>
+<p>综上，只有小数说了真话而大数说了假话的情况下，小数才赢。</p>
+<p>第二，如果大数和小数报的数字有冲突怎么办?</p>
+<p>比如说小数报了49，大数报了343，这个时候会先判断小数是否说了真话，只要小数是真话，而大数与小数冲突了，此时默认小数为真大数为假。例子中49的因数有1,7,49，小数为真话的情况只能是踩了49号气球或者踩了1号气球和49号气球；343的因数是1,7,49,343，大数为真的情况只可能是踩了7号气球和49号气球或者踩了1号气球、7号气球和49号气球，但是49号气球只有一个，所以这里默认小数49为真话，大数343为假话。</p>
+<p>第三，现在来分析每个号码的气球所有可能的情况</p>
+<p>每个气球只可能有三种情况，要么被大数踩，要么被小数踩，要么大数小数都没踩，所以本题的解空间是一个完整的三叉树，如下图所示：</p>
+<p><img src="\photo\Noj3_L\Noj3_L_1.jpg" alt="avatar"></p>
+<p>第四，分析所有的剪枝情况</p>
+<ul>
+<li><p>1.举个栗子，报的数为（18,36），18可以被2整除，故当气球2被当前的小数踩；当前数字变为了（9,36），9可以被3整除，故气球3依旧被当前的小数踩；当前数字变为（3,36）发现3小于4，3不可能被4以及其后的任意一个数字整除，故此路不通，剪掉该枝，回溯到上一层，寻求其他解。情况如图所示：</p>
+<p> <img src="\photo\Noj3_L\Noj3_L_2.jpg" alt="avatar"></p>
+</li>
+<li><p>2.依旧举个栗子，报的数为（3,5），3和5都不可以被2整除，故气球2无人踩；当前数字依旧是（3,5），3可以被3整除，故气球3被当前的小数踩；当前数字变为（1,5），5不可以被4整除故气球4没人踩；当前数字依旧是（1,5），5可以被5整除，故气球5被大数踩，此时数字变为（1,1），这种情况说明大数和小数都说了真话，结果已经明了，后面的情况就无需遍历，情况如图所示：</p>
+<p> <img src="\photo\Noj3_L\Noj3_L_3.jpg" alt="avatar"></p>
+</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="c">
+    // 踩气球
+    // 题目：气球的编号为1~100，两个人分别报出自己所踩气球的编号的乘积
+    // case1:如果两个人都说了真话，大数赢
+    // case2:如果两个人都说了假话，大数赢
+    // case3:如果小数说的真话，大数说的假话，则小数赢
+    // 注，只要小数说的数字是可能的，则判定此人说了真话，即当大数与小数有冲突时，此时判定大数说的假话，而小数说的真话
+    // 回溯法来解
+
+    #include &lt;stdio.h&gt;
+
+
+
+    // 标记当前的大数说了真话还是假话
+    int flag;
+
+    // 传入的参数m表示几号气球 
+    // 传入的参数s表示报的小数
+    // 传入的参数b表示报的大数
+    void search(int m, int s, int b);
+
+    int main()
+    {
+        // flags: 标记小数是真话还是假话，值为1则是真话，否则为假话 
+        // tmp: 交换大数小数时的临时变量
+        // sml: 报的小数
+        // big: 报的大数
+        int flags, tmp, sml, big;
+
+        scanf(&quot;%d %d&quot;,&amp;sml,&amp;big);
+
+        // 题目要求输入0,0表示结束
+        while(sml != 0 || big != 0)
+        {
+            // 由于输入没有要求必须大数小数的先后顺序
+            // 但是给search函数传入参数时总是小数在前，大数在后
+            // 所以这里比较两个数，如果大数在前小数在后则先进行交换再给search函数传参
+            if(sml &gt; big)
+            {
+                tmp = sml;
+                sml = big;
+                big = tmp;
+            }
+
+            flag = 0;
+
+            // 先判断小数是否说了真话
+            // 只要小数是可能的结果，则判定小数说了真话
+            // 这里如果小数说了真话，则flag会置1
+            // 数字1并不会改变整个乘积的结果所以直接从2号气球开始 
+            search(2, sml, 1);
+
+            // flags用来标记小数是否说了真话。
+            // 若为1，则说了真话，否则为假话。 
+            flags = flag;
+
+            // 此时flag用来标记大数是否说了真话
+            // 若为1，则说了真话，否则为假话。
+            flag = 0;
+
+            search(2, sml, big);
+            // 当前仅当小数说真话，大数说假话的情况下，才判定小数赢，其余情况下都是大数赢
+            if(flags == 1 &amp;&amp; flag == 0)
+            {
+                printf(&quot;%d\n&quot;,sml);
+            }
+            else
+            {
+                printf(&quot;%d\n&quot;,big);
+            }
+
+            // 输入下一组测试数据
+            scanf(&quot;%d %d&quot;,&amp;sml,&amp;big);
+
+        }
+        return(0);
+    }
+
+    void search(int m, int s, int b)
+    {
+        // 大数和小数都说了真话
+        if(s == 1 &amp;&amp; b == 1)
+        {
+            flag = 1;
+            return;
+        }
+        // 报的数字是不可能的乘积
+        // 即大数和小数都为假
+        if(s &gt; 1 &amp;&amp; s &lt; m || b &gt; 1 &amp;&amp; b &lt; m)
+        {
+            return;
+        }
+        // 气球的号码超过了100，即从2~100都遍历完了
+        if(m == 101)
+        {
+            return;
+        }
+        else
+        {
+            // 小数踩了m号气球
+            if(s % m == 0)
+            {
+                search(m + 1, s / m, b);
+                if(flag == 1)
+                {
+                    return;
+                }
+            }
+            // 大数踩了m号气球 
+            if(b % m == 0)
+            {
+                search(m + 1, s, b / m);
+                if(flag == 1)
+                {
+                    return;
+                }
+            }
+            // 没人踩m号气球
+            search(m + 1, s, b);
+            if(flag == 1)
+            {
+                return;
+            }
+        }
+    }
+
+
+</code></pre>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Noj3</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">python内置函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gloabls()函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">locals()函数</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">回溯法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/Noj3_L/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonFromListToClass1/" class="archive-article-date">
-  	<time datetime="2018-05-02T00:51:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/Noj3_B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Noj3_B</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonFromListToClass1/">Python基础学习总结（一）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python面试题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2018/Noj3_L/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -541,9 +787,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
