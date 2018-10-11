@@ -6,20 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Archives | daisy&#39;s space</title>
+  <title>Noj3_K | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="走迷宫，回溯法,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/archives/page/2/index.html">
+  <meta name="description" content="用回溯法解决走迷宫问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Noj3_K">
+<meta property="og:url" content="http://daisy0x00.github.io/2018/Noj3_K/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="用回溯法解决走迷宫问题">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\Noj3_K\Noj3_K_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\Noj3_K\Noj3_K_2.png">
+<meta property="og:updated_time" content="2018-10-11T08:49:20.598Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="Noj3_K">
+<meta name="twitter:description" content="用回溯法解决走迷宫问题">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\Noj3_K\Noj3_K_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,313 +173,313 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Noj3_K" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Noj3_K
+    </h1>
+  
+
+        
+        <a href="/2018/Noj3_K/" class="archive-article-date">
+  	<time datetime="2018-10-11T07:40:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-11</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>用回溯法解决走迷宫问题</p>
+<a id="more"></a>
+<h2 id="Noj3-K-走迷宫"><a href="#Noj3-K-走迷宫" class="headerlink" title="Noj3_K. 走迷宫"></a>Noj3_K. 走迷宫</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>Problem K<br>走迷宫</p>
+<p>时限：1000ms 内存限制：10000K 总时限：3000ms</p>
+<p>描述：<br>判断是否能从迷宫的入口到达出口</p>
+<p>输入：</p>
+<p>先输入两个不超过20的正整数表示迷宫的行数m和列数n，再输入口和出口的坐标，最后分m行输入迷宫，其中1表示墙，0表示空格每个数字之间都有空格。</p>
+<p>输出：</p>
+<p>只能向上、下、左、右四个方向走若能到达，则输出”Yes”，否则输出”No”，结果占一行。</p>
+<p>输入样例：</p>
+<p>3 3</p>
+<p>0 0</p>
+<p>2 2</p>
+<p>0 0 0</p>
+<p>1 1 0</p>
+<p>0 1 0</p>
+<p>输出样例：</p>
+<p>Yes</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>第一，将m行n列的迷宫矩阵存储在二维数组a[m][n]中，并从左至右，从上至下依次对矩阵的每个元素编号，这样迷宫的每个格子都会有对应的编号。举个栗子，一个5行6列的迷宫矩阵，给矩阵的每个元素编号如下图所示：</p>
+<p><img src="\photo\Noj3_K\Noj3_K_1.png" alt="avatar"></p>
+<p>第二，为了方便描述这里假设有个小蚂蚁找路吧，小蚂蚁在当前的格子找路时，有上下左右四种走法，小蚂蚁会在当前格子把每个方向的走法都尝试一下，如果可以走得通，则将这个格子标记为已走过并继续按照上述方法进行尝试，直到走到出口的格子，最后判断能否从入口到达出口只需要判断出口格子有没有被标记过即可；如果当前选择的方向走不通，则退回上一层重新选择路径，如果超出矩阵边缘了，也退回上一层重新选择路。这里将左下右上分别标记为0,1,2,3，该题的解空间其实可以看成一个四叉树，这里只画一个节点来帮助理解。</p>
+<p><img src="\photo\Noj3_K\Noj3_K_2.png" alt="avatar"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="c">
+    // 走迷宫
+
+    // 用回溯法来解
+    // 将矩阵a[m][n]的每个元素所在位置从左至右从上至下进行编号
+    // 这里的解题思路是每个格子从上到下，从左到右依次进行编号，
+    // 通过传入格子的编号求出行号和列号
+
+
+    #include &lt;stdio.h&gt;
+
+
+    // dr[4]存储行号的变化，dc[4]存储列号的变化，
+    // 从当前格子朝左走，行号不变，列号减一,故dr[0] = 0,dc[0] = -1;
+    // 从当前格子朝下走，行号加一，列号不变,故dr[1] = 1,dc[1] = 0;
+    // 从当前格子朝右走，行号不变，列号加一,故dr[2] = 0,dc[2] = 1;
+    // 从当前格子朝上走，行号减一，列号不变,故dr[3] = -1,dc[3] = 0.
+    int dr[4] = {0, 1, 0, -1};  // 朝左下右上移动时的行号变化
+    int dc[4] = {-1, 0, 1, 0};  //朝左下右上移动时的列号变化
+    int m, n;  // 迷宫的行数m和列数n
+    int erow, ecol; // 入口的行号和列号
+    int crow, ccol; // 出口的行号和列号
+    int a[20][20]; // 将迷宫矩阵存储在数组a[m][n]中
+
+        // 传入的参数t为当前格子的编号
+    void dfs(int t);
+
+    int main()
+    {
+        int i, j;
+
+        // 读入数据
+        scanf(&quot;%d %d&quot;,&amp;m, &amp;n);
+        scanf(&quot;%d %d&quot;,&amp;erow, &amp;ecol);
+        scanf(&quot;%d %d&quot;,&amp;crow, &amp;ccol);
+        for(i = 0; i &lt; m; i++)
+        {
+            for(j = 0; j &lt; n; j++)
+            {
+                scanf(&quot;%d&quot;,&amp;a[i][j]);
+            }
+        }
+
+        // 将行号和列号转换为编号，用回溯法求解 
+        // 格子编号可以由该格子的行号和列号求出
+        // 求法就是行号*总列数+列号
+        dfs(erow * n + ecol);
+
+        // 最后只需要判断出口格子有没有被访问过即可
+        // 当出口格子被标记为2时，说明被访问过了，否则没有
+        if(a[crow][ccol] == 2)
+        {
+            printf(&quot;Yes\n&quot;);
+        }
+        else
+        {
+            printf(&quot;No\n&quot;);
+        }
+    }
+
+    void dfs(int t)
+    {
+        int row, col; //没移动之前的坐标值,也可以说成是当前坐标
+        int r, c; // 移动后的坐标值
+        int i; // 左，下，右，上四种情况
+
+        // 当前格子的行号和列号由格子编号求出
+        row = t / n; // 格子行号为 格子编号除矩阵列数
+        col = t % n; // 格子列号为 格子编号对矩阵列数取余
+
+        //该格子被访问过了，标记为2 
+        a[row][col] = 2;
+
+        // 行坐标的变化存储在dr[4]中
+        // 列坐标的变化存储在dc[4]中
+        // 0表示左，1表示下，2表示右，3表示上
+        // 从当前位置开始分别朝左下右上四个方向走，找出一条能走到出口的路径
+        for(i = 0; i &lt; 4; i++)
+        {
+            r = row + dr[i]; // 移动之后的行号
+            c = col + dc[i]; // 移动之后的列号
+            // 移动后的行号和列号均没有超出矩阵坐标范围，且这个位置标记为0（不是墙，且没被走过）
+            // 则这个走法可行，继续寻找路径
+            if(r &gt;= 0 &amp;&amp; r &lt; m &amp;&amp; c &gt;= 0 &amp;&amp; c &lt; n &amp;&amp; a[r][c] == 0)
+            {
+                dfs(r * n + c);
+            }
+        }
+    }
+
+</code></pre>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonAndGaoDeAPI3/" class="archive-article-date">
-  	<time datetime="2018-05-07T09:53:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonAndGaoDeAPI3/">Python+高德API解决租房问题（三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Noj3</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BeautifulSoup</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">select方法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">回溯法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/Noj3_K/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/LeetCode728/" class="archive-article-date">
-  	<time datetime="2018-05-05T13:26:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/Noj3_L/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Noj3_L</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/LeetCode728/">LeetCode728_Python</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python面试题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonAndGaoDeAPI2/" class="archive-article-date">
-  	<time datetime="2018-05-04T15:24:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonAndGaoDeAPI2/">Python+高德API解决租房问题（二）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">format()函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonFromListToClass2/" class="archive-article-date">
-  	<time datetime="2018-05-03T12:06:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonFromListToClass2/">Python基础学习总结（二）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">python内置函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gloabls()函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">locals()函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonFromListToClass1/" class="archive-article-date">
-  	<time datetime="2018-05-02T00:51:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonFromListToClass1/">Python基础学习总结（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python面试题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonAndGaoDeAPI1/" class="archive-article-date">
-  	<time datetime="2018-04-26T13:50:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonAndGaoDeAPI1/">Python+高德API解决租房问题（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">csv文件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2018/Noj3_K/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -733,8 +740,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
