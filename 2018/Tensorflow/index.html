@@ -6,20 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Archives: 2018/4 | daisy&#39;s space</title>
+  <title>daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="tensorflow,Anaconda安装,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
+  <meta name="description" content="本文主要记录自己在Win10下搭建TensorFlow环境时遇到的问题和解决方法。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/archives/2018/04/index.html">
+<meta property="og:url" content="http://daisy0x00.github.io/2018/Tensorflow/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本文主要记录自己在Win10下搭建TensorFlow环境时遇到的问题和解决方法。">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\TensorFlow\TensorFlow1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\TensorFlow\TensorFlow2.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\TensorFlow\TensorFlow3.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\TensorFlow\TensorFlow4.png">
+<meta property="og:updated_time" content="2018-11-26T10:57:02.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:description" content="本文主要记录自己在Win10下搭建TensorFlow环境时遇到的问题和解决方法。">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\TensorFlow\TensorFlow1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,68 +175,234 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Tensorflow" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+	   
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonAndGaoDeAPI1/" class="archive-article-date">
-  	<time datetime="2018-04-26T13:50:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonAndGaoDeAPI1/">Python+高德API解决租房问题（一）</a>
-    </h1>
-  
+        <p>本文主要记录自己在Win10下搭建TensorFlow环境时遇到的问题和解决方法。</p>
+<a id="more"></a>
+<h3 id="问题1：安装Anaconda后菜单栏里只有Anaconda-Prompt，没也Anaconda-Navigator，jupyter-Notebook等"><a href="#问题1：安装Anaconda后菜单栏里只有Anaconda-Prompt，没也Anaconda-Navigator，jupyter-Notebook等" class="headerlink" title="问题1：安装Anaconda后菜单栏里只有Anaconda Prompt，没也Anaconda Navigator，jupyter Notebook等"></a>问题1：安装Anaconda后菜单栏里只有Anaconda Prompt，没也Anaconda Navigator，jupyter Notebook等</h3><p>这个问题的解法很简单<br>卸载掉装好的anaconda,重新安装，安装的时候弹出的黑框<strong><font color="#0099ff">不要关，不要关，不要关，来跟我读，bu  yao  guan!!!</font></strong></p>
+<h3 id="问题2：安装Anaconda后完后运行Anacode-Prompt会出现’C-Software-Anaconda-Scripts-activate-bat’-不是内部或外部命令，也不是可运行的程序或批处理文件。"><a href="#问题2：安装Anaconda后完后运行Anacode-Prompt会出现’C-Software-Anaconda-Scripts-activate-bat’-不是内部或外部命令，也不是可运行的程序或批处理文件。" class="headerlink" title="问题2：安装Anaconda后完后运行Anacode Prompt会出现’C:\Software\Anaconda\Scripts\activate.bat’ 不是内部或外部命令，也不是可运行的程序或批处理文件。"></a>问题2：安装Anaconda后完后运行Anacode Prompt会出现’C:\Software\Anaconda\Scripts\activate.bat’ 不是内部或外部命令，也不是可运行的程序或批处理文件。</h3><p>PS：如果问题1是放在第一个解决的话就不会有这个问题出现了，先看看你是不是和我一样遇到了问题1，如果和我一样，那你把问题1解决之后就不会遇见这个问题了.但是当时没有先处理问题1，所以也找到了这个问题的解法。</p>
+<p>网上到处都是要修改环境变量，尝试过后依旧不行；</p>
+<p>各种搜索之后发现官网上也有个类似问题<br><a href="http://docs.anaconda.com/anaconda/user-guide/troubleshooting/#cannot-open-anaconda-prompt-after-installation" target="_blank" rel="external">http://docs.anaconda.com/anaconda/user-guide/troubleshooting/#cannot-open-anaconda-prompt-after-installation</a></p>
+<p>他说原因是这个：Anaconda 5.0.1 sometimes does not install completely on Windows.</p>
+<p>意思就是Anaconda有时候在Windows上安装的不完整，即有一部分缺失了，所以会出现activate.bat无法识别的情况</p>
+<p>解决方案：安装Miniconda，然后使用conda通过下面的操作把anaconda中的其他安装包都安装了，这样miniconda就可以变成一个完整的anaconda了，但是我发现只需要安装好miniconda后再重新打开anaconda prompt，这个问题就完美解决啦。</p>
+<p>（我在最开始提到了，我出现这个问题完全是因为在安装Anaconda的时候手贱把命令框关掉了，本质上也是由于安装不完整）</p>
+<h3 id="问题3：输入activate-tensorflow出现Could-not-find-conda-environment-tensorflow，You-can-list-all-discoverable-environments-with-conda-info-envs"><a href="#问题3：输入activate-tensorflow出现Could-not-find-conda-environment-tensorflow，You-can-list-all-discoverable-environments-with-conda-info-envs" class="headerlink" title="问题3：输入activate tensorflow出现Could not find conda environment: tensorflow，You can list all discoverable environments with conda info --envs."></a>问题3：输入activate tensorflow出现Could not find conda environment: tensorflow，You can list all discoverable environments with <code>conda info --envs</code>.</h3><p>解决方法：在Anaconda Prompt中输入conda create -n tensorflow python=3.6</p>
+<p><img src="\photo\TensorFlow\TensorFlow1.png" alt="avatar"></p>
+<p>成功啦~~~</p>
+<p><img src="\photo\TensorFlow\TensorFlow2.png" alt="avatar"></p>
+<h3 id="问题4：在anaconda-prompt中进入python后输入"><a href="#问题4：在anaconda-prompt中进入python后输入" class="headerlink" title="问题4：在anaconda prompt中进入python后输入"></a>问题4：在anaconda prompt中进入python后输入</h3><blockquote>
+<blockquote>
+<blockquote>
+<p>import tensorflow as tf</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>会出现</p>
+<pre><code class="shell">
+    Traceback (most recent call last):
+      File &quot;C:\Software\Miniconda\envs\tensorflow\lib\site-packages\tensorflow\python\platform\self_check.py&quot;, line 75, in preload_check
+    ctypes.WinDLL(build_info.cudart_dll_name)
+      File &quot;C:\Software\Miniconda\envs\tensorflow\lib\ctypes\__init__.py&quot;, line 347, in __init__
+    self._handle = _dlopen(self._name, mode)
+    OSError: [WinError 126] 找不到指定的模块。
 
-        <div class="article-info info-on-right">
-          
+    During handling of the above exception, another exception occurred:
+
+    Traceback (most recent call last):
+      File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+      File &quot;C:\Software\Miniconda\envs\tensorflow\lib\site-packages\tensorflow\__init__.py&quot;, line 24, in &lt;module&gt;
+    from tensorflow.python import pywrap_tensorflow  # pylint: disable=unused-import
+      File &quot;C:\Software\Miniconda\envs\tensorflow\lib\site-packages\tensorflow\python\__init__.py&quot;, line 49, in &lt;module&gt;
+    from tensorflow.python import pywrap_tensorflow
+      File &quot;C:\Software\Miniconda\envs\tensorflow\lib\site-packages\tensorflow\python\pywrap_tensorflow.py&quot;, line 30, in &lt;module&gt;
+    self_check.preload_check()
+      File &quot;C:\Software\Miniconda\envs\tensorflow\lib\site-packages\tensorflow\python\platform\self_check.py&quot;, line 82, in preload_check
+    % (build_info.cudart_dll_name, build_info.cuda_version_number))
+    ImportError: Could not find &#39;cudart64_90.dll&#39;. TensorFlow requires that this DLL be installed in a directory that is named in your %PATH% environment variable. Download and install CUDA 9.0 from this URL: https://developer.nvidia.com/cuda-toolkit
+
+</code></pre>
+<p><img src="\photo\TensorFlow\TensorFlow3.png" alt="avatar"></p>
+<p>解决方法：</p>
+<p>操作1：安装cuda（注意要和电脑系统对应），查看自己电脑的CUDA版本，查看方法如下<a href="https://www.jianshu.com/p/d3b9419a0f89" target="_blank" rel="external">https://www.jianshu.com/p/d3b9419a0f89</a></p>
+<p>操作2：安装cudnn（注意要和cuda版本对应）</p>
+<p>操作3：安装 visual studio2017（这一步我也不知道有用没用，抱着神农尝百草的心态）</p>
+<p>操作4：试尽了网上所有的方法之后，请大佬过来，大佬折腾了一会儿问有没有重启命令框，然后重新打开了命令框试了一下，OK了。（PS：这里不是说前面的操作没有用，前面的坑填完之后，操作4才会生效）</p>
+<p><img src="\photo\TensorFlow\TensorFlow4.png" alt="avatar"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tensorflow</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">csv文件</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Anaconda</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/Tensorflow/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/Noj3_K/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Noj3_K</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2018/Tensorflow/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -487,8 +662,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
