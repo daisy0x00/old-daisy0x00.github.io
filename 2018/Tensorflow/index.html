@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\Tensorflow\Tensorflow2.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\Tensorflow\Tensorflow3.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\Tensorflow\Tensorflow4.png">
-<meta property="og:updated_time" content="2018-11-26T11:05:10.344Z">
+<meta property="og:updated_time" content="2018-11-26T11:10:44.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow踩坑记">
 <meta name="twitter:description" content="本文主要记录自己在Win10下搭建TensorFlow环境时遇到的问题和解决方法。">
@@ -198,24 +198,20 @@ var _hmt = _hmt || [];
       
         <p>本文主要记录自己在Win10下搭建TensorFlow环境时遇到的问题和解决方法。</p>
 <a id="more"></a>
-<h3 id="问题1：安装Anaconda后菜单栏里只有Anaconda-Prompt，没也Anaconda-Navigator，jupyter-Notebook等"><a href="#问题1：安装Anaconda后菜单栏里只有Anaconda-Prompt，没也Anaconda-Navigator，jupyter-Notebook等" class="headerlink" title="问题1：安装Anaconda后菜单栏里只有Anaconda Prompt，没也Anaconda Navigator，jupyter Notebook等"></a>问题1：安装Anaconda后菜单栏里只有Anaconda Prompt，没也Anaconda Navigator，jupyter Notebook等</h3><p>这个问题的解法很简单<br>卸载掉装好的anaconda,重新安装，安装的时候弹出的黑框<strong><font color="#0099ff">不要关，不要关，不要关，来跟我读，bu  yao  guan!!!</font></strong></p>
-<h3 id="问题2：安装Anaconda后完后运行Anacode-Prompt会出现’C-Software-Anaconda-Scripts-activate-bat’-不是内部或外部命令，也不是可运行的程序或批处理文件。"><a href="#问题2：安装Anaconda后完后运行Anacode-Prompt会出现’C-Software-Anaconda-Scripts-activate-bat’-不是内部或外部命令，也不是可运行的程序或批处理文件。" class="headerlink" title="问题2：安装Anaconda后完后运行Anacode Prompt会出现’C:\Software\Anaconda\Scripts\activate.bat’ 不是内部或外部命令，也不是可运行的程序或批处理文件。"></a>问题2：安装Anaconda后完后运行Anacode Prompt会出现’C:\Software\Anaconda\Scripts\activate.bat’ 不是内部或外部命令，也不是可运行的程序或批处理文件。</h3><p>PS：如果问题1是放在第一个解决的话就不会有这个问题出现了，先看看你是不是和我一样遇到了问题1，如果和我一样，那你把问题1解决之后就不会遇见这个问题了.但是当时没有先处理问题1，所以也找到了这个问题的解法。</p>
+<h2 id="问题1：安装Anaconda后菜单栏里只有Anaconda-Prompt，没也Anaconda-Navigator，jupyter-Notebook等"><a href="#问题1：安装Anaconda后菜单栏里只有Anaconda-Prompt，没也Anaconda-Navigator，jupyter-Notebook等" class="headerlink" title="问题1：安装Anaconda后菜单栏里只有Anaconda Prompt，没也Anaconda Navigator，jupyter Notebook等"></a>问题1：安装Anaconda后菜单栏里只有Anaconda Prompt，没也Anaconda Navigator，jupyter Notebook等</h2><p>这个问题的解法很简单<br>卸载掉装好的anaconda,重新安装，安装的时候弹出的黑框<strong><font color="#0099ff">不要关，不要关，不要关，来跟我读，bu  yao  guan!!!</font></strong></p>
+<h2 id="问题2：安装Anaconda后完后运行Anacode-Prompt会出现’C-Software-Anaconda-Scripts-activate-bat’-不是内部或外部命令，也不是可运行的程序或批处理文件。"><a href="#问题2：安装Anaconda后完后运行Anacode-Prompt会出现’C-Software-Anaconda-Scripts-activate-bat’-不是内部或外部命令，也不是可运行的程序或批处理文件。" class="headerlink" title="问题2：安装Anaconda后完后运行Anacode Prompt会出现’C:\Software\Anaconda\Scripts\activate.bat’ 不是内部或外部命令，也不是可运行的程序或批处理文件。"></a>问题2：安装Anaconda后完后运行Anacode Prompt会出现’C:\Software\Anaconda\Scripts\activate.bat’ 不是内部或外部命令，也不是可运行的程序或批处理文件。</h2><p>PS：如果问题1是放在第一个解决的话就不会有这个问题出现了，先看看你是不是和我一样遇到了问题1，如果和我一样，那你把问题1解决之后就不会遇见这个问题了.但是当时没有先处理问题1，所以也找到了这个问题的解法。</p>
 <p>网上到处都是要修改环境变量，尝试过后依旧不行；</p>
 <p>各种搜索之后发现官网上也有个类似问题<br><a href="http://docs.anaconda.com/anaconda/user-guide/troubleshooting/#cannot-open-anaconda-prompt-after-installation" target="_blank" rel="external">http://docs.anaconda.com/anaconda/user-guide/troubleshooting/#cannot-open-anaconda-prompt-after-installation</a></p>
 <p>他说原因是这个：Anaconda 5.0.1 sometimes does not install completely on Windows.</p>
 <p>意思就是Anaconda有时候在Windows上安装的不完整，即有一部分缺失了，所以会出现activate.bat无法识别的情况</p>
 <p>解决方案：安装Miniconda，然后使用conda通过下面的操作把anaconda中的其他安装包都安装了，这样miniconda就可以变成一个完整的anaconda了，但是我发现只需要安装好miniconda后再重新打开anaconda prompt，这个问题就完美解决啦。</p>
 <p>（我在最开始提到了，我出现这个问题完全是因为在安装Anaconda的时候手贱把命令框关掉了，本质上也是由于安装不完整）</p>
-<h3 id="问题3：输入activate-tensorflow出现Could-not-find-conda-environment-tensorflow，You-can-list-all-discoverable-environments-with-conda-info-envs"><a href="#问题3：输入activate-tensorflow出现Could-not-find-conda-environment-tensorflow，You-can-list-all-discoverable-environments-with-conda-info-envs" class="headerlink" title="问题3：输入activate tensorflow出现Could not find conda environment: tensorflow，You can list all discoverable environments with conda info --envs."></a>问题3：输入activate tensorflow出现Could not find conda environment: tensorflow，You can list all discoverable environments with <code>conda info --envs</code>.</h3><p>解决方法：在Anaconda Prompt中输入conda create -n tensorflow python=3.6</p>
+<h2 id="问题3：输入activate-tensorflow出现Could-not-find-conda-environment-tensorflow，You-can-list-all-discoverable-environments-with-conda-info-envs"><a href="#问题3：输入activate-tensorflow出现Could-not-find-conda-environment-tensorflow，You-can-list-all-discoverable-environments-with-conda-info-envs" class="headerlink" title="问题3：输入activate tensorflow出现Could not find conda environment: tensorflow，You can list all discoverable environments with conda info --envs."></a>问题3：输入activate tensorflow出现Could not find conda environment: tensorflow，You can list all discoverable environments with <code>conda info --envs</code>.</h2><p>解决方法：在Anaconda Prompt中输入conda create -n tensorflow python=3.6</p>
 <p><img src="\photo\Tensorflow\Tensorflow1.png" alt="avatar"></p>
 <p>成功啦~~~</p>
 <p><img src="\photo\Tensorflow\Tensorflow2.png" alt="avatar"></p>
-<h3 id="问题4：在anaconda-prompt中进入python后输入"><a href="#问题4：在anaconda-prompt中进入python后输入" class="headerlink" title="问题4：在anaconda prompt中进入python后输入"></a>问题4：在anaconda prompt中进入python后输入</h3><blockquote>
-<blockquote>
-<blockquote>
+<h2 id="问题4：在anaconda-prompt中进入python后输入"><a href="#问题4：在anaconda-prompt中进入python后输入" class="headerlink" title="问题4：在anaconda prompt中进入python后输入"></a>问题4：在anaconda prompt中进入python后输入</h2><blockquote>
 <p>import tensorflow as tf</p>
-</blockquote>
-</blockquote>
 </blockquote>
 <p>会出现</p>
 <pre><code class="shell">
@@ -756,15 +752,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">带功能控件的地图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">地图显示</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">英文、中英文地图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">异步加载地图</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -780,15 +776,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Noj3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">回溯法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
+                <a href="javascript:void(0)" class="js-tag color1">csv文件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">csv文件</a>
+                <a href="javascript:void(0)" class="js-tag color1">format()函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -797,6 +805,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">select方法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">urllib.parse.urljoin()</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -809,10 +821,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">urllib.parse.urljoin()</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -832,27 +840,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">异步加载地图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Noj3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">回溯法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Tensorflow</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Anaconda</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">带功能控件的地图</a>
               </li>
             
             <div class="clearfix"></div>
