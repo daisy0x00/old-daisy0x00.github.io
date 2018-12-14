@@ -6,20 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Archives: 2018/4 | daisy&#39;s space</title>
+  <title>机器学习实战（一） | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="机器学习实战，NumPy函数库基础,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/archives/2018/04/index.html">
+  <meta name="description" content="本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯小白做做笔记。
+这一篇文章主要记录在Linux下测试是否安装了NumPy函数库，顺带记录NumPy函数库的一些功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习实战（一）">
+<meta property="og:url" content="http://daisy0x00.github.io/2018/MachineLearningInAction1/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯小白做做笔记。
+这一篇文章主要记录在Linux下测试是否安装了NumPy函数库，顺带记录NumPy函数库的一些功能。">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\MachineLearningInAction1\MLinA.png">
+<meta property="og:updated_time" content="2018-12-14T12:24:05.067Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="机器学习实战（一）">
+<meta name="twitter:description" content="本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯小白做做笔记。
+这一篇文章主要记录在Linux下测试是否安装了NumPy函数库，顺带记录NumPy函数库的一些功能。">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\MachineLearningInAction1\MLinA.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,68 +175,264 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MachineLearningInAction1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonAndGaoDeAPI1/" class="archive-article-date">
-  	<time datetime="2018-04-26T13:50:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonAndGaoDeAPI1/">Python+高德API解决租房问题（一）</a>
+    <h1 class="article-title" itemprop="name">
+      机器学习实战（一）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/MachineLearningInAction1/" class="archive-article-date">
+  	<time datetime="2018-12-13T08:39:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯小白做做笔记。</p>
+<p>这一篇文章主要记录在Linux下测试是否安装了NumPy函数库，顺带记录NumPy函数库的一些功能。</p>
+<a id="more"></a>
+<p>第一步，首先在Linux的终端上输入python，进入Python Shell开发环境，然后在Python Shell开发环境中输入下列命令</p>
+<pre><code class="shell">
+    &gt;&gt;&gt;from numpy import *
+</code></pre>
+<p>上述命令将NumPy函数库中的所有模块引入当前的命名空间。</p>
+<p>第二步，在Python Shell开发环境中输入下述命令：</p>
+<pre><code class="shell">
+    &gt;&gt;&gt;random.rand(4,4)
+    array([[0.14558156, 0.05822028, 0.73288719, 0.4079073 ],
+              [0.93925338, 0.9935477 , 0.70614773, 0.06286504],
+           [0.4074936 , 0.17490357, 0.69633147, 0.33158106],
+           [0.44674279, 0.6757942 , 0.14604101, 0.17623732]])
+</code></pre>
+<p>上述命令构造了一个4x4的随机数组，因为产生的是随机数组，不同计算机的输出结果可能与上述结果完全不同。同一个计算机每次生成的结果也可能与之前的结果完全不同。<br>你可以把随机生成的数组存放到某个变量中</p>
+<p>小贴士：【NumPy矩阵与数组的区别】</p>
+<p>NumPy函数库中存在两种不同的数据类型（矩阵matrix和数组array），都可以用于处理行、列表示的数字元素。虽然他们看起来很相似，但是在这两个数据类型上执行相同的数字运算可能得到不同的结果，其中NumPy函数库中的matrix与MATLAB中matrices等价。</p>
+<p>第三步，调用mat()函数可以将数组转化为矩阵，输入下述命令：</p>
+<pre><code class="shell">
+    &gt;&gt;&gt;randMat = mat(random.rand(4,4))
+</code></pre>
+<p>这里把随机生成的矩阵存放到了变量randMat中了，由于使用随机函数产生矩阵，不同计算机上输出的值可能略有不同。</p>
+<p>第四步，对矩阵randMat求逆，输入下述命令：</p>
+<pre><code class="shell">
+    &gt;&gt;&gt;randMat.I
+    matrix([[ 0.12602984, -3.98786982,  5.56459985, -9.20791697],
+               [ 1.965973  ,  5.97526872, -8.24808457, 12.3280201 ],
+            [-0.31104006, -0.52042995,  0.5242077 ,  1.31136272],
+            [-2.25317871, -0.59374569,  2.72744811, -3.18885178]])
+</code></pre>
+<p><code>.I</code>操作符实现了矩阵求逆的运算 </p>
+<p>执行下述命令存储randMat矩阵的逆矩阵：</p>
+<pre><code class="shell">    &gt;&gt;&gt;invRandMat = randMat.I
+</code></pre>
+<p>第五步，执行矩阵乘法，得到矩阵与其逆矩阵相乘的结果：</p>
+<pre><code class="shell">
+    &gt;&gt;&gt;randMat * invRandMat
+    matrix([[ 1.00000000e+00,  0.00000000e+00,  0.00000000e+00,
+               8.88178420e-16],
+               [ 1.24900090e-16,  1.00000000e+00,  0.00000000e+00,
+               0.00000000e+00],
+               [ 2.77555756e-17, -8.88178420e-16,  1.00000000e+00,
+                 0.00000000e+00],
+            [ 2.77555756e-17,  0.00000000e+00,  1.11022302e-16,
+               1.00000000e+00]])
+</code></pre>
+<p>结果应该是单位矩阵，除了对角线元素是1,4x4矩阵的其他元素应该全为0.实际输出结果略有不同，矩阵里还留下了许多非常小的元素，这是计算机处理误差产生的结果。</p>
+<p>第六步，输入下述命令，得到误差值：</p>
+<pre><code class="shell">
+    &gt;&gt;&gt;myEye = randMat * invRandMat
+    &gt;&gt;&gt;myEye - eye(4)
+    matrix([[ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00,
+          8.88178420e-16],
+        [ 1.24900090e-16,  8.88178420e-16,  0.00000000e+00,
+          0.00000000e+00],
+        [ 2.77555756e-17, -8.88178420e-16,  0.00000000e+00,
+          0.00000000e+00],
+        [ 2.77555756e-17,  0.00000000e+00,  1.11022302e-16,
+          2.22044605e-16]])
+    &gt;&gt;&gt;
+
+</code></pre>
+<p>函数eye(4)创建4x4的单位矩阵。</p>
+<p>如果你顺利的完成了上述例子，就说明已经正确地安装了NumPy函数库，以后就可以利用它构造机器学习应用程序啦~~~最后的最后附上小白在Linux下敲指令图一张。</p>
+<p><img src="\photo\MachineLearningInAction1\MLinA.png" alt="avatar"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">csv文件</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NumPy函数库基础</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/MachineLearningInAction1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/Tensorflow/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Tensorflow踩坑记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2018/MachineLearningInAction1/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -487,8 +692,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
