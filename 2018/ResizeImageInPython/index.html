@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Archives | daisy&#39;s space</title>
+  <title>Python改变图片尺寸 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="Python改变图片尺寸，OS模块,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/archives/page/2/index.html">
+  <meta name="description" content="本文主要内容有三个部分，第一部分记录了在Linux下的一些指令；第二部分记录python如何实现判断某个文件夹下的某个文件是否存在；第三部分记录了如何用python改变单个图片的尺寸，批量改变图片的尺寸（这里又分两种情况，一种是改为原图片的倍数，另一种是将某一文件夹中尺寸不一的图片均改为同一尺寸）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python改变图片尺寸">
+<meta property="og:url" content="http://daisy0x00.github.io/2018/ResizeImageInPython/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本文主要内容有三个部分，第一部分记录了在Linux下的一些指令；第二部分记录python如何实现判断某个文件夹下的某个文件是否存在；第三部分记录了如何用python改变单个图片的尺寸，批量改变图片的尺寸（这里又分两种情况，一种是改为原图片的倍数，另一种是将某一文件夹中尺寸不一的图片均改为同一尺寸）。">
+<meta property="og:updated_time" content="2019-01-18T02:46:44.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="Python改变图片尺寸">
+<meta name="twitter:description" content="本文主要内容有三个部分，第一部分记录了在Linux下的一些指令；第二部分记录python如何实现判断某个文件夹下的某个文件是否存在；第三部分记录了如何用python改变单个图片的尺寸，批量改变图片的尺寸（这里又分两种情况，一种是改为原图片的倍数，另一种是将某一文件夹中尺寸不一的图片均改为同一尺寸）。">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,451 +170,318 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ResizeImageInPython" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python改变图片尺寸
+    </h1>
+  
+
+        
+        <a href="/2018/ResizeImageInPython/" class="archive-article-date">
+  	<time datetime="2018-12-15T13:47:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-15</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>本文主要内容有三个部分，第一部分记录了在Linux下的一些指令；第二部分记录python如何实现判断某个文件夹下的某个文件是否存在；第三部分记录了如何用python改变单个图片的尺寸，批量改变图片的尺寸（这里又分两种情况，一种是改为原图片的倍数，另一种是将某一文件夹中尺寸不一的图片均改为同一尺寸）。</p>
+<a id="more"></a>
+<h1 id="Linux下指令"><a href="#Linux下指令" class="headerlink" title="Linux下指令"></a>Linux下指令</h1><p>1.创建文件夹<code>mkdir test</code></p>
+<p>2.创建文件<code>touch test1.txt</code></p>
+<p>3.编辑文件内容<code>vi test1.txt</code></p>
+<p>(这里遗留一个小问题，vi和vim的区别是什么？)</p>
+<h1 id="OS模块"><a href="#OS模块" class="headerlink" title="OS模块"></a>OS模块</h1><p>一.Python判断文件是否存在<br>OS模块中的<code>OS.path.exists()</code>方法用于检验文件是否存在，结果是bool值</p>
+<pre><code class="shell">
+    import os
+
+    os.path.exists(&quot;test/test1.txt&quot;)
+    #True
+
+    os.path.exists(&quot;test/test2.txt&quot;)
+    #False
+</code></pre>
+<p>二.Python判断文件夹是否存在</p>
+<pre><code class="shell">
+    import os
+
+    os.path.exists(test_dir)
+    #True
+
+    os.path.exists(no_exist_dir)
+    #False
+</code></pre>
+<p>用<code>os.path.exists()</code>方法，判断文件和文件夹是一样的。这种情况有课问题，假如你想检查文件’test1’是否存在，但是当前路径下有文件夹也命名为test1，这样容易出现误判的情况，为了避免这种情况，我们可以这样：</p>
+<p>只检查文件</p>
+<pre><code class="shell">
+    import os
+
+    os.path.isfile(&quot;test1&quot;)
+</code></pre>
+<p>如果文件’test1’存在则返回True，否则返回False。</p>
+<h1 id="Python改变图片尺寸"><a href="#Python改变图片尺寸" class="headerlink" title="Python改变图片尺寸"></a>Python改变图片尺寸</h1><p>一. 用Python改变单张图片尺寸</p>
+<pre><code class="python">
+    #coding:utf-8
+
+
+    from PIL import Image
+
+    #打开一个jpg图片文件，注意是当前路径
+    im = Image.open(&quot;/home/rongt/test/test2/000009.jpg&quot;)
+    #获得图像尺寸
+    w, h = im.size
+    print(&quot;Original:%sx%s&quot; %(w, h))
+    #缩放到20%
+    im.thumbnail((w//5, h//5))
+    print(&quot;Resize: %sx%s&quot; %(w//5, h//5))
+    #把缩放后的图像用jpeg格式保存
+    im.save(&#39;thumbnail.jpg&#39;, &#39;jpeg&#39;)
+</code></pre>
+<p>这个是廖大神教程里面的例子程序。</p>
+<p>二.用Python批量改变图片尺寸（改为原图的倍数）</p>
+<pre><code class="python">
+    #coding:utf-8
+
+    import os
+    from PIL import Image
+
+    #改变图像尺寸的功能函数
+    def resizeImage(image, num):
+        im = Image.open(image)
+        w, h = im.size
+        print(&quot;Original: %sx%s&quot; %(w, h))
+        im.thumbnail((w//3, h//3))
+        print(&quot;Resize: %sx%s&quot; %(w//3, h//3))
+        im.save(&#39;thumbnail%d.jpg&#39; %(num))
+
+    #批处理图像的功能函数
+    def gci(filepath):
+           files = os.listdir(filepath)
+        count = 0
+        for fi in files:
+            count = count + 1
+            fi_d = os.path.join(filepath, fi)
+            if os.path.isdir(fi_d):
+                   gci(fi_d)
+            else:
+                print(os.path.join(filepath, fi_d))
+                print(&quot;count = %d&quot; %(count))
+                resizeImage(os.path.join(filepath, fi_d), count)
+    #运行
+    gci(&quot;/home/rongt/test/test2&quot;)    
+
+</code></pre>
+<p>三.用Python批量改变图片尺寸（将某一文件夹中尺寸不一的图片均改为同一尺寸）</p>
+<pre><code class="python">
+    #coding:utf-8
+
+    import os
+    from PIL import Image
+
+    # 函数功能是将文件夹中的所有图片尺寸改为1280x720
+    def resizeToSame(image, num, width = 1280, height = 720):
+        im = Image.open(image)
+           w, h = im.size
+        print(&quot;Original: %sx%s&quot; % (w, h))
+        try:
+            new_img = im.resize((width, height), Image.BILINEAR)
+            new_img.save(&#39;thumbnail%d.jpg&#39; %(num))
+            w, h = new_img.size
+            print(&quot;Resize: %sx%s&quot; % (w, h))
+        except Exception as e:
+            print(e)
+
+    def gci(filepath):
+        files = os.listdir(filepath)
+
+        count = 0
+        for fi in files:
+            count = count + 1
+            fi_d = os.path.join(filepath, fi)
+            if os.path.isdir(fi_d):
+                gci(fi_d)
+            else:
+                print(os.path.join(filepath, fi_d))
+                print(&quot;count = %d&quot; %(count))
+                resizeToSame(os.path.join(filepath, fi_d), count)
+
+    gci(&quot;/home/rongt/test/test2&quot;)
+</code></pre>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonAndGaoDeAPI5/" class="archive-article-date">
-  	<time datetime="2018-05-27T05:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonAndGaoDeAPI5/">Python+高德API解决租房问题（五）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Python改变图片尺寸</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">os模块</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2018/ResizeImageInPython/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonAndGaoDeAPI4/" class="archive-article-date">
-  	<time datetime="2018-05-08T15:53:23.760Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/MachineLearningInAction1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">机器学习实战（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonAndGaoDeAPI4/">Python+高德API解决租房问题（四）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">urllib.parse.urljoin()</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/LeetCode283/" class="archive-article-date">
-  	<time datetime="2018-05-08T10:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/LeetCode283/">LeetCode283_Python</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python面试题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonAndGaoDeAPI3/" class="archive-article-date">
-  	<time datetime="2018-05-07T09:53:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonAndGaoDeAPI3/">Python+高德API解决租房问题（三）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BeautifulSoup</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">select方法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/LeetCode728/" class="archive-article-date">
-  	<time datetime="2018-05-05T13:26:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/LeetCode728/">LeetCode728_Python</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python面试题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonAndGaoDeAPI2/" class="archive-article-date">
-  	<time datetime="2018-05-04T15:24:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonAndGaoDeAPI2/">Python+高德API解决租房问题（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">format()函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonFromListToClass2/" class="archive-article-date">
-  	<time datetime="2018-05-03T12:06:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonFromListToClass2/">Python基础学习总结（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">python内置函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gloabls()函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">locals()函数</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonFromListToClass1/" class="archive-article-date">
-  	<time datetime="2018-05-02T00:51:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonFromListToClass1/">Python基础学习总结（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python面试题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">python基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/PythonAndGaoDeAPI1/" class="archive-article-date">
-  	<time datetime="2018-04-26T13:50:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/PythonAndGaoDeAPI1/">Python+高德API解决租房问题（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">csv文件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2018/ResizeImageInPython/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -871,8 +742,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

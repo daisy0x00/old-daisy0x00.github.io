@@ -14,19 +14,19 @@
 
 	
   
-  <meta name="description" content="本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯小白做做笔记。
+  <meta name="description" content="本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯属小白做做笔记。
 这一篇文章主要记录在Linux下测试是否安装了NumPy函数库，顺带记录NumPy函数库的一些功能。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习实战（一）">
 <meta property="og:url" content="http://daisy0x00.github.io/2018/MachineLearningInAction1/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯小白做做笔记。
+<meta property="og:description" content="本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯属小白做做笔记。
 这一篇文章主要记录在Linux下测试是否安装了NumPy函数库，顺带记录NumPy函数库的一些功能。">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\MachineLearningInAction1\MLinA.png">
-<meta property="og:updated_time" content="2018-12-14T12:24:05.067Z">
+<meta property="og:updated_time" content="2018-12-14T12:32:52.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习实战（一）">
-<meta name="twitter:description" content="本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯小白做做笔记。
+<meta name="twitter:description" content="本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯属小白做做笔记。
 这一篇文章主要记录在Linux下测试是否安装了NumPy函数库，顺带记录NumPy函数库的一些功能。">
 <meta name="twitter:image" content="http://daisy0x00.github.io/\photo\MachineLearningInAction1\MLinA.png">
   
@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <p>本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯小白做做笔记。</p>
+        <p>本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯属小白做做笔记。</p>
 <p>这一篇文章主要记录在Linux下测试是否安装了NumPy函数库，顺带记录NumPy函数库的一些功能。</p>
 <a id="more"></a>
 <p>第一步，首先在Linux的终端上输入python，进入Python Shell开发环境，然后在Python Shell开发环境中输入下列命令</p>
@@ -208,9 +208,9 @@ var _hmt = _hmt || [];
 <pre><code class="shell">
     &gt;&gt;&gt;random.rand(4,4)
     array([[0.14558156, 0.05822028, 0.73288719, 0.4079073 ],
-              [0.93925338, 0.9935477 , 0.70614773, 0.06286504],
-           [0.4074936 , 0.17490357, 0.69633147, 0.33158106],
-           [0.44674279, 0.6757942 , 0.14604101, 0.17623732]])
+        [0.93925338, 0.9935477 , 0.70614773, 0.06286504],
+        [0.4074936 , 0.17490357, 0.69633147, 0.33158106],
+        [0.44674279, 0.6757942 , 0.14604101, 0.17623732]])
 </code></pre>
 <p>上述命令构造了一个4x4的随机数组，因为产生的是随机数组，不同计算机的输出结果可能与上述结果完全不同。同一个计算机每次生成的结果也可能与之前的结果完全不同。<br>你可以把随机生成的数组存放到某个变量中</p>
 <p>小贴士：【NumPy矩阵与数组的区别】</p>
@@ -224,7 +224,7 @@ var _hmt = _hmt || [];
 <pre><code class="shell">
     &gt;&gt;&gt;randMat.I
     matrix([[ 0.12602984, -3.98786982,  5.56459985, -9.20791697],
-               [ 1.965973  ,  5.97526872, -8.24808457, 12.3280201 ],
+            [ 1.965973  ,  5.97526872, -8.24808457, 12.3280201 ],
             [-0.31104006, -0.52042995,  0.5242077 ,  1.31136272],
             [-2.25317871, -0.59374569,  2.72744811, -3.18885178]])
 </code></pre>
@@ -236,13 +236,13 @@ var _hmt = _hmt || [];
 <pre><code class="shell">
     &gt;&gt;&gt;randMat * invRandMat
     matrix([[ 1.00000000e+00,  0.00000000e+00,  0.00000000e+00,
-               8.88178420e-16],
-               [ 1.24900090e-16,  1.00000000e+00,  0.00000000e+00,
-               0.00000000e+00],
-               [ 2.77555756e-17, -8.88178420e-16,  1.00000000e+00,
-                 0.00000000e+00],
-            [ 2.77555756e-17,  0.00000000e+00,  1.11022302e-16,
-               1.00000000e+00]])
+          8.88178420e-16],
+        [ 1.24900090e-16,  1.00000000e+00,  0.00000000e+00,
+          0.00000000e+00],
+        [ 2.77555756e-17, -8.88178420e-16,  1.00000000e+00,
+          0.00000000e+00],
+        [ 2.77555756e-17,  0.00000000e+00,  1.11022302e-16,
+          1.00000000e+00]])
 </code></pre>
 <p>结果应该是单位矩阵，除了对角线元素是1,4x4矩阵的其他元素应该全为0.实际输出结果略有不同，矩阵里还留下了许多非常小的元素，这是计算机处理误差产生的结果。</p>
 <p>第六步，输入下述命令，得到误差值：</p>
@@ -261,7 +261,7 @@ var _hmt = _hmt || [];
 
 </code></pre>
 <p>函数eye(4)创建4x4的单位矩阵。</p>
-<p>如果你顺利的完成了上述例子，就说明已经正确地安装了NumPy函数库，以后就可以利用它构造机器学习应用程序啦~~~最后的最后附上小白在Linux下敲指令图一张。</p>
+<p>如果你顺利的完成了上述例子，就说明已经正确地安装了NumPy函数库，以后就可以利用它构造机器学习应用程序啦~~~最后的最后附上小白在Linux下运行这些命令的示例图一张。</p>
 <p><img src="\photo\MachineLearningInAction1\MLinA.png" alt="avatar"></p>
 
       
@@ -381,6 +381,15 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/2018/ResizeImageInPython/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python改变图片尺寸
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/Tensorflow/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Tensorflow踩坑记</div>
@@ -442,7 +451,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Daisy
+    		&copy; 2019 Daisy
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -876,6 +885,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">NumPy函数库基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Python改变图片尺寸</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">os模块</a>
               </li>
             
             <div class="clearfix"></div>
