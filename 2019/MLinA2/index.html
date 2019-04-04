@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>daisy&#39;s space</title>
+  <title>机器学习实战（二）_SVM1 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="机器学习实战，支持向量机SVM,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/index.html">
+  <meta name="description" content="本篇文章纯属没刹住车的学习过程分析，对你来说应该没什么用，直接下一篇吧。哦，如果非说它有用的地方，那估计是第二段分析学习资料那块吧，可以少绕弯，少浪费点时间。不过不想看的话还是直接下一篇吧。。。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习实战（二）_SVM1">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/MLinA2/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本篇文章纯属没刹住车的学习过程分析，对你来说应该没什么用，直接下一篇吧。哦，如果非说它有用的地方，那估计是第二段分析学习资料那块吧，可以少绕弯，少浪费点时间。不过不想看的话还是直接下一篇吧。。。。">
+<meta property="og:updated_time" content="2019-04-04T09:33:21.023Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="机器学习实战（二）_SVM1">
+<meta name="twitter:description" content="本篇文章纯属没刹住车的学习过程分析，对你来说应该没什么用，直接下一篇吧。哦，如果非说它有用的地方，那估计是第二段分析学习资料那块吧，可以少绕弯，少浪费点时间。不过不想看的话还是直接下一篇吧。。。。">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,16 +170,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-MLinA2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-MLinA2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/MLinA2/">机器学习实战（二）_SVM1</a>
+    <h1 class="article-title" itemprop="name">
+      机器学习实战（二）_SVM1
     </h1>
   
 
@@ -189,14 +191,45 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-		
-	  
         <p>本篇文章纯属没刹住车的学习过程分析，对你来说应该没什么用，直接下一篇吧。<br>哦，如果非说它有用的地方，那估计是第二段分析学习资料那块吧，可以少绕弯，少浪费点时间。不过不想看的话还是直接下一篇吧。。。。</p>
-        
-          <a class="article-more-a" href="/2019/MLinA2/#more">more >></a>
-        
+<a id="more"></a>
+<p>距离上次写blog居然已经这么久了，感觉自己产量这么低主要有两个原因，一是自己感觉自己学的都太基础了，写出来感觉low的一比，二是稍微有点含金量的又学的模棱两可，想写又不知从何写起，就成了小知识点不愿意去写，大知识点写不出来，颇有种眼高手低的废物感。嗯，开篇先废话式自我反思，毕竟没有人看，无所谓啦~~~再说为啥直接就从第一章跳到了第六章的支持向量机了，中间的KNN，Decision Tree，NaiveBayes，LogisticRegression都直接跳过了。肯定不是因为觉得太简单了不屑于写，毕竟小渣渣看见什么都觉得不简单。emmm…不怕丢脸的说是因为第一次学完过去基本上就是一知半解的状态，想写blog理不顺思路，写出来就跟之前的blog一样，或记流水账式日记，或抄书式笔记，没有自己独立的理解在里面（说的好像这篇就会变得清新脱俗一样），那为什么又从SVM开始写了呢?emmm…因为刚开始看了两遍SVM还是啥都没理解，陷入了一个十万个为什么状态，什么是函数间隔？咋又来个几何间隔？这俩有啥关系？为啥刚开始y<sub>i</sub>(w<sup>T</sup>x<sub>i</sub> + b) &gt;= 0 ,后面又莫名其妙变成1？后面还有一堆名词SMO，KKT条件，对偶问题，凸二次规划问题，核函数，我是谁我在干什么？我不是在学支持向量机吗？这些都是什么。。。。如何发现混不过去了，于是我就打算好好把这一章理顺。看了《机器学习实战》，给的信息是在太少，B站上搜了点视频看了一下发现信息量突然变大，然后带着疑惑去看了下周志华的西瓜书，李航的《统计学习方法》，吴恩达的机器学习课程CS229，麻省理工学院Patrick H. Winston的人工智能公开课。</p>
+<p>B站上搜的视频感觉都不太好看，只是让你知道有这些名词，没有一个让我觉得讲得很透彻的，不过对于空白纸的我来说还是有些作用的，不同的人讲，给你带来一点新概念，结合自己一遍一遍重新看书，发现自己上一次看书的时候自动屏蔽了这个概念，每次看都有一点新的理解和认知。<br>周志华的西瓜书理顺了整章的大体思路，但是会漏掉好多概念解释，这个时候结合李航的《统计学习方法》里面给的解释就可以很好的填补这些漏洞了，所有总体来说李航的《统计学习方法》更适合做工具书，各个概念解释很到位，周志华的西瓜书用来做总向导，更注重梳理大思路。至于这两个视频可以更好的帮助我理解思路，概念，公式。Winston没那么全，里面概念比较少，主要帮助我理解了从问题提出到公式推导的过程。看完会有继续探索的欲望。至于NG的课，需要在已经看过好多遍书，自己理解了好多遍之后再去看，不然很容易放弃，因为这个里面信息量太大了，适合带着加深理解的心态去看，收货会比较大，看第一遍的时候没看完，自己看了一点看不下去了，先去看了一遍书（西瓜书为主，统计学习方法为辅），又把Winston的视频看了一遍，再去看书，再去梳理Winston视频的笔记，然后再重新打开NG的视频，带着疑惑（比如函数间隔和几何间隔的关系，为什么明明已经把问题形式化为了求最大几何间隔问题，却又要用函数间隔来描述问题?为什么可以设定支持向量的函数间隔为1？等等）去看，看完感觉对SVM的理解又明朗了一点。</p>
+<p>emmm…我本来只是想简单提一下学习的心路历程，结果刹不住了，，，，好吧，好不容易码了这么多字，就当一篇学习资料分析放着吧，下一篇blog进入正题。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -220,16 +253,75 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/MLinA2/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/MLinA2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/ResizeImageInPython/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python改变图片尺寸</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -249,768 +341,30 @@ var _hmt = _hmt || [];
 
 
 
-
-  
-    <article id="post-ResizeImageInPython" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/ResizeImageInPython/">Python改变图片尺寸</a>
-    </h1>
-  
-
-        
-        <a href="/2018/ResizeImageInPython/" class="archive-article-date">
-  	<time datetime="2018-12-15T13:47:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本文主要内容有三个部分，第一部分记录了在Linux下的一些指令；第二部分记录python如何实现判断某个文件夹下的某个文件是否存在；第三部分记录了如何用python改变单个图片的尺寸，批量改变图片的尺寸（这里又分两种情况，一种是改为原图片的倍数，另一种是将某一文件夹中尺寸不一的图片均改为同一尺寸）。</p>
-        
-          <a class="article-more-a" href="/2018/ResizeImageInPython/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Python改变图片尺寸</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">os模块</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/ResizeImageInPython/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MachineLearningInAction1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/MachineLearningInAction1/">机器学习实战_机器学习基础（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/MachineLearningInAction1/" class="archive-article-date">
-  	<time datetime="2018-12-13T08:39:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯属小白做做笔记。</p>
-<p>这一篇文章主要记录在Linux下测试是否安装了NumPy函数库，顺带记录NumPy函数库的一些功能。</p>
-        
-          <a class="article-more-a" href="/2018/MachineLearningInAction1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NumPy函数库基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/MachineLearningInAction1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Tensorflow" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/Tensorflow/">Tensorflow踩坑记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/Tensorflow/" class="archive-article-date">
-  	<time datetime="2018-11-26T10:14:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本文主要记录自己在Win10下搭建TensorFlow环境时遇到的问题和解决方法。</p>
-        
-          <a class="article-more-a" href="/2018/Tensorflow/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tensorflow</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Anaconda</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/Tensorflow/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Noj3_K" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/Noj3_K/">Noj3_K</a>
-    </h1>
-  
-
-        
-        <a href="/2018/Noj3_K/" class="archive-article-date">
-  	<time datetime="2018-10-11T07:40:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>用回溯法解决走迷宫问题</p>
-        
-          <a class="article-more-a" href="/2018/Noj3_K/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Noj3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">回溯法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/Noj3_K/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Noj3_L" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/Noj3_L/">Noj3_L</a>
-    </h1>
-  
-
-        
-        <a href="/2018/Noj3_L/" class="archive-article-date">
-  	<time datetime="2018-10-10T08:30:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>用回溯法解踩气球问题</p>
-        
-          <a class="article-more-a" href="/2018/Noj3_L/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Noj3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">回溯法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/Noj3_L/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Noj3_B" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/Noj3_B/">Noj3_B</a>
-    </h1>
-  
-
-        
-        <a href="/2018/Noj3_B/" class="archive-article-date">
-  	<time datetime="2018-09-19T13:36:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>求k阶斐波那契数列的第m项值的函数算法</p>
-        
-          <a class="article-more-a" href="/2018/Noj3_B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Noj3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/Noj3_B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GaoDeJSAPI4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/GaoDeJSAPI4/">高德JavaScript API示例中心（四）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/GaoDeJSAPI4/" class="archive-article-date">
-  	<time datetime="2018-06-09T14:21:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——异步加载地图】</p>
-        
-          <a class="article-more-a" href="/2018/GaoDeJSAPI4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">高德JavaScript API示例中心</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">异步加载地图</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/GaoDeJSAPI4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GaoDeJSAPI3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/GaoDeJSAPI3/">高德JavaScript API示例中心（三）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/GaoDeJSAPI3/" class="archive-article-date">
-  	<time datetime="2018-06-05T04:13:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——带功能控件的地图】</p>
-        
-          <a class="article-more-a" href="/2018/GaoDeJSAPI3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">高德JavaScript API示例中心</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">带功能控件的地图</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/GaoDeJSAPI3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GaoDeJSAPI2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/GaoDeJSAPI2/">高德JavaScript API示例中心（二）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/GaoDeJSAPI2/" class="archive-article-date">
-  	<time datetime="2018-05-28T09:29:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——英文、中英文地图】</p>
-        
-          <a class="article-more-a" href="/2018/GaoDeJSAPI2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">高德JavaScript API示例中心</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">英文、中英文地图</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/GaoDeJSAPI2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2019/MLinA2/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -1270,8 +624,8 @@ var _hmt = _hmt || [];
 	});
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
