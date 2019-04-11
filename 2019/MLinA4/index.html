@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Tag: 支持向量机SVM | daisy&#39;s space</title>
+  <title>机器学习实战（四）_SVM3 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="机器学习实战， 支持向量机SVM， append, split, strip,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/tags/支持向量机SVM/index.html">
+  <meta name="description" content="本篇blog讲述了Python中append、strip、split的用法,由于是在学习简易版SMO算法的代码时遇到的问题，所以把它写在SVM系列下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习实战（四）_SVM3">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/MLinA4/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本篇blog讲述了Python中append、strip、split的用法,由于是在学习简易版SMO算法的代码时遇到的问题，所以把它写在SVM系列下。">
+<meta property="og:updated_time" content="2019-04-11T05:41:14.869Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="机器学习实战（四）_SVM3">
+<meta name="twitter:description" content="本篇blog讲述了Python中append、strip、split的用法,由于是在学习简易版SMO算法的代码时遇到的问题，所以把它写在SVM系列下。">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,36 +170,156 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-MLinA4" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      机器学习实战（四）_SVM3
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/MLinA4/" class="archive-article-date">
+
+        
+        <a href="/2019/MLinA4/" class="archive-article-date">
   	<time datetime="2019-04-09T06:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/MLinA4/">机器学习实战（四）_SVM3</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>本篇blog讲述了Python中append、strip、split的用法,由于是在学习简易版SMO算法的代码时遇到的问题，所以把它写在SVM系列下。</p>
+<a id="more"></a>
+<h2 id="append"><a href="#append" class="headerlink" title="append()"></a>append()</h2><p>假定存在两个列表，a和b：</p>
+<pre><code class="python">
+    &gt;&gt;&gt;a = [1, 2, 3]
+    &gt;&gt;&gt;b = [4, 5, 6]
+    &gt;&gt;&gt;a.append(b)
+    &gt;&gt;&gt;a
+    [1, 2, 3, [4, 5, 6]]
+</code></pre>
+<h2 id="strip-函数原型"><a href="#strip-函数原型" class="headerlink" title="strip()函数原型"></a>strip()函数原型</h2><p>声明：s为字符串，rm为要删除的字符序列，只能删除开头或结尾的字符或字符串，不能删除中间的字符或字符串。</p>
+<ul>
+<li>s.strip(rm):删除s字符串中开头、结尾处位于rm删除序列的字符。</li>
+<li>s.lstrip(rm):删除s字符串中开头处，位于rm删除序列的字符。</li>
+<li>s.rstrip(rm):删除s字符串中结尾处，位于rm删除序列的字符。</li>
+</ul>
+<p> 注1.当rm为空时，默认删除空白符（包括’\n’, ‘\r’, ‘\t’, ‘ ‘）</p>
+<pre><code class="python">
+    &gt;&gt;&gt; a = &#39;            123&#39;
+    &gt;&gt;&gt; a.strip()
+    &#39;123&#39;
+    &gt;&gt;&gt; a = &#39;\t\tabc&#39;
+    &gt;&gt;&gt; a.strip()
+    &#39;abc&#39;
+    &gt;&gt;&gt; a = &#39;sdff\r\n&#39;
+    &gt;&gt;&gt; a.strip()
+    &#39;sdff&#39;
+</code></pre>
+<p>注2.这里的rm删除序列是只要边上（开头或者结尾）的字符在删除序列内，就删掉</p>
+<pre><code class="python">
+    &gt;&gt;&gt; a = &#39;123abc&#39;
+    &gt;&gt;&gt; a.strip(&#39;21&#39;)
+    &#39;3abc&#39;
+    &gt;&gt;&gt; a
+    &#39;123abc&#39;
+    &gt;&gt;&gt; a.strip(&#39;12&#39;)
+    &#39;3abc&#39;
+</code></pre>
+<h2 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h2><p>说明python中没有字符类型的说法，只有字符串，这里所说的字符就是只包含一个字符的字符串。</p>
+<p>split返回的是一个列表</p>
+<p>case1:不带参数时默认是空白字符（包括’\n’, ‘\r’, ‘\t’, ‘ ‘）</p>
+<pre><code class="python">
+    &gt;&gt;&gt; a = &#39; \tadb  \td\tabe\t&#39;
+    &gt;&gt;&gt; print(a)
+        adb      d    abe    
+    &gt;&gt;&gt; a.split()
+    [&#39;adb&#39;, &#39;d&#39;, &#39;abe&#39;]
+</code></pre>
+<p>case2:按照某个字符分割，如‘.’</p>
+<pre><code class="python">
+    &gt;&gt;&gt; str = (&#39;www.google.com&#39;)
+    &gt;&gt;&gt; str
+    &#39;www.google.com&#39;
+    &gt;&gt;&gt; str.split(&#39;.&#39;)
+    [&#39;www&#39;, &#39;google&#39;, &#39;com&#39;]
+</code></pre>
+<p>case3:按照某一字符分割，且分割n次，如按‘.’分割1次</p>
+<pre><code class="python">
+    &gt;&gt;&gt; str = (&#39;www.google.com&#39;)
+    &gt;&gt;&gt; str
+    &#39;www.google.com&#39;
+    &gt;&gt;&gt; str.split(&#39;.&#39;, 1)
+    [&#39;www&#39;, &#39;google.com&#39;]
+</code></pre>
+<p>case4:按照某一字符串分割，如‘||’</p>
+<pre><code class="python">
+    &gt;&gt;&gt; str = (&#39;WinXP||Win7||Win8||Win8.1&#39;)
+    &gt;&gt;&gt; str
+    &#39;WinXP||Win7||Win8||Win8.1&#39;
+    &gt;&gt;&gt; str.split(&#39;||&#39;)
+    [&#39;WinXP&#39;, &#39;Win7&#39;, &#39;Win8&#39;, &#39;Win8.1&#39;]
+</code></pre>
+<p>case5:按照某一字符串分割，且分割n次，如：按‘||’分割2次</p>
+<pre><code class="python">
+    &gt;&gt;&gt; str = (&#39;WinXP||Win7||Win8||Win8.1&#39;)
+    &gt;&gt;&gt; str
+    &#39;WinXP||Win7||Win8||Win8.1&#39;
+    &gt;&gt;&gt; str.split(&#39;||&#39;,2)
+    [&#39;WinXP&#39;, &#39;Win7&#39;, &#39;Win8||Win8.1&#39;]
+</code></pre>
+<p>case6:按照某一字符或字符串分割，且分割n次，并将分割完成的字符串或者字符赋给新的n+1个变量，例如按照‘.’分割字符，且分割1次，并将分割后的字符串赋给2个变量str1,str2.</p>
+<pre><code class="python">
+    &gt;&gt;&gt; url = (&#39;www.google.com&#39;)
+    &gt;&gt;&gt; str1, str2 = url.split(&#39;.&#39;, 1)
+    &gt;&gt;&gt; str1
+    &#39;www&#39;
+    &gt;&gt;&gt; str2
+    &#39;google.com&#39;
+</code></pre>
+<p>参考资料（感谢大佬）：<br>1.<a href="https://www.cnblogs.com/yyxayz/p/4034299.html" target="_blank" rel="external">https://www.cnblogs.com/yyxayz/p/4034299.html</a></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -211,103 +335,122 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/MLinA4/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/MLinA3/" class="archive-article-date">
-  	<time datetime="2019-04-04T10:36:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/MLinA3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">机器学习实战（三）_SVM2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/MLinA3/">机器学习实战（三）_SVM2</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/MLinA2/" class="archive-article-date">
-  	<time datetime="2019-04-04T08:12:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/MLinA2/">机器学习实战（二）_SVM1</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2019/MLinA4/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -567,9 +710,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
