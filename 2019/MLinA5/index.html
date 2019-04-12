@@ -20,7 +20,7 @@
 <meta property="og:url" content="http://daisy0x00.github.io/2019/MLinA5/index.html">
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="本篇blog讲述了简化版SMO算法用Python的实现">
-<meta property="og:updated_time" content="2019-04-12T01:16:20.792Z">
+<meta property="og:updated_time" content="2019-04-12T01:35:14.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习实战（五）_SVM4">
 <meta name="twitter:description" content="本篇blog讲述了简化版SMO算法用Python的实现">
@@ -193,7 +193,7 @@ var _hmt = _hmt || [];
       
         <p>本篇blog讲述了简化版SMO算法用Python的实现</p>
 <a id="more"></a>
-<pre name="code" class="python">
+<pre><code class="python">&lt;pre name = &quot;code&quot; class = &quot;python&quot;&gt;
 
 #coding:utf-8
 
@@ -209,7 +209,7 @@ def loadDataSet(fileName):
     fr = open(fileName)
 
     for line in fr.readlines():
-        lineArr = line.strip().split('\t')
+        lineArr = line.strip().split(&#39;\t&#39;)
         dataMat.append([float(lineArr[0]), float(lineArr[1])])
         labelMat.append(float(lineArr[2]))
 
@@ -223,11 +223,11 @@ def selectJrand(i, m):
         j = int(random.uniform(0, m))
     return j
 
-# 辅助三：clipAlpha()函数，该函数用于调整大于H或者小于L的alpha值。使求得的alpha值满足0 < alpha < C这个约束条件
+# 辅助三：clipAlpha()函数，该函数用于调整大于H或者小于L的alpha值。使求得的alpha值满足0 &lt; alpha &lt; C这个约束条件
 def clipAlpha(aj, H, L):
-    if aj > H:
+    if aj &gt; H:
         aj = H
-    if aj < L:
+    if aj &lt; L:
         aj = L
     return aj
 
@@ -252,7 +252,7 @@ def smoSimple(dataMatIn, classLabels, C, toler, maxIter):
     iter = 0
 
     # 简化版SMO算法将寻找alpha对这一步简化，直接按照遍历数据集的方法来找alphai
-    while(iter < maxIter):
+    while(iter &lt; maxIter):
         # alphaPairsChanged用来记录alpha是否已经进行优化
         # 每次循环中，将alphaPairsChanged先设为0，然后再对整个集合顺序遍历
         alphaPairsChanged = 0
@@ -262,7 +262,7 @@ def smoSimple(dataMatIn, classLabels, C, toler, maxIter):
             # 计算第i个样本的预测结果与实际结果之差
             Ei = fXi - float(labelMat[i])
             #
-            if(labelMat[i] * Ei < -toler) and (alphas[i] < C) or (labelMat[i] * Ei > toler) and (alphas[i] >0):
+            if(labelMat[i] * Ei &lt; -toler) and (alphas[i] &lt; C) or (labelMat[i] * Ei &gt; toler) and (alphas[i] &gt;0):
                 # 随机选择第二个alpha值
                 j = selectJrand(i, m)
                 # 第j个样本的预测结果
@@ -273,7 +273,7 @@ def smoSimple(dataMatIn, classLabels, C, toler, maxIter):
                 alphaIold = alphas[i].copy()
                 alphaJold = alphas[j].copy()
 
-                # 这一部分主要根据第i个样本的实际类别和第j个样本的实际类别来确定alpha的边界值L和H，以使得alphai和alphaj满足0 < alpha < C
+                # 这一部分主要根据第i个样本的实际类别和第j个样本的实际类别来确定alpha的边界值L和H，以使得alphai和alphaj满足0 &lt; alpha &lt; C
                 if(labelMat[i] != labelMat[j]):
                     L = max(0, alphas[j] - alphas[i])
                     H = min(C, C + alphas[j] - alphas[i])
@@ -281,24 +281,40 @@ def smoSimple(dataMatIn, classLabels, C, toler, maxIter):
                     L = max(0, alphas[j] + alphas[i] - C)
                     H = min(C, alphas[j] + alphas[i])
                 if L == H:
-                    print("L == H")
+                    print(&quot;L == H&quot;)
                     continue
 
                 eta = 2.0 * dataMatrix[i, :] * dataMatrix[j, :].T - dataMatrix[i, :] * dataMatrix[i, :].T - \
                       dataMatrix[j, :] * dataMatrix[j, :].T
-                if eta >= 0:
-                    print("eta >= 0")
+                if eta &gt;= 0:
+                    print(&quot;eta &gt;= 0&quot;)
                     continue
 
-                # alphaj在沿着约束方向未剪辑时的值，即未考虑约束条件0 <= alpha="" <="C" 时求出的alphaj的最优解="" alphas[j]="" -="labelMat[j]" *="" (ei="" ej)="" eta="" #="" alphaj考虑约束条件0="" 后求出的alphaj的最优解="" h,="" l)="" if(abs(alphas[j]="" alphajold)="" 0.00001):="" print('j="" not="" moving="" enough')="" continue="" alphai的最优解="" alphas[i]="" +="labelMat[i]" labelmat[j]="" (alphajold="" alphas[j])="" 设置常数项b="" b1="b" ei="" labelmat[i]="" (alphas[i]="" alphaiold)="" datamatrix[i,="" :]="" :].t="" \="" (alphas[j]="" datamatrix[j,="" b2="b" ej="" if(0="" alphas[i])="" and="" (c=""> alphas[i]):
+                # alphaj在沿着约束方向未剪辑时的值，即未考虑约束条件0 &lt;= alpha &lt;= C 时求出的alphaj的最优解
+                alphas[j] -= labelMat[j] * (Ei - Ej) / eta
+                # alphaj考虑约束条件0 &lt;= alpha &lt;= C 后求出的alphaj的最优解
+                alphas[j] = clipAlpha(alphas[j], H, L)
+
+                if(abs(alphas[j] - alphaJold) &lt; 0.00001):
+                    print(&#39;j not moving enough&#39;)
+                    continue
+                # alphai的最优解
+                alphas[i] += labelMat[i] * labelMat[j] * (alphaJold - alphas[j])
+
+                # 设置常数项b
+                b1 = b - Ei - labelMat[i] * (alphas[i] - alphaIold) * dataMatrix[i, :] * dataMatrix[i, :].T - \
+                     labelMat[j] * (alphas[j] - alphaJold) * dataMatrix[i, :] * dataMatrix[j, :].T
+                b2 = b - Ej - labelMat[i] * (alphas[i] - alphaIold) * dataMatrix[j, :] * dataMatrix[j, :].T - \
+                    labelMat[j] * (alphas[i] - alphaIold) * dataMatrix[i, :] * dataMatrix[j, :].T
+                if(0 &lt; alphas[i]) and (C &gt; alphas[i]):
                     b = b1
-                elif(0 < alphas[j]) and (C > alphas[j]):
+                elif(0 &lt; alphas[j]) and (C &gt; alphas[j]):
                     b = b2
                 else:
                     b = (b1 + b2) / 2.0
 
                 alphaPairsChanged += 1
-                print("iter: %d i: %d, pairs changed %d" %(iter, i, alphaPairsChanged))
+                print(&quot;iter: %d i: %d, pairs changed %d&quot; %(iter, i, alphaPairsChanged))
 
         # 在for循环之外，需要检查alpha值是否做了更新，如果有更新则将iter设为0后继续运行程序。
         # 只有在所有数据集上遍历maxIter次，且不再发生任何alpha修改之后，程序才会停止并退出while循环
@@ -306,11 +322,11 @@ def smoSimple(dataMatIn, classLabels, C, toler, maxIter):
             iter += 1
         else:
             iter = 0
-        print("iteration number: %d" %iter)
+        print(&quot;iteration number: %d&quot; %iter)
     return b, alphas
 
-</=></pre>
-
+&lt;/pre&gt;
+</code></pre>
 <p>参考资料（感谢大佬）：</p>
 <p>1.《机器学习实战》–Peter Harrington</p>
 <p>2.《统计学习方法》–李航</p>
