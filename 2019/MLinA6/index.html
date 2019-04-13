@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA6\MLinA6_3.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA6\MLinA6_4.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA6\MLinA6_5.png">
-<meta property="og:updated_time" content="2019-04-13T11:04:52.713Z">
+<meta property="og:updated_time" content="2019-04-13T11:10:54.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习实战（六）_AdaBoost1">
 <meta name="twitter:description" content="本篇blog讨论了AdaBoost算法的思想和流程图。">
@@ -199,7 +199,7 @@ var _hmt = _hmt || [];
       
         <p>本篇blog讨论了AdaBoost算法的思想和流程图。</p>
 <a id="more"></a>
-<h2 id="1-自举汇聚法（bagging方法"><a href="#1-自举汇聚法（bagging方法" class="headerlink" title="1.自举汇聚法（bagging方法"></a>1.自举汇聚法（bagging方法</h2><p>自举汇聚法（bagging方法，是在从原始数据集选择S次后得到S个新数据集的一种技术。新数据集和原数据集的大小相等，每个数据集都是通过在原始数据集中随机选择一个样本来进行替换而得到的。这里的替换就意味着可以多次地选择同一个样本。这一性质就允许新数据集中可以有重复的值，而原始数据集的某些值在新集合中则不再出现。感觉跟概率论里面的有放回抽样的思想一样。<br>在s个数据集建好之后，将某个学习算法 分别作用于每个数据集就得到了s个分类器。当我们要对新数据进行分类时，就可以应用这s个分类器进行分类。与此同时，选择分类器投票结果中最多的类别作为最后的分类结果.</p>
+<h2 id="1-自举汇聚法（bagging方法）"><a href="#1-自举汇聚法（bagging方法）" class="headerlink" title="1.自举汇聚法（bagging方法）"></a>1.自举汇聚法（bagging方法）</h2><p>自举汇聚法（bagging方法，是在从原始数据集选择S次后得到S个新数据集的一种技术。新数据集和原数据集的大小相等，每个数据集都是通过在原始数据集中随机选择一个样本来进行替换而得到的。这里的替换就意味着可以多次地选择同一个样本。这一性质就允许新数据集中可以有重复的值，而原始数据集的某些值在新集合中则不再出现。感觉跟概率论里面的有放回抽样的思想一样。<br>在s个数据集建好之后，将某个学习算法 分别作用于每个数据集就得到了s个分类器。当我们要对新数据进行分类时，就可以应用这s个分类器进行分类。与此同时，选择分类器投票结果中最多的类别作为最后的分类结果.</p>
 <h2 id="2-分类器"><a href="#2-分类器" class="headerlink" title="2.分类器"></a>2.分类器</h2><p>某个学习算法作用于某个数据集可以得到一个分类器<br>不同学习算法作用于同一个数据集得到的分类器不同<br>同一个学习算法作用于不同数据集得到的分类器也不同</p>
 <p>分类器的类型？？？</p>
 <h2 id="3-boosting"><a href="#3-boosting" class="headerlink" title="3.boosting"></a>3.boosting</h2><p>boosting是一种与bagging很类似的技术，不论是在boosting还是bagging当中，所使用的多个分类器的类型都是一致的。但是在boosting中，不同的分类器是通过串行训练而获得的，每个新分类器都根据已训练出的分类器的性能来进行训练（这句话不太理解？）boosting是通过集中关注被已有分类器错分的那些数据来获得新的分类器。</p>
