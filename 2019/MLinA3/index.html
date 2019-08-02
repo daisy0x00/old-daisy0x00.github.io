@@ -47,8 +47,8 @@
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA3\MLinA3_19.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA3\MLinA3_20.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA3\MLinA3_21.png">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA3\MLinA3_18.png">
-<meta property="og:updated_time" content="2019-04-10T02:05:54.169Z">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA3\MLinA3_22.png">
+<meta property="og:updated_time" content="2019-05-07T16:11:03.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习实战（三）_SVM2">
 <meta name="twitter:description" content="本篇blog可以说是MIT的Winston老师讲解的SVM的课堂笔记整理，有些地方我用自己的话来描述Winston老师所讲述的内容，让我自己赤脚空拳实在是写不出来东西。
@@ -310,7 +310,7 @@ var _hmt = _hmt || [];
 <p>我们前面为什么要花费大量的精力来得到这个式子呢？因为我们想知道要求极值的式子如何依赖于这些样本向量，此时我们发现该式子的最大化只依赖于样本对之间的点积。</p>
 <p>接下来我们将决策向量w的式子即式SVM2_15代入最开始的决策规则中，此时我们发现决策规则也只依赖于样本向量与未知向量之间的点积：</p>
 <p>式SVM2_18</p>
-<p><img src="\photo\MLinA3\MLinA3_18.png" alt="avatar"></p>
+<p><img src="\photo\MLinA3\MLinA3_22.png" alt="avatar"></p>
 <p>由此可见所有的代数式都只依赖于点积。</p>
 <p>至此SVM的公式推导也就完成了，此时问题转化成了一个二次规划问题，可以使用通用的二次规划算法来求解，然而这个问题的规模正比于训练样本数，这会在实际任务中造成很大的开销，为了避开这个障碍，人们通过利用问题本身的特性，提出了很多高效的算法，SMO算法就是其中一大代表，关于这个问题我们放到后面的blog来讲，这篇文章才只是个开端，SVM的问题还远远没有讲完，很多未解之谜请看下一篇~~~</p>
 

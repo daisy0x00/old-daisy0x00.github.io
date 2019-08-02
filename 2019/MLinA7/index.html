@@ -10,21 +10,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
-	<meta name="keywords" content="机器学习实战， Decision Tree决策树， 熵， 香农熵， 信息增益,">
+	<meta name="keywords" content="机器学习实战， Decision Tree决策树， 熵， 香农熵， 信息增益， ID3算法,">
 
 	
   
   <meta name="description" content="本篇blog讨论了决策树中的以下问题：
 
-
 构造决策树的基本思想 
-
-
-
 讨论了在数学上如何使用信息论划分数据集
-
-
-
 编写代码构建决策树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习实战（七）_DecisionTree1">
@@ -32,34 +25,20 @@
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="本篇blog讨论了决策树中的以下问题：
 
-
 构造决策树的基本思想 
-
-
-
 讨论了在数学上如何使用信息论划分数据集
-
-
-
 编写代码构建决策树">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA7\MLinA7_1.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA7\MLinA7_2.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA7\MLinA7_3.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA7\MLinA7_4.png">
-<meta property="og:updated_time" content="2019-04-15T14:41:25.512Z">
+<meta property="og:updated_time" content="2019-04-15T14:51:14.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习实战（七）_DecisionTree1">
 <meta name="twitter:description" content="本篇blog讨论了决策树中的以下问题：
 
-
 构造决策树的基本思想 
-
-
-
 讨论了在数学上如何使用信息论划分数据集
-
-
-
 编写代码构建决策树">
 <meta name="twitter:image" content="http://daisy0x00.github.io/\photo\MLinA7\MLinA7_1.png">
   
@@ -230,20 +209,11 @@ var _hmt = _hmt || [];
 	   
       
         <p>本篇blog讨论了决策树中的以下问题：</p>
-<ul>
-<li><ol>
+<ol>
 <li>构造决策树的基本思想 </li>
-</ol>
-</li>
-<li><ol start="2">
 <li>讨论了在数学上如何使用信息论划分数据集</li>
-</ol>
-</li>
-<li><ol start="3">
 <li>编写代码构建决策树</li>
 </ol>
-</li>
-</ul>
 <a id="more"></a>
 <h2 id="1-构造决策树的基本思想"><a href="#1-构造决策树的基本思想" class="headerlink" title="1.构造决策树的基本思想"></a>1.构造决策树的基本思想</h2><p>我们构造决策树的基本思想是随着树深度的增加，节点的熵迅速地降低。熵降低的速度越快越好，这样我们有望得到一颗高度最矮的决策树。在构造决策树时，需要解决的第一个问题就是，当前数据集上哪个特征在划分数据分类时起决定性作用。为了找到决定性的特征，划分出最好的结果，我们必须评估每个特征。</p>
 <p>这块主要讨论ID3算法划分数据集。该算法处理如何划分数据集、何时停止划分数据集。<br>每次划分数据集时我们只选取一个特征属性，如果训练集中有20个特征，第一次我们选择哪个特征作为划分的参考属性呢？在回答这个问题之前，我们必须采用量化的方法判断如何划分数据。</p>
@@ -449,7 +419,7 @@ def createTree(dataSet, labels):
 &lt;/pre&gt;
 </code></pre>
 <p>参考资料（感谢大佬）：</p>
-<p>1.<a href="https://www.bilibili.com/video/av26086646/?p=2" target="_blank" rel="external">https://www.bilibili.com/video/av26086646/?p=2</a><br>2.《机器学习实战》-李航</p>
+<p>1.<a href="https://www.bilibili.com/video/av26086646/?p=2" target="_blank" rel="external">https://www.bilibili.com/video/av26086646/?p=2</a><br>2.《机器学习实战》-Peter Harrington</p>
 
       
 
