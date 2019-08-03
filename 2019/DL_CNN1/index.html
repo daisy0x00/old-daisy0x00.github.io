@@ -6,30 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>机器学习实战（六）_AdaBoost1 | daisy&#39;s space</title>
+  <title>卷积神经网络（一） | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
-	<meta name="keywords" content="机器学习实战， AdaBoost元算法， bagging， boosting,">
+	<meta name="keywords" content="CNN,卷积神经网络,">
 
 	
   
-  <meta name="description" content="本篇blog讨论了AdaBoost算法的思想和流程图。">
+  <meta name="description" content="本篇blog讲解卷积神经网络为什么可以实现特征提取。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习实战（六）_AdaBoost1">
-<meta property="og:url" content="http://daisy0x00.github.io/2019/MLinA6/index.html">
+<meta property="og:title" content="卷积神经网络（一）">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/DL_CNN1/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="本篇blog讨论了AdaBoost算法的思想和流程图。">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA6\MLinA6_1.png">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA6\MLinA6_2.png">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA6\MLinA6_3.png">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA6\MLinA6_4.png">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\MLinA6\MLinA6_5.png">
-<meta property="og:updated_time" content="2019-04-13T11:18:47.050Z">
+<meta property="og:description" content="本篇blog讲解卷积神经网络为什么可以实现特征提取。">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN1\DL_CNN1_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN1\DL_CNN1_2.png">
+<meta property="og:updated_time" content="2019-08-03T03:24:03.986Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习实战（六）_AdaBoost1">
-<meta name="twitter:description" content="本篇blog讨论了AdaBoost算法的思想和流程图。">
-<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\MLinA6\MLinA6_1.png">
+<meta name="twitter:title" content="卷积神经网络（一）">
+<meta name="twitter:description" content="本篇blog讲解卷积神经网络为什么可以实现特征提取。">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\DL_CNN1\DL_CNN1_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -176,20 +173,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-MLinA6" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-DL_CNN1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      机器学习实战（六）_AdaBoost1
+      卷积神经网络（一）
     </h1>
   
 
         
-        <a href="/2019/MLinA6/" class="archive-article-date">
-  	<time datetime="2019-04-13T10:06:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
+        <a href="/2019/DL_CNN1/" class="archive-article-date">
+  	<time datetime="2019-08-02T17:14:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
 </a>
         
       </header>
@@ -197,33 +194,52 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <p>本篇blog讨论了AdaBoost算法的思想和流程图。</p>
+        <p>本篇blog讲解卷积神经网络为什么可以实现特征提取。</p>
 <a id="more"></a>
-<h2 id="1-自举汇聚法（bagging方法）"><a href="#1-自举汇聚法（bagging方法）" class="headerlink" title="1.自举汇聚法（bagging方法）"></a>1.自举汇聚法（bagging方法）</h2><p>自举汇聚法（bagging方法，是在从原始数据集选择S次后得到S个新数据集的一种技术。新数据集和原数据集的大小相等，每个数据集都是通过在原始数据集中随机选择一个样本来进行替换而得到的。这里的替换就意味着可以多次地选择同一个样本。这一性质就允许新数据集中可以有重复的值，而原始数据集的某些值在新集合中则不再出现。感觉跟概率论里面的有放回抽样的思想一样。<br>在s个数据集建好之后，将某个学习算法 分别作用于每个数据集就得到了s个分类器。当我们要对新数据进行分类时，就可以应用这s个分类器进行分类。与此同时，选择分类器投票结果中最多的类别作为最后的分类结果.</p>
-<h2 id="2-分类器"><a href="#2-分类器" class="headerlink" title="2.分类器"></a>2.分类器</h2><p>某个学习算法作用于某个数据集可以得到一个分类器<br>不同学习算法作用于同一个数据集得到的分类器不同<br>同一个学习算法作用于不同数据集得到的分类器也不同</p>
-<p>分类器的类型？？？</p>
-<h2 id="3-boosting"><a href="#3-boosting" class="headerlink" title="3.boosting"></a>3.boosting</h2><p>boosting是一种与bagging很类似的技术，不论是在boosting还是bagging当中，所使用的多个分类器的类型都是一致的。但是在boosting中，不同的分类器是通过串行训练而获得的，每个新分类器都根据已训练出的分类器的性能来进行训练（这句话不太理解？）boosting是通过集中关注被已有分类器错分的那些数据来获得新的分类器。</p>
-<p>由于boosting分类的结果都是基于所有分类器的加权求和结果的，因此boosting和bagging不太一样。bagging中的分类器权重是相等的，而boosting中的分类器权重并不相等，每个权重代表的是其对应分类器在上一轮迭代中的成功度。</p>
-<h2 id="4-AdaBoost-基于错误提升分类器的性能"><a href="#4-AdaBoost-基于错误提升分类器的性能" class="headerlink" title="4.AdaBoost:基于错误提升分类器的性能"></a>4.AdaBoost:基于错误提升分类器的性能</h2><p>能否使用弱分类器和多个实例来构建一个强分类器？这是一个非常有趣的理论问题。</p>
-<p>这里的“弱”意味着分类器的性能比随机猜测要略好，但是也不会好太多。这就是说，在二分类情况下弱分类器的错误率会高于50%，而“强”分类器的错误率将会低很多。</p>
-<p>AdaBoost算法即脱胎于上述理论问题。</p>
-<p>AdaBoost是adaptive boosting（自适应boosting）的缩写，其运行过程如下：</p>
-<p>训练数据中的每个样本，并赋予其一个权重，这些权重构成了向量D。<br>一开始，这些权重都初始化成相等值。首先在训练数据上训练出一个弱分类器并计算该分类器的错误率，然后在同一数据集上再次训练弱分类器。<br>在分类器的第二次训练当中，将会重新调整每个样本的权重，其中第一次分对的样本的权重将会降低，而第一次分错的样本的权重将会提高。<br>为了从所有弱分类器中 得到最终的分类结果，AdaBoost为每个分类器都分配了一个权重值alpha，这些alpha值是基于每个弱分类器的错误率进行计算的。其中错误率的定义为：</p>
-<p><img src="\photo\MLinA6\MLinA6_1.png" alt="avatar"></p>
-<p>而alpha的计算公式如下：</p>
-<p><img src="\photo\MLinA6\MLinA6_2.png" alt="avatar"></p>
-<p>AdaBoost算法的流程如图AdaBoost1_1所示：</p>
-<p><img src="\photo\MLinA6\MLinA6_3.png" alt="avatar"></p>
-<p>图AdaBoost1_1.AdaBoost算法的示意图</p>
-<p>图中左边是数据集，其中线条的不同长度代表了每个样例上的不同权重，一开始样本实例的权重都会被初始化为相等值，在经过一个分类器之后，加权的预测结果会通过三角形中的alpha值进行加权，每个三角形中输出的加权结果在圆形中求和，从而得到最终的输出结果.</p>
-<p>计算出alpha值之后，可以对权重向量D进行更新，以使得那些正确分类的样本的权重降低，而错分样本的权重升高。D的计算方法如下。<br>如果某个样本被正确分类，那么该样本的权重更改为：</p>
-<p><img src="\photo\MLinA6\MLinA6_4.png" alt="avatar"></p>
-<p>而如果某个样本被错分，那么该样本的权重更改为：</p>
-<p><img src="\photo\MLinA6\MLinA6_5.png" alt="avatar"></p>
-<p>在计算出D之后，AdaBoost又开始进入下一轮迭代。<br>AdaBoost算法会不断地重复训练和调整权重，直到训练出错误率为0或者弱分类器的数目达到用户的指定值为止</p>
-<p>（注：权重向量D是训练数据中每个样本的权重构成的向量，alpha是每个弱分类器的权重值，是基于每个弱分类器的错误率进行计算的）</p>
-<p> 参考资料（感谢大佬）：</p>
-<p>1.《机器学习实战》–Peter Harrington</p>
+<p>卷积神经网络</p>
+<p>CNN的工作流程就是你挑上一张图片经过一系列卷积层，非线性激活，池化层（下采样层），全连接层，最终得到输出层。不同的卷积神经网络中间的卷积层、非线性激活层、池化层任意排列组合</p>
+<p><img src="\photo\DL_CNN1\DL_CNN1_1.png" alt="avatar"></p>
+<p>卷积神经网络的主要工作过程就是输入一张图片，经过卷积层提取出t图片的主要特征，经过池化层进行特征选择，最终通过输出层输出结果</p>
+<p>（一）卷积层<br>卷积层的作用是提取图像的局部特征。</p>
+<p>卷积核=滤波器=convolution kernel=filter：</p>
+<p>卷积层中提取到的特征</p>
+<p>感受野：</p>
+<p>卷积核在输入图片中的局部映射</p>
+<p>步长（stride）：</p>
+<p>卷积核在输入图片上的移动幅度（如下图卷积核一次移动一步，故步长为1）</p>
+<p>特征映射（feature map）：</p>
+<p>卷积层的输出，卷积核在整个输入图片上进行完卷积操作后得到的结果</p>
+<p>下图可以演示卷积运算的过程：</p>
+<p>绿色矩阵是输入图像</p>
+<p>黄色矩阵是卷积核</p>
+<p>粉色矩阵是计算得到的特征映射</p>
+<p><img src="\photo\DL_CNN1\DL_CNN1_2.png" alt="avatar"></p>
+<p>卷积操作实际上是用卷积核在图像矩阵上滑动，对卷积核矩阵与图像矩阵中对应位置做计算：对应元素相乘后求和。</p>
+<p>为什么卷积层可以实现特征提取呢？</p>
+<p>卷积神经网络的本质计算过程其实不是卷积，而是内积，因为需要借鉴卷积的物理含义（即卷积核的滤波作用），故而命名为卷积。</p>
+<p>卷积有一个核心的概念：</p>
+<p>时域卷积等==频域相乘</p>
+<p>【通俗的解释】：假设两个时域信号f1和f2卷积的结果是f3，则f3的频谱是f1的频谱函和f2的频谱函数对应频率相乘的结果</p>
+<p>滤波器：</p>
+<p>能过滤某些特定频段，留下需要信号的部件。比如低通滤波器（只留下低频分量），高频滤波器，（只留下高频分量），带通滤波器（只留下特定范围内的分量）</p>
+<p>滤波和卷积之间有什么关系呢？</p>
+<p>【时域卷积=频域相乘】</p>
+<p>假设时域信号f1和f2做卷积，从f1的角度看，它的频谱函数要跟f2对应的频谱函数相乘，而如果f1的某些频率分量在f2上是没有的，那么相城支行的结果是0，所以得到的f3信号，在这些频率上值为0，于是对f1而言，f2把它的某些分量过滤掉了，所以f2是滤波器，f1是原始信号，f3是过滤之后的信号。</p>
+<p>一般来讲，我们涉及到的系统都是【时不变系统】，即输入响应不随激励时间的改变而变化，并且是【线性系统】，。而我们所处理的时间信号一般分为四种情况：</p>
+<ul>
+<li>1.连续非周期</li>
+<li>2.连续周期</li>
+<li>3.离散非周期</li>
+<li>4.离散周期</li>
+</ul>
+<p>这四种信号对应的频谱也是各有特点：</p>
+<ul>
+<li>时域的【周期】性质对应到频域是频谱【离散】，</li>
+<li>【非周期】对应【连续】</li>
+<li>时域的【连续】和【离散】对应到频域则是【非周期】和【周期】</li>
+</ul>
+<p>图像可以看做是【离散非周期信号】（因为图像的像素点是离散的且大多没有周期性）</p>
+<p>Reference：<br>1.<a href="https://zhuanlan.zhihu.com/p/28478034" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/28478034</a><br>2.<a href="https://baijiahao.baidu.com/s?id=1630799970477044407&amp;wfr=spider&amp;for=pc" target="_blank" rel="external">https://baijiahao.baidu.com/s?id=1630799970477044407&amp;wfr=spider&amp;for=pc</a></p>
 
       
 
@@ -268,11 +284,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">AdaBoost</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
         		</li>
       		
 		</ul>
@@ -328,7 +344,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/MLinA6/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/DL_CNN1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -342,18 +358,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/MLinA7/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          机器学习实战（七）_DecisionTree1
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/MLinA5/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">机器学习实战（五）_SVM4</div>
+    <a href="/2019/MLinA7/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">机器学习实战（七）_DecisionTree1</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -392,7 +399,7 @@ var _hmt = _hmt || [];
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://daisy0x00.github.io/2019/MLinA6/",
+  id: "http://daisy0x00.github.io/2019/DL_CNN1/",
   owner: 'daisy0x00',
   repo: 'daisy0x00.github.io',
   oauth: {
