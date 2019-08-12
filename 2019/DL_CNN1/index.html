@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
-	<meta name="keywords" content="CNN,卷积神经网络,">
+	<meta name="keywords" content="CNN,卷积神经网络， 卷积层,">
 
 	
   
@@ -22,7 +22,7 @@
 <meta property="og:description" content="本篇blog讲解卷积神经网络为什么可以实现特征提取。">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN1\DL_CNN1_1.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN1\DL_CNN1_2.gif">
-<meta property="og:updated_time" content="2019-08-03T03:29:01.291Z">
+<meta property="og:updated_time" content="2019-08-12T09:34:43.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络（一）">
 <meta name="twitter:description" content="本篇blog讲解卷积神经网络为什么可以实现特征提取。">
@@ -200,7 +200,7 @@ var _hmt = _hmt || [];
 <p>CNN的工作流程就是你挑上一张图片经过一系列卷积层，非线性激活，池化层（下采样层），全连接层，最终得到输出层。不同的卷积神经网络中间的卷积层、非线性激活层、池化层任意排列组合</p>
 <p><img src="\photo\DL_CNN1\DL_CNN1_1.png" alt="avatar"></p>
 <p>卷积神经网络的主要工作过程就是输入一张图片，经过卷积层提取出t图片的主要特征，经过池化层进行特征选择，最终通过输出层输出结果</p>
-<p>（一）卷积层<br>卷积层的作用是提取图像的局部特征。</p>
+<p>卷积层的作用是提取图像的局部特征。</p>
 <p>卷积核=滤波器=convolution kernel=filter：</p>
 <p>卷积层中提取到的特征</p>
 <p>感受野：</p>
@@ -239,7 +239,8 @@ var _hmt = _hmt || [];
 <li>时域的【连续】和【离散】对应到频域则是【非周期】和【周期】</li>
 </ul>
 <p>图像可以看做是【离散非周期信号】（因为图像的像素点是离散的且大多没有周期性）</p>
-<p>Reference：<br>1.<a href="https://zhuanlan.zhihu.com/p/28478034" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/28478034</a><br>2.<a href="https://baijiahao.baidu.com/s?id=1630799970477044407&amp;wfr=spider&amp;for=pc" target="_blank" rel="external">https://baijiahao.baidu.com/s?id=1630799970477044407&amp;wfr=spider&amp;for=pc</a></p>
+<h3 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h3><p>1.<a href="https://zhuanlan.zhihu.com/p/28478034" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/28478034</a></p>
+<p>2.<a href="https://baijiahao.baidu.com/s?id=1630799970477044407&amp;wfr=spider&amp;for=pc" target="_blank" rel="external">https://baijiahao.baidu.com/s?id=1630799970477044407&amp;wfr=spider&amp;for=pc</a></p>
 
       
 
@@ -357,6 +358,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/DL_CNN2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          卷积神经网络（二）
+        
+      </div>
+    </a>
   
   
     <a href="/2019/MLinA7/" id="article-nav-older" class="article-nav-link-wrap">
@@ -752,15 +762,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">高德JavaScript API示例中心</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">高德JavaScript API示例中心</a>
               </li>
              
               <li class="article-tag-list-item">
