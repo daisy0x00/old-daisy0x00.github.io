@@ -26,7 +26,7 @@
 池化层的作用是什么？
 池化层主要有哪几种？
 池化层的工作过程/工作原理是什么？">
-<meta property="og:updated_time" content="2019-08-12T09:31:39.994Z">
+<meta property="og:updated_time" content="2019-08-12T09:37:29.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络（二）">
 <meta name="twitter:description" content="本文主要阐述下列问题：
@@ -216,7 +216,8 @@ var _hmt = _hmt || [];
 <p>最大池化：选图像区域的最大值作为该区域池化后的值，最大池化可以保留纹理信息，减少卷积层参数误差.</p>
 <p>一般情况下选择最大池化是为了提取明显的特征，所以选用的最大池化。选择平均池化，是为了顾及每一个像素上的特征，所以选择将所有的像素值都相加然后再平均。</p>
 <p>池化层也有padding的选择。跟卷积层一样，先在外围补0，然后再池化。</p>
-<h3 id="池化层的工作过程-工作原理"><a href="#池化层的工作过程-工作原理" class="headerlink" title="池化层的工作过程/工作原理"></a>池化层的工作过程/工作原理</h3><p>pooling是在不同的通道上分开执行的（就是池化操作不改变通道数），且不需要参数控制。然后根据窗口大小进行相应的池化。一般有max pooling、average pooling等。池化技术的本质：在尽可能保留图片空间信息的前提下，降低图片的尺寸，增大卷积核感受野，提取高层特征，同时减少网络参数量，预防过拟合。</p>
+<h3 id="池化层的工作过程-工作原理"><a href="#池化层的工作过程-工作原理" class="headerlink" title="池化层的工作过程/工作原理"></a>池化层的工作过程/工作原理</h3><p>pooling是在不同的通道上分开执行的（就是池化操作不改变通道数），且不需要参数控制。然后根据窗口大小进行相应的池化。一般有max pooling、average pooling等。</p>
+<p>池化技术的本质：在尽可能保留图片空间信息的前提下，降低图片的尺寸，增大卷积核感受野，提取高层特征，同时减少网络参数量，预防过拟合。</p>
 <h3 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h3><p>1.<a href="https://blog.csdn.net/XX_123_1_RJ/article/details/86677482" target="_blank" rel="external">https://blog.csdn.net/XX_123_1_RJ/article/details/86677482</a></p>
 <p>2.<a href="https://blog.csdn.net/weixin_41417982/article/details/81412076" target="_blank" rel="external">https://blog.csdn.net/weixin_41417982/article/details/81412076</a></p>
 <p>3.<a href="https://www.zhihu.com/question/36686900" target="_blank" rel="external">https://www.zhihu.com/question/36686900</a></p>
