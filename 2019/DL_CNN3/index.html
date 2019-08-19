@@ -17,6 +17,7 @@
   <meta name="description" content="本文主要阐述下列问题:
 自己对卷积层思想的理解
 为什么要使用填充Padding?
+关于卷积核的维数
 如何确定填充值？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="卷积神经网络（三）">
@@ -25,6 +26,7 @@
 <meta property="og:description" content="本文主要阐述下列问题:
 自己对卷积层思想的理解
 为什么要使用填充Padding?
+关于卷积核的维数
 如何确定填充值？">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN3\DL_CNN3_1.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN3\DL_CNN3_2.png">
@@ -32,12 +34,14 @@
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN3\DL_CNN3_4.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN3\DL_CNN3_5.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN3\DL_CNN3_6.png">
-<meta property="og:updated_time" content="2019-08-16T17:25:45.913Z">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN3\DL_CNN3_7.png">
+<meta property="og:updated_time" content="2019-08-19T14:37:50.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络（三）">
 <meta name="twitter:description" content="本文主要阐述下列问题:
 自己对卷积层思想的理解
 为什么要使用填充Padding?
+关于卷积核的维数
 如何确定填充值？">
 <meta name="twitter:image" content="http://daisy0x00.github.io/\photo\DL_CNN3\DL_CNN3_1.png">
   
@@ -210,6 +214,7 @@ var _hmt = _hmt || [];
         <p>本文主要阐述下列问题:</p>
 <p>自己对卷积层思想的理解</p>
 <p>为什么要使用填充Padding?</p>
+<p>关于卷积核的维数</p>
 <p>如何确定填充值？</p>
 <a id="more"></a> 
 <h3 id="卷积层思想"><a href="#卷积层思想" class="headerlink" title="卷积层思想"></a>卷积层思想</h3><p>卷积层的主要思想就是先提取边缘特征，类似一般画图，把轮廓先画出来。</p>
@@ -235,6 +240,11 @@ var _hmt = _hmt || [];
 <p>另一个经常被用到的填充方法叫做Same卷积，那意味你填充后，你的输出大小和输入大小是一样的。根据公式n - f + 1，当你填充p个像素点，n就变成了n + 2p，最后公式变为n + 2p - f + 1.因此如果你有一个n x n的图像，用p个像素填充边缘，输出的大小就是这样的（n + 2p - f + 1） x （n + 2p - f + 1）。</p>
 <p>如果你想让n + 2p - f + 1 = n的话，使得输出和输入大小相等，如果你用这个等式求解p,那么p = （f - 1）/ 2。所以当f是个奇数的时候， 只要选择相应的填充尺寸，你就能确保得到和输入相同尺寸的输出。</p>
 <p>这也是为什么前面的例子，当过滤器是 3×3 时，和上一张幻灯片的例子一样，使得输出尺寸等于输入尺寸，所需要的填充是(3-1)/2，也就是 1 个像素。另一个例子，当你的过滤器是 5×5，如果f= 5，然后代入那个式子，你就会发现需要 2 层填充使得输出和输入一样大，这是过滤器 5×5 的情况。</p>
+<h3 id="卷积核的维数讨论"><a href="#卷积核的维数讨论" class="headerlink" title="卷积核的维数讨论"></a>卷积核的维数讨论</h3><p>习惯上f通常是奇数，也就是卷积核的维数通常是奇数，比如3 x 3或者5 x 5或者 7 x 7，一般情况下我们很少看到过一个偶数的卷积核在计算机视觉里使用，有两种可能的原因。</p>
+<p>第一个原因是，如果f是一个偶数，那么我们只能使用一些不对称填充。根据上面得出来的填充数求解公式p = (f - 1) / 2,只有f是奇数的时候，p才会是个整数，Same卷积才会有自然对称的填充，我们可以以同样的数量填充四周，而不是左边填充多一点，右边填充少一点，这样不对称的填充。</p>
+<p>第二个原因是，当你有一个奇数维卷积核，比如3 x 3或者5 x 5的，他就会有一个中心点。有时候在计算机视觉里，如果有个中心像素点会更方便，便于指出卷积核的位置。</p>
+<p><img src="\photo\DL_CNN3\DL_CNN3_7.png" alt="avatar"></p>
+<p>当然，这些都不算是为什么f通常是奇数的充分原因，但是如果你去看看卷积的文献，你经常会看到3x3的卷积核，你也可能会看到一些5x5,7x7的卷积核。后面我们也会谈到1x1的卷积核，以及什么时候它是有意义的。但是习惯上，我推荐你只使用奇数的过滤器。我想如果你使用偶数f也可能会得到不错的表现，如果遵循计算机视觉惯例，还是使用奇数值的f要好一些 。</p>
 
       
 
@@ -352,6 +362,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/DL_CNN4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          卷积神经网络（四）---卷积步长
+        
+      </div>
+    </a>
   
   
     <a href="/2019/DL_CNN2/" id="article-nav-older" class="article-nav-link-wrap">
