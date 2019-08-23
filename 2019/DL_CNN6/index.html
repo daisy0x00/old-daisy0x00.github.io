@@ -6,20 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Archives | daisy&#39;s space</title>
+  <title>卷积神经网络（六）---如何构建卷积神经网络的卷积层 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="CNN, 卷积神经网络， 构建卷积层,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/archives/page/2/index.html">
+  <meta name="description" content="本文阐述下列问题：
+如何构建卷积神经网络的卷积层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="卷积神经网络（六）---如何构建卷积神经网络的卷积层">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/DL_CNN6/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本文阐述下列问题：
+如何构建卷积神经网络的卷积层">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN6\DL_CNN6_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN6\DL_CNN6_2.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN6\DL_CNN6_3.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN6\DL_CNN6_4.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN6\DL_CNN6_5.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN6\DL_CNN6_6.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN6\DL_CNN6_7.png">
+<meta property="og:updated_time" content="2019-08-23T08:56:19.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="卷积神经网络（六）---如何构建卷积神经网络的卷积层">
+<meta name="twitter:description" content="本文阐述下列问题：
+如何构建卷积神经网络的卷积层">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\DL_CNN6\DL_CNN6_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,443 +181,233 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-DL_CNN6" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      卷积神经网络（六）---如何构建卷积神经网络的卷积层
+    </h1>
+  
+
+        
+        <a href="/2019/DL_CNN6/" class="archive-article-date">
+  	<time datetime="2019-08-23T08:49:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>本文阐述下列问题：</p>
+<p>如何构建卷积神经网络的卷积层</p>
+<a id="more"></a>
+<p>今天要讲的是如何构建卷积神经网络的卷积层，下面来看个例子。</p>
+<p><img src="\photo\DL_CNN6\DL_CNN6_1.png" alt="avatar"></p>
+<p>在卷积神经网络（五）中，我们已经讲了如何通过两个过滤器卷积处理一个三维图像，并输出两个不同的4x4矩阵。假设使用第一个过滤器进行卷积，得到第一个4x4矩阵。使用第二个过滤器进行卷积得到另外一个4x4矩阵 。<br>最终各自形成一个卷积神经网络层，然后对第一个4x4矩阵增加偏差b1，它是一个实数，通过Python的广播机制给这4x4矩阵中的16个元素都加上同一偏差。然后应用非线性函数，也就是一个非线性激活函数ReLU，输出结果是一个4x4矩阵。</p>
+<p><img src="\photo\DL_CNN6\DL_CNN6_2.png" alt="avatar"></p>
+<p>对于第二个4x4矩阵，我们加上不同的偏差b2，它也是个实数，同样通过Python的广播机制给第二个4x4矩阵的16个数字都加上同一个实数，然后应用非线性函数 ，也就是一个非线性激活函数ReLU，最终得到另一个4x4矩阵，然后把这两个矩阵堆叠起来，最终得到一个4x4x2的矩阵。<br>我们通过计算，从6x6x3的输入推导出一个4x4x2矩阵，它是卷积神经网络的一层，把它映射到标准神经网络中四个卷积层中的某一层或者一个非卷积神经网络中。</p>
+<p><img src="\photo\DL_CNN6\DL_CNN6_3.png" alt="avatar"></p>
+<p>注意前向传播中一个操作就是z[1] = W[1]a[0] + b[1]，其中a[0] = x, 执行非线性 函数得到a[1]，即a[1] = g(z[1])。这里的输入是a[0]，也就是x,这些过滤器用变量W[1]表示。在卷积过程中，我们对这27个数进行操作，其实是27x2（因为我们用了两个过滤器），我们取这些数做乘法，实际上执行了一个线性函数，得到一个4x4的矩阵，卷积操作的输出结果是一个4x4的矩阵 ，它的作用类似于W[1]a[0]，也就是这两个4x4矩阵的输出结果，然后加上偏差b。如下图中蓝色大框标记的部分就是应用激活函数ReLU之前的值 ，它的作用类似于z[1]，最后应用非线性函数，得到的这个4x4x2矩阵，成为神经网络 的下一层，也就是激活层。<br>这就是a[0]到a[1]的演变过程，首先执行线性函数，然后所有元素相乘做卷积，具体做法就是运用线性函数再加上偏差，然后应用激活函数ReLU。这样就通过神经网络的一层把一个6x6x3的维度a[0]演化为一个4x4x2维度的a[1],这就是卷积神经网络的一层。</p>
+<p><img src="\photo\DL_CNN6\DL_CNN6_4.png" alt="avatar"></p>
+<p>示例中我们有两个过滤器，也就是有两个特征，因此我们才最终得到一个4x4x2的输出，但是如果我们用了10个过滤器，而不是2个，我们最后会得到一个4x4x10维度的输出图像，因为我们选取了其中10个特征映射，而不仅仅是2个，将他们堆叠在一起，将会形成一个4x4x10的输出图像，也就是a[1].</p>
+<p><img src="\photo\DL_CNN6\DL_CNN6_5.png" alt="avatar"></p>
+<p>为了加深理解，我们来做一个练习。假设你有10个过滤器，神经网络的一层是3x3x3，那么这一层有多少个参数呢？</p>
+<p>我们来计算一下，每一层都是一个3x3x3的矩阵，因此每个过滤器有27个参数，也就是27个数，然后加上一个偏差，用参数b表示，现在 参数增加到28个，上述例子有 2个过滤器，而现在我们有10个，加在一起是28x10，也就是280个参数。</p>
+<p><img src="\photo\DL_CNN6\DL_CNN6_6.png" alt="avatar"></p>
+<p>请注意一点，不论输入图片有多大，1000x1000也好，5000x5000也好，参数始终都是280个。用这10个过滤器来提取特征，如垂直边缘，水平边缘和其他特征。即使这些图片很大，参数却很少，这就是卷积神经网络的一个特征，叫做“避免过拟合”。<br>我们现在已经知道如何提取10个特征，可以应用到大图片中，而 参数数量固定不变，此例中只有28个，相对较少。</p>
+<p>最后我们总结一下用于描述卷积神经网络中的一层（以l层为例），也就是卷积层的各种标记。</p>
+<p><img src="\photo\DL_CNN6\DL_CNN6_7.png" alt="avatar"></p>
+<p>过滤器大小：</p>
+<p>这一层是卷积层，用f[l]表示过滤器大小，我们说过过滤器大小为fxf，上标[l]表示l层中过滤器大小为fxf。通常情况下，上标[l]用来标记l层。</p>
+<p>填充值：</p>
+<p>用p[l]来标记padding的数量，padding数量也可指定为一个valid卷积，即无padding。或者same卷积，即选定padding，如此一来，输出和输入图片的高度和宽度就相同了。</p>
+<p>步幅大小：</p>
+<p>用s[l]标记步幅。</p>
+<p>输入：</p>
+<p>这一层的输入会是某个维度的数据，表示nxnxnc, nc是某层上的颜色通道数。<br>我们要稍作修改，增加上标[l - 1],即n[l-1] x n[l-1] x nc[l-1],因为它是上一层的激活值。<br>此例中，所用图片的高度和宽度都一样，但他们也有可能不同，所以分别用上下标H和W来标记，即nH[l-1] X nW[l-1] X nc[l-1],l层的输入就是上一层的输出，因此上标要用[l-1].神经网络这一层中会有输出，它本身会输出图像。其大小为nH[l] X nW[l] X nc[l],这就是输出图像的大小。</p>
+<p>输出：</p>
+<p>前面我们提到过用公式[(n + 2p - f) / s + 1]可以求出输出图片的大小，至少可以求出高度和宽度。在上图中的新表达式中（红色方框框出的公式），l层输出图像的高度和宽度可以由nH[l-1]、nW[l-1]求得。</p>
+<p>通道数量</p>
+<p>输出图像也具有深度，通过上一个示例，我们知道它等于该层中过滤器的数量，如果有2个过滤器，输出图像就是4x4x2，它是二维的，如果有10个过滤器，输出图像就是4x4x10。输出图像中的通道数量就是神经网络中这一层所使用的过滤器的数量。<br>如何确定过滤器的大小呢?<br>我们知道卷积一个6x6x3的图片需要一个3x3x3的过滤器，因此过滤器中 通道的数量必须与输入中通道的数量一致，因此，输出通道数量就是输入通道数量，所以过滤器维度等于f[l] x f[l] x nc[l-1]</p>
+<p>激活值</p>
+<p>应用偏差和非线性函数之后，这一层的输出等于它的激活值a[l],也就是这个维度（输出维度）。<br>a[l]是一个三维体，即nH[l] X nW[l] X nc[l]。当你 执行批量梯度下降或者小批量梯度下降时，如果有m个例子，就是有m个激活值的集合，那么输出A[l] = m x nH[l] X nW[l] X nc[l].如果采用批量梯度下降，变量的排列顺序为：首先是索引和训练示例，然后是其它三个变量。</p>
+<p>权重参数</p>
+<p>过滤器的维度已知，为f[l] x f[l] x nc[l-1]，这只是 一个过滤器的维度，有多少个过滤器呢？根据之前的讨论我们知道nc[l]是 过滤器的数量，权重也就是所有过滤器的集合再乘以过滤器的总数量，即f[l] x f[l] x nc[l - 1] x nc[l],损失数量L就是l层中过滤器的个数。</p>
+<p>偏差参数</p>
+<p>最后我们看看偏差参数，每个过滤器都有一个偏差参数，它是一个实数。偏差包含了这些变量，它是该维度上的一个向量。为了方便，偏差在代码中表示为一个1 x 1 x 1 x nc[l]的四维向量或者四维张量。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/MLinA3/" class="archive-article-date">
-  	<time datetime="2019-04-04T10:36:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/MLinA3/">机器学习实战（三）_SVM2</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/MLinA2/" class="archive-article-date">
-  	<time datetime="2019-04-04T08:12:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/MLinA2/">机器学习实战（二）_SVM1</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/ResizeImageInPython/" class="archive-article-date">
-  	<time datetime="2018-12-15T13:47:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/ResizeImageInPython/">Python改变图片尺寸</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/DL_CNN6/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/MachineLearningInAction1/" class="archive-article-date">
-  	<time datetime="2018-12-13T08:39:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/DL_CNN5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">卷积神经网络（五）---对三维立体做卷积</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/MachineLearningInAction1/">机器学习实战（一）_机器学习基础</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/Tensorflow/" class="archive-article-date">
-  	<time datetime="2018-11-26T10:14:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/Tensorflow/">Tensorflow踩坑记</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tensorflow</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Anaconda</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/Noj3_K/" class="archive-article-date">
-  	<time datetime="2018-10-11T07:40:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/Noj3_K/">Noj3_K</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Noj3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/Noj3_L/" class="archive-article-date">
-  	<time datetime="2018-10-10T08:30:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/Noj3_L/">Noj3_L</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Noj3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/Noj3_B/" class="archive-article-date">
-  	<time datetime="2018-09-19T13:36:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/Noj3_B/">Noj3_B</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Noj3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/GaoDeJSAPI4/" class="archive-article-date">
-  	<time datetime="2018-06-09T14:21:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/GaoDeJSAPI4/">高德JavaScript API示例中心（四）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">高德JavaScript API示例中心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/GaoDeJSAPI3/" class="archive-article-date">
-  	<time datetime="2018-06-05T04:13:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/GaoDeJSAPI3/">高德JavaScript API示例中心（三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">高德JavaScript API示例中心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2019/DL_CNN6/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -863,8 +668,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
