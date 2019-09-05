@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>卷积神经网络（九）---为什么使用卷积 | daisy&#39;s space</title>
+  <title>卷积神经网络（十）---为什么使用卷积 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -16,7 +16,7 @@
   
   <meta name="description" content="本篇博客我们来分析一下卷积在神经网络中为何如此受用，然后对如何整合这些卷积，如何通过一个标注过的训练集训练卷积神经网络做个简单概况，和只用全连接层相比，卷积层的两个主要优势在于参数共享和稀疏连接。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="卷积神经网络（九）---为什么使用卷积">
+<meta property="og:title" content="卷积神经网络（十）---为什么使用卷积">
 <meta property="og:url" content="http://daisy0x00.github.io/2019/DL_CNN10/index.html">
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="本篇博客我们来分析一下卷积在神经网络中为何如此受用，然后对如何整合这些卷积，如何通过一个标注过的训练集训练卷积神经网络做个简单概况，和只用全连接层相比，卷积层的两个主要优势在于参数共享和稀疏连接。">
@@ -25,9 +25,9 @@
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN10\DL_CNN10_3.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN10\DL_CNN10_4.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN10\DL_CNN10_5.png">
-<meta property="og:updated_time" content="2019-09-05T04:18:37.219Z">
+<meta property="og:updated_time" content="2019-09-05T04:21:59.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="卷积神经网络（九）---为什么使用卷积">
+<meta name="twitter:title" content="卷积神经网络（十）---为什么使用卷积">
 <meta name="twitter:description" content="本篇博客我们来分析一下卷积在神经网络中为何如此受用，然后对如何整合这些卷积，如何通过一个标注过的训练集训练卷积神经网络做个简单概况，和只用全连接层相比，卷积层的两个主要优势在于参数共享和稀疏连接。">
 <meta name="twitter:image" content="http://daisy0x00.github.io/\photo\DL_CNN10\DL_CNN10_1.png">
   
@@ -183,7 +183,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      卷积神经网络（九）---为什么使用卷积
+      卷积神经网络（十）---为什么使用卷积
     </h1>
   
 
@@ -199,7 +199,6 @@ var _hmt = _hmt || [];
       
         <p>本篇博客我们来分析一下卷积在神经网络中为何如此受用，然后对如何整合这些卷积，如何通过一个标注过的训练集训练卷积神经网络做个简单概况，和只用全连接层相比，卷积层的两个主要优势在于参数共享和稀疏连接。</p>
 <a id="more"></a>
-<p>本篇博客我们来分析一下卷积在神经网络中为何如此受用，然后对如何整合这些卷积，如何通过一个标注过的训练集训练卷积神经网络做个简单概况，和只用全连接层相比，卷积层的两个主要优势在于参数共享和稀疏连接，举例说明一下。</p>
 <p>假设有一张32x32x3维度的图片，这是上一篇博客的示例，假设用了6个大小为5x5的过滤器，输出维度为28x28x6。32x32x3 = 3072， 28x28x6 = 4704.</p>
 <p><img src="\photo\DL_CNN10\DL_CNN10_1.png" alt="avatar"></p>
 <p>我们构建一个神经网络，其中一层含有3072个单元，下一层含有4074个单元，两层中的每个神经元彼此相连，然后计算权重矩阵，它等于4074 x 3072约等于1400万，所以要训练的参数很多。虽然以现在的技术，我们可以用1400多万个参数来训练网络，因为这张32x32x3的图片非常小，训练这么多参数没有问题。如果这是一张1000x1000的图片，权重矩阵会变得非常大。</p>
