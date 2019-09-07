@@ -6,20 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>daisy&#39;s space</title>
+  <title>卷积神经网络（十一）---经典网络之LeNet | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="卷积神经网络， CNN, LeNet网络,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/page/2/index.html">
+  <meta name="description" content="本篇博客将介绍经典的网络结构—LeNet5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="卷积神经网络（十一）---经典网络之LeNet">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/DL_CNN11/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本篇博客将介绍经典的网络结构—LeNet5">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN11\DL_CNN11_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN11\DL_CNN11_2.png">
+<meta property="og:updated_time" content="2019-09-07T13:45:53.524Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="卷积神经网络（十一）---经典网络之LeNet">
+<meta name="twitter:description" content="本篇博客将介绍经典的网络结构—LeNet5">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\DL_CNN11\DL_CNN11_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,22 +173,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-DL_CNN1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-DL_CNN11" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/DL_CNN1/">卷积神经网络（一）</a>
+    <h1 class="article-title" itemprop="name">
+      卷积神经网络（十一）---经典网络之LeNet
     </h1>
   
 
         
-        <a href="/2019/DL_CNN1/" class="archive-article-date">
-  	<time datetime="2019-08-02T17:14:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
+        <a href="/2019/DL_CNN11/" class="archive-article-date">
+  	<time datetime="2019-09-07T13:33:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
 </a>
         
       </header>
@@ -189,14 +194,54 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-		
-	  
-        <p>本篇blog讲解卷积神经网络为什么可以实现特征提取。</p>
-        
-          <a class="article-more-a" href="/2019/DL_CNN1/#more">more >></a>
-        
+        <p>本篇博客将介绍经典的网络结构—LeNet5</p>
+<a id="more"></a>
+<p>首先看看LeNet-5的网络结构，假设你有一张32x32x1的图片，LeNet-5可以识别图中的手写数字，比如像这样手写数字7.LeNet-5是针对灰度图片训练的，所以图片的大小只有32x32x1。<br>实际上LeNet-5的结构和我们上一篇博客 的范例非常相似，使用6个5x5的过滤器，步幅为1.由于使用了6个过滤器，步幅为1，padding为0，输出结果为28x28x6，图像尺寸从32x32缩小到28x28。然后进行池化操作，在 这篇论文写成的那个年代，人们更喜欢使用平均池化，而我们现在可能用最大池化更多一些。在这个例子中，我们进行平均池化，过滤器的宽度为2，步幅为2，图像的尺寸，高度和宽度都缩小了2倍，输出结果是一个14x14x16的图像。我觉得这张图片应该不是完全按照比例绘制的，如果严格按照比例绘制，新图像的尺寸应该刚好是原图像的一半。</p>
+<p><img src="\photo\DL_CNN11\DL_CNN11_1.png" alt="avatar"></p>
+<p>接下来是卷积层 ，我们用一组16个5x5的过滤器，新的输出结果有16个通道。LeNet-5的论文 是在1998年撰写的，当时人们并不使用padding，或者总是使用valid卷积，这就是为什么每进行一次卷积，图像的高度和宽度都会缩小，所以这个图像从14x14缩小到了10x10。然后又是池化层，高度和宽度再缩小一半，输出一个5x5x16的图像，将所有数字相乘，乘积是400。<br>下一层是全连接层，在全连接层中，有400个节点，每个节点有120个神经元，这里已经有了一个全连接层。但有时还会从这400个节点中抽取一部分节点构建另一个全连接层，就像这样，有2个全连接层。</p>
+<p>最后一步就是利用这84个特征得到最后的输出，我们还可以在这里再加一个节点用来预测yhat的值，yhat有10个可能的值，对应识别0-9这10个数字。在现在的版本中则使用sotfmax函数输出十种分类结果，而在当时，LeNet-5网络在输出层使用了另外一种，现在已经很少用到的分类器。</p>
+<p>相比现代版本，这里得到的神经网络会小一些，只有约6万个参数。而现在，我们经常看到含有一千万到一亿个参数的神经网络，比这大1000倍的神经网络也不在少数。</p>
+<p>不管怎样，如果我们从左往右看，随着网络越来越深，图像的高度和宽度在缩小，从最初的32x32缩小到28x28，再到14x14，10x10，最后只有5x5。与此同时，随着网络层次的加深，通道数量一直在增加，从1增加到6个，再到16个。</p>
+<p>这个神经网络中还有一种模式至今仍然经常用到，就是一个或多个卷积层后面跟着一个池化层，然后又是若干个卷积层再接一个池化层，然后是全连接层，最后是输出，这种排列方式很常用。</p>
+<p><img src="\photo\DL_CNN11\DL_CNN11_2.png" alt="avatar"></p>
+<p>对于那些想尝试阅读论文的同学，需要补充几点。</p>
+<p>读到这篇经典论文时，你会发现，过去，人们使用sigmoid函数和tanh函数，而不是ReLU函数，这篇论文中使用的正是sigmoid函数和tanh函数。这种网络结构的特别之处还在于，各网络层之间是有关联的，这在今天看来显得很有趣。</p>
+<p>比如说，你有一个nH xnW xnC的网络，有nC个通道，使用尺寸为fxfxnC的过滤器，每个过滤器的通道数和它上一层的通道数相同。这是由于在当时，计算机的运行速度非常慢，为了减少计算量和参数，经典的LeNet-5网络使用了非常复杂 的计算方式，每个过滤器都采用和输入模块一样的通道数量。论文中提到的这些复杂细节，现在一般都不用了。</p>
+<p>我认为当时所进行的最后一步其实到现在也还没有真正完成，就是经典的LeNet-5网络在池化后进行了非线性函数处理，在这个例子中，池化层之后使用了sigmoid函数。如果你真的去 读这篇论文，这会是最难理解的部分之一，我们会在后面讲到。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -220,16 +265,75 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/DL_CNN1/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/DL_CNN11/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/DL_CNN10/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">卷积神经网络（十）---为什么使用卷积</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -249,764 +353,30 @@ var _hmt = _hmt || [];
 
 
 
-
-  
-    <article id="post-MLinA7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/MLinA7/">机器学习实战（七）_DecisionTree1</a>
-    </h1>
-  
-
-        
-        <a href="/2019/MLinA7/" class="archive-article-date">
-  	<time datetime="2019-04-15T14:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本篇blog讨论了决策树中的以下问题：</p>
-<ol>
-<li>构造决策树的基本思想 </li>
-<li>讨论了在数学上如何使用信息论划分数据集</li>
-<li>编写代码构建决策树</li>
-</ol>
-        
-          <a class="article-more-a" href="/2019/MLinA7/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Decision Tree</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/MLinA7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MLinA6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/MLinA6/">机器学习实战（六）_AdaBoost1</a>
-    </h1>
-  
-
-        
-        <a href="/2019/MLinA6/" class="archive-article-date">
-  	<time datetime="2019-04-13T10:06:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本篇blog讨论了AdaBoost算法的思想和流程图。</p>
-        
-          <a class="article-more-a" href="/2019/MLinA6/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">AdaBoost</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/MLinA6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MLinA5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/MLinA5/">机器学习实战（五）_SVM4</a>
-    </h1>
-  
-
-        
-        <a href="/2019/MLinA5/" class="archive-article-date">
-  	<time datetime="2019-04-12T01:09:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本篇blog讲述了简化版SMO算法用Python的实现</p>
-        
-          <a class="article-more-a" href="/2019/MLinA5/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/MLinA5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MLinA4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/MLinA4/">机器学习实战（四）_SVM3</a>
-    </h1>
-  
-
-        
-        <a href="/2019/MLinA4/" class="archive-article-date">
-  	<time datetime="2019-04-09T06:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本篇blog讲述了Python中append、strip、split的用法,由于是在学习简易版SMO算法的代码时遇到的问题，所以把它写在SVM系列下。</p>
-        
-          <a class="article-more-a" href="/2019/MLinA4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/MLinA4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MLinA3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/MLinA3/">机器学习实战（三）_SVM2</a>
-    </h1>
-  
-
-        
-        <a href="/2019/MLinA3/" class="archive-article-date">
-  	<time datetime="2019-04-04T10:36:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本篇blog可以说是MIT的Winston老师讲解的SVM的课堂笔记整理，有些地方我用自己的话来描述Winston老师所讲述的内容，让我自己赤脚空拳实在是写不出来东西。</p>
-<p>1.上一篇文章也说过了，这个老师讲的东西不全面，侧重点在公式的推导，所以这篇blog不会引入太多的名词概念之类的，主要内容也就是公式的推导过程。</p>
-<p>2.在此强调一点，这里讨论问题的时候已经强行假设给定的样本集是线性可分的</p>
-<p>3.乍一看这篇blog感觉里面好多公式好复杂，其实恰恰相反 ，这篇文章没有复杂的专业术语，一切从简进行数学推导，同时有大量草图辅助理解让你对支持向量机的公式推导过程一目了然。</p>
-        
-          <a class="article-more-a" href="/2019/MLinA3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/MLinA3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MLinA2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/MLinA2/">机器学习实战（二）_SVM1</a>
-    </h1>
-  
-
-        
-        <a href="/2019/MLinA2/" class="archive-article-date">
-  	<time datetime="2019-04-04T08:12:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本篇文章纯属没刹住车的学习过程分析，对你来说应该没什么用，直接下一篇吧。<br>哦，如果非说它有用的地方，那估计是第二段分析学习资料那块吧，可以少绕弯，少浪费点时间。不过不想看的话还是直接下一篇吧。。。。</p>
-        
-          <a class="article-more-a" href="/2019/MLinA2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/MLinA2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ResizeImageInPython" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/ResizeImageInPython/">Python改变图片尺寸</a>
-    </h1>
-  
-
-        
-        <a href="/2018/ResizeImageInPython/" class="archive-article-date">
-  	<time datetime="2018-12-15T13:47:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本文主要内容有三个部分，第一部分记录了在Linux下的一些指令；第二部分记录python如何实现判断某个文件夹下的某个文件是否存在；第三部分记录了如何用python改变单个图片的尺寸，批量改变图片的尺寸（这里又分两种情况，一种是改为原图片的倍数，另一种是将某一文件夹中尺寸不一的图片均改为同一尺寸）。</p>
-        
-          <a class="article-more-a" href="/2018/ResizeImageInPython/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/ResizeImageInPython/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MachineLearningInAction1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/MachineLearningInAction1/">机器学习实战（一）_机器学习基础</a>
-    </h1>
-  
-
-        
-        <a href="/2018/MachineLearningInAction1/" class="archive-article-date">
-  	<time datetime="2018-12-13T08:39:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本系列文章记录自己入机器学习的第一个坑，主要记录在阅读《机器学习实战》这本书的过程学到的知识点，以及在学习过程中遇到的问题和解决方法。纯属小白做做笔记。</p>
-<p>这一篇文章主要记录在Linux下测试是否安装了NumPy函数库，顺带记录NumPy函数库的一些功能。</p>
-        
-          <a class="article-more-a" href="/2018/MachineLearningInAction1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/MachineLearningInAction1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Tensorflow" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/Tensorflow/">Tensorflow踩坑记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/Tensorflow/" class="archive-article-date">
-  	<time datetime="2018-11-26T10:14:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本文主要记录自己在Win10下搭建TensorFlow环境时遇到的问题和解决方法。</p>
-        
-          <a class="article-more-a" href="/2018/Tensorflow/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Tensorflow</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Anaconda</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/Tensorflow/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2019/DL_CNN11/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -1266,8 +636,8 @@ var _hmt = _hmt || [];
 	});
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
