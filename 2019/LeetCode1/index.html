@@ -6,20 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Archives | daisy&#39;s space</title>
+  <title>LeetCode1_Python | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="python面试题，两数之和，LeetCode,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/archives/page/2/index.html">
+  <meta name="description" content="用python语言解答LeetCode的1题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode1_Python">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/LeetCode1/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="用python语言解答LeetCode的1题">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode1\LeetCode1_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode1\LeetCode1_2.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode1\LeetCode1_3.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode1\LeetCode1_4.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode1\LeetCode1_5.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode1\LeetCode1_6.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode1\LeetCode1_7.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode1\LeetCode1_8.png">
+<meta property="og:updated_time" content="2019-09-08T07:41:01.590Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="LeetCode1_Python">
+<meta name="twitter:description" content="用python语言解答LeetCode的1题">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\LeetCode1\LeetCode1_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,420 +179,158 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LeetCode1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode1_Python
+    </h1>
+  
+
+        
+        <a href="/2019/LeetCode1/" class="archive-article-date">
+  	<time datetime="2019-09-08T07:27:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>用python语言解答LeetCode的1题</p>
+<a id="more"></a>
+<h2 id="碎碎念（不用看！最后一句话和下一节开始才是重点-）"><a href="#碎碎念（不用看！最后一句话和下一节开始才是重点-）" class="headerlink" title="碎碎念（不用看！最后一句话和下一节开始才是重点~~~）"></a>碎碎念（不用看！最后一句话和下一节开始才是重点~~~）</h2><p>自己第一眼思路 ：</p>
+<p>顺序遍历咯，，，但是感觉很麻烦的亚子，</p>
+<p>换个思路：</p>
+<p>Step1.先把给定的数组进行排序，因为人家题目中只说了给定一个整数数组，没说是顺序排列好的数组。<br>Step2.来两个指针（是不是叫指针，我忘了，反正就是两个遍历数组的变量），一个放在开头，一个放在结尾，就把他俩叫start和end吧，.<br>Step3. 先考虑特殊情况，<br>nums[start]和target比较，如果nums[start]大于等于target，返回None；<br>nums[start]和target比较，如果nums[end]小于等于target，返回None。<br>想一想还有什么特殊情况没，，，没想到，后面有了再来加。<br>Step4，特殊情况处理完了就可以正常处理了。我们让start先别动，end先走，nums[end]大于target的话就一直end–，直到nums[end]小于等于target，若等于，则先判断nums[start]是否等于0，如果不等于，继续end–，然后判断sum = nums[end]+nums[start]<br>if sum == target:<br>     return start, end<br>elif sum &gt; target:<br>    end -= 1<br>else :<br>    start += 1</p>
+<p>这样好像解不出来，，，因为举个栗子：<br>nums = [2,3,5,8,9,11],target = 6<br>应该返回none，但是上述思路里面没有提到这种情况，智商有限，，，打算去看大神们的思路了。。。</p>
+<p>市面上的思路有两种，第一种是暴力破解法，第二种是哈希表处理</p>
+<h2 id="方法一：暴力破解法"><a href="#方法一：暴力破解法" class="headerlink" title="方法一：暴力破解法"></a>方法一：暴力破解法</h2><p>思路简单粗暴，进行两次for循环遍历数组，查找出符合要求的元素。</p>
+<p>有两点需要注意，其实是我这个小白踩得坑。</p>
+<p>第一点，i是从0开始的，而j是从i+1开始的，因为题目中明确规定了 你不能重复利用这个数组中同样的元素。</p>
+<p>如果j也是从0开始，那么试想一下，如果nums=[2,3,3,5,6],target=4的情况，返回值会是[0,0],而题目已经表明不接受这种答案，如果j是从i+1开始，那么这个例子的返回值会是None</p>
+<p>第二点，我在if后面又跟了一个else：return None，然后测试的时候发现所有的例子返回值都是None。一脸懵逼，，，，直到自己删了一下else试了一下，发现返回值正确了。这个原因，感觉不需要解释，如果有人不明白评论留言，我再加解释。。。</p>
+<p>方法一代码如下：</p>
+<pre><code class="python">
+    #coding:utf-8
+
+    class Solution():
+        def twoSum(self, nums, target):
+            &quot;&quot;&quot;
+
+            :param nums: List[int]
+            :param target: int
+            :return: List[int]
+            &quot;&quot;&quot;
+            length = len(nums)
+            for i in range(length):
+                for j in range(i + 1, length):
+                    if nums[i] + nums[j] == target:
+                        return i,j
+
+
+    if __name__ == &#39;__main__&#39;:
+        nums = [2, 11, 7, 8]
+        target = 4
+        test = Solution()
+        print(test.twoSum(nums, target))
+
+</code></pre>
+<p>方法一的运行结果如下</p>
+<p><img src="\photo\LeetCode1\LeetCode1_1.png" alt="avatar"></p>
+<p>暴力穷举法确实没毛病，但是嘞，超出时间限制啦，，，所以还是得学一种有技术含量的解法啦—哈希表处理</p>
+<h2 id="方法二：哈希表处理"><a href="#方法二：哈希表处理" class="headerlink" title="方法二：哈希表处理"></a>方法二：哈希表处理</h2><p>思路呢就是使用一个哈希表来存储已经访问过的整数（这里通过字典来模拟哈希表），从左往右依次遍历整个数组并用target减去当前遍历的数组元素，然后在哈希表中查找这个差值，如果找到这个差值，则直接返回它的下标以及当前遍历元素的下标 ，如果未找到就将这个数组元素存储到哈希表中，直到找出符合要求的两个元素，否则返回None。</p>
+<p>不知道解释清楚了木有，举个栗子吧.</p>
+<p>假设数组nums = [2, 11， 7， 15],target = 9</p>
+<p><img src="\photo\LeetCode1\LeetCode1_2.png" alt="avatar"></p>
+<p>Step1:一开始从左往右依次遍历整个数组，遍历到2的时候我们用9-2=7，也就是说，要查找的目标值是7，查找发现在哈希表中没有存储7这个元素，</p>
+<p><img src="\photo\LeetCode1\LeetCode1_3.png" alt="avatar"></p>
+<p>此时我们把2放到哈希表里面去，以及它的索引0也放到哈希表里面去</p>
+<p><img src="\photo\LeetCode1\LeetCode1_4.png" alt="avatar"></p>
+<p>Step2.然后再遍历，遍历到11的时候，用9 - 11 = -2，此时，目标值为-2，看-2在哈希表中是否可以查找到，发现哈希表中找不到该目标值，</p>
+<p><img src="\photo\LeetCode1\LeetCode1_5.png" alt="avatar"></p>
+<p>那么还是把当前遍历元素11以及其索引值1放入哈希表中。</p>
+<p><img src="\photo\LeetCode1\LeetCode1_6.png" alt="avatar"></p>
+<p>Step3.接着往右遍历，当遍历到7的时候，我们会发现9-7=2,2存在于哈希表中，所以此时，我们返回2的索引值0，同时返回当前遍历值7的索引值2，最终返回值为[0, 2],问题解决~~~</p>
+<p><img src="\photo\LeetCode1\LeetCode1_7.png" alt="avatar"></p>
+<p>方法二代码</p>
+<pre><code class="python">
+    #coding
+    # 该程序用哈希处理表解决LeetCode1两数之和问题。
+
+
+    class Solution():
+        def twoSum(self, nums, target):
+            &quot;&quot;&quot;
+
+            :param nums: List[int]
+            :param target: int
+            :return: List[int]
+            &quot;&quot;&quot;
+
+            dict = {}
+
+            length = len(nums)
+            for x in range(length):
+                complement = target - nums[x]
+                if complement in dict:
+                    return [dict[complement], x]
+                else:
+                    dict[nums[x]] = x
+
+
+    if __name__ == &#39;__main__&#39;:
+        nums = [3, 7, 5, 2, 8, 10]
+        target = 9
+        test = Solution()
+        print(test.twoSum(nums, target))
+
+</code></pre>
+<p>方法二的运行结果</p>
+<p><img src="\photo\LeetCode1\LeetCode1_8.png" alt="avatar"></p>
+<h2 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h2><p>1.<a href="https://www.bilibili.com/video/av51296602?from=search&amp;seid=6257983938624651018" target="_blank" rel="external">https://www.bilibili.com/video/av51296602?from=search&amp;seid=6257983938624651018</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN2/" class="archive-article-date">
-  	<time datetime="2019-08-12T09:26:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN2/">卷积神经网络（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN1/" class="archive-article-date">
-  	<time datetime="2019-08-02T17:14:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN1/">卷积神经网络（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/MLinA7/" class="archive-article-date">
-  	<time datetime="2019-04-15T14:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/MLinA7/">机器学习实战（七）_DecisionTree1</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Decision Tree</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/MLinA6/" class="archive-article-date">
-  	<time datetime="2019-04-13T10:06:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/MLinA6/">机器学习实战（六）_AdaBoost1</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">AdaBoost</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/MLinA5/" class="archive-article-date">
-  	<time datetime="2019-04-12T01:09:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/MLinA5/">机器学习实战（五）_SVM4</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/MLinA4/" class="archive-article-date">
-  	<time datetime="2019-04-09T06:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/MLinA4/">机器学习实战（四）_SVM3</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/MLinA3/" class="archive-article-date">
-  	<time datetime="2019-04-04T10:36:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/MLinA3/">机器学习实战（三）_SVM2</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/MLinA2/" class="archive-article-date">
-  	<time datetime="2019-04-04T08:12:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/MLinA2/">机器学习实战（二）_SVM1</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">支持向量机SVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/ResizeImageInPython/" class="archive-article-date">
-  	<time datetime="2018-12-15T13:47:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/ResizeImageInPython/">Python改变图片尺寸</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/MachineLearningInAction1/" class="archive-article-date">
-  	<time datetime="2018-12-13T08:39:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/MachineLearningInAction1/">机器学习实战（一）_机器学习基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -589,28 +340,127 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">机器学习实战</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/LeetCode1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/DL_CNN11/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">卷积神经网络（十一）---经典网络之LeNet</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2019/LeetCode1/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -871,8 +721,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
