@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN8\DL_CNN8_8.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN8\DL_CNN8_9.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN8\DL_CNN8_10.png">
-<meta property="og:updated_time" content="2019-09-03T03:16:02.743Z">
+<meta property="og:updated_time" content="2019-09-09T03:38:58.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络（八）---池化层">
 <meta name="twitter:description" content="本篇博客讲述如下内容：先举了一个池化层的例子来说明什么是池化层，随后讨论了池化层的必要性">
@@ -230,6 +230,7 @@ var _hmt = _hmt || [];
 <p>总结一下，池化的超级参数包括过滤器的大小f和步幅s,常用的参数值为f = 2, s = 2,应用频率非常高，其效果相当于高度和宽度缩减一半。也有使用f = 3, s = 2的情况。至于其它超级参数就要看你用的是最大池化还是平均池化了。你也可以根据自己意愿增加表示padding的其他超级参数，虽然很少这么用。最大池化时，往往很少用到超参数padding，当然也有例外的情况，后面会 讲到。大部分情况下，最大池化很少用padding。目前p最常用的值是0，即p = 0.最大池化的输入就是nH x nW x nC， 假设没有padding，则输出[(nH - f )/ s + 1] x [(nW - f )/ s + 1] x nC。输入通道与输出通道个数相同，因为我们对每个通道都做了池化。需要注意的一点是，池化过程中没有需要学习的参数。执行反向传播时，反向传播没有参数适用于最大池化。只有这些设置过的超参数，可能是手动设置的，也可能是通过交叉验证设置的。</p>
 <p><img src="\photo\DL_CNN8\DL_CNN8_10.png" alt="avatar"></p>
 <p>除了这些，池化的内容就全部讲完啦，最大池化只是计算神经网络某一层的静态属性，没有什么需要学习的，它只是个静态属性。<br>关于池化我们就讲到这儿，现在我们已经知道如何构建卷积层和池化层。下节课，我们会分析一个更加复杂的可以引进全连接层的卷积网络示例。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>吴恩达深度学习第四门课：卷积神经网络</p>
 
       
 

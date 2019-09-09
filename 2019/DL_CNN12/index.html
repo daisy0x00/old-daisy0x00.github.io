@@ -6,30 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>卷积神经网络（十）---为什么使用卷积 | daisy&#39;s space</title>
+  <title>卷积神经网络（十二）---经典网络之AlexNet | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
-	<meta name="keywords" content="卷积神经网络， CNN, 卷积神经网络的优点,">
+	<meta name="keywords" content="卷积神经网络， CNN, AlexNet网络,">
 
 	
   
-  <meta name="description" content="本篇博客我们来分析一下卷积在神经网络中为何如此受用，然后对如何整合这些卷积，如何通过一个标注过的训练集训练卷积神经网络做个简单概况，和只用全连接层相比，卷积层的两个主要优势在于参数共享和稀疏连接。">
+  <meta name="description" content="本篇博客将介绍经典的网络结构—AlexNet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="卷积神经网络（十）---为什么使用卷积">
-<meta property="og:url" content="http://daisy0x00.github.io/2019/DL_CNN10/index.html">
+<meta property="og:title" content="卷积神经网络（十二）---经典网络之AlexNet">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/DL_CNN12/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="本篇博客我们来分析一下卷积在神经网络中为何如此受用，然后对如何整合这些卷积，如何通过一个标注过的训练集训练卷积神经网络做个简单概况，和只用全连接层相比，卷积层的两个主要优势在于参数共享和稀疏连接。">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN10\DL_CNN10_1.png">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN10\DL_CNN10_2.png">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN10\DL_CNN10_3.png">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN10\DL_CNN10_4.png">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN10\DL_CNN10_5.png">
-<meta property="og:updated_time" content="2019-09-09T03:39:16.501Z">
+<meta property="og:description" content="本篇博客将介绍经典的网络结构—AlexNet">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN12\DL_CNN12_1.png">
+<meta property="og:updated_time" content="2019-09-09T07:18:44.718Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="卷积神经网络（十）---为什么使用卷积">
-<meta name="twitter:description" content="本篇博客我们来分析一下卷积在神经网络中为何如此受用，然后对如何整合这些卷积，如何通过一个标注过的训练集训练卷积神经网络做个简单概况，和只用全连接层相比，卷积层的两个主要优势在于参数共享和稀疏连接。">
-<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\DL_CNN10\DL_CNN10_1.png">
+<meta name="twitter:title" content="卷积神经网络（十二）---经典网络之AlexNet">
+<meta name="twitter:description" content="本篇博客将介绍经典的网络结构—AlexNet">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\DL_CNN12\DL_CNN12_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -176,20 +172,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-DL_CNN10" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-DL_CNN12" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      卷积神经网络（十）---为什么使用卷积
+      卷积神经网络（十二）---经典网络之AlexNet
     </h1>
   
 
         
-        <a href="/2019/DL_CNN10/" class="archive-article-date">
-  	<time datetime="2019-09-05T04:15:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
+        <a href="/2019/DL_CNN12/" class="archive-article-date">
+  	<time datetime="2019-09-09T03:57:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
 </a>
         
       </header>
@@ -197,29 +193,23 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <p>本篇博客我们来分析一下卷积在神经网络中为何如此受用，然后对如何整合这些卷积，如何通过一个标注过的训练集训练卷积神经网络做个简单概况，和只用全连接层相比，卷积层的两个主要优势在于参数共享和稀疏连接。</p>
+        <p>本篇博客将介绍经典的网络结构—AlexNet</p>
 <a id="more"></a>
-<p>假设有一张32x32x3维度的图片，这是上一篇博客的示例，假设用了6个大小为5x5的过滤器，输出维度为28x28x6。32x32x3 = 3072， 28x28x6 = 4704.</p>
-<p><img src="\photo\DL_CNN10\DL_CNN10_1.png" alt="avatar"></p>
-<p>我们构建一个神经网络，其中一层含有3072个单元，下一层含有4074个单元，两层中的每个神经元彼此相连，然后计算权重矩阵，它等于4074 x 3072约等于1400万，所以要训练的参数很多。虽然以现在的技术，我们可以用1400多万个参数来训练网络，因为这张32x32x3的图片非常小，训练这么多参数没有问题。如果这是一张1000x1000的图片，权重矩阵会变得非常大。</p>
-<p>我们看看这个卷积层的参数数量，每个过滤器都是5x5，一个过滤器有25个参数，再加上偏差参数，那么每个过滤器就有26个参数，一共有6个过滤器，所以参数共计156个，参数数量还是很少。</p>
-<p>卷积网络映射这么少参数有两个原因：<br>一是参数共享 。观察发现，特征检测如垂直边缘检测如果适用于图片的某个区域，那么它也可能适用于图片的其他区域。也就是说，如果你用一个3x3的过滤器检测垂直边缘，那么图片的左上角区域，以及旁边的各个区域（左边矩阵中蓝色方框标记的部分 ）都可以使用这个3x3的过滤器。每个特征检测器以及输出都可以在输入图片的不同区域中使用同样的参数，以便提取垂直边缘或其他特征。它不仅适用于边缘特征这样的低阶特征，同样适用于高阶特征，例如提取脸上的眼睛，猫或者其他特征对象 。即使减少参数个数，这9个参数同样能计算出16个输出。</p>
-<p><img src="\photo\DL_CNN10\DL_CNN10_2.png" alt="avatar"></p>
-<p>直观感觉是， 一个特征检测器，如垂直边缘检测器用于检测图片左上角区域的特征，这个特征很可能也适用于图片的右下角区域。因此计算图片左上角和右下角区域时，你不需要添加其他特征检测器。假如有一个这样的数据集 ，其左上角和右下角可能有不同分布，也有可能稍有不同，但很相似，整张图片共享特征检测器，提取效果也很好。</p>
-<p>第二个方法是使用稀疏连接，我来解释下。这个0是通过3x3的卷积计算得到的，它只依赖于这个3x3的输入的单元格，右边这个输出单元（元素0）仅与36个输入特征中9个相连接，而其他像素值都不会对输出产生任何影响，这就是稀疏连接 的概念。</p>
-<p><img src="\photo\DL_CNN10\DL_CNN10_3.png" alt="avatar"></p>
-<p>再举个栗子，这个输出（右边矩阵中红色标记的元素30）仅仅依赖于这9个特征（左边矩阵红色方框标记 的区域），看上去只有这9个输入特征与输出相连接，其他像素对输出没有任何影响 。</p>
-<p>神经网络可以通过 这两种机制 减少参数，以便我们用更小的训练集来训练它，从而预防过度拟合。</p>
-<p>你们可能听说过，卷积神经网络善于捕捉平移不变。</p>
-<p>通过观察可以发现，向右移动两个像素，图片中的猫依然清晰可见，因为神经网络的卷积结构使得即使移动几个像素，这张图片依然具有非常相似的特征，应该属于同样的 输出标记。实际上，我们用同一个过滤器生成各层中，图片的所有像素值，希望网络通过自动学习变得更加健壮，以便更好地取得所期望的平移不变属性。</p>
-<p>这就是卷积或卷积网络在计算机视觉任务中表现良好的原因。</p>
-<p><img src="\photo\DL_CNN10\DL_CNN10_4.png" alt="avatar"></p>
-<p>最后，我们把这些层整合起来，看看如何训练这些网络。比如我们要构建一个猫咪检测器，我们有下面这个标记训练集，x表示一张图片，yhat是二进制标记或者某个重要标记，我们选定了一个卷积神经网络，输入图片，增加卷积层和池化层，然后添加全连接层，最后输出一个softmax，即yhat。卷积层和全连接层有不同的参数 w和偏差b，我们可以用任何参数集合 来定义代价函数。一个类似于我们之前讲过的那种代价函数，并随机初始化其参数 w和b，代价函数J等于神经网络对整个训练集的预测的损失总和再除以m。即：</p>
-<p><img src="\photo\DL_CNN10\DL_CNN10_5.png" alt="avatar"></p>
-<p>所以训练神经网络，你要做的就是使用梯度下降法，或其他算法，例如Momentum梯度下降法，含RMSProp或者其他因子的梯度下降来优化神经网络中所有参数 ，以减少代价函数J的值。通过上述操作你可以构建一个高效的猫咪检测器或者其他检测器。</p>
-<p>卷积神经网络（一）到卷积神经网络 （十）系列<br>到目前为止我们已经学习了卷积神经网络的所有基本构造模型，以及如何在高效图片识别系统中整合这些模型 。通过编程练习，会更加具体了解这些概念，试着整合这些构造模型，并用它们解决自己的问题。</p>
-<p>后期，我们将继续深入学习卷积神经网络，我曾提到卷积神经网络中有很多超参数，后面的博客中，我打算具体展示一些最有效的卷积神经网络示例，你也可以尝试去判断哪些网络架构类型效率更高。人们通常的做法是将别人发现和发表在研究报告上的架构应用于自己的应用程序。</p>
-<p>此外，我们也会深入分析卷积神经网络如此高效的原因，同时讲解一些新的计算机视觉应用程序，例如，对象检测 和神经风格迁移以及如何利用这些算法创造新的艺术品形式 。</p>
+<p>神经网络AlexNet，是以论文的第一作者Alex Krizhevsky的名字命名的，另外两位合著者是Ilya Sutskever和Geoffery Hinton。</p>
+<p><img src="\photo\DL_CNN12\DL_CNN12_1.png" alt="avatar"></p>
+<p>AlexNet首先用一张227x227x3的图片作为输入，实际上原文中使用的图像是224x224x3，但是如果你尝试去推导一下，你会发现227x227这个尺寸更好一些。<br>第一层我们使用96个11x11的过滤器，步幅为4，由于步幅是4，因此尺寸缩小到55x55，缩小了4倍左右。</p>
+<p>然后用一个3x3的过滤器构建最大池化层，f=3，步幅s为2，卷积层尺寸缩小为27x27x96。</p>
+<p>接着再执行一个5x5的卷积，padding之后，输出是27x27x276。</p>
+<p>然后再次进行最大池化，尺寸缩小到13x13。</p>
+<p>再执行一次same卷积，padding = same，得到的结果是13x13x384，384个过滤器。</p>
+<p>再做一次same卷积，就像这样，再做一次同样的操作，最后进行一次最大池化，尺寸缩小到6x6x256。6x6x256等于9216，将其展开为9216个单元，然后是一些全连接层。最后使用softmax函数输出识别的结果，看它究竟是1000个可能的对象中的哪一个。</p>
+<p>实际上，这种神经网络与LeNet有很多相似之处，不过AlexNet要大得多。正如前面讲到的LeNet或LeNet-5大约有6万个参数，而AlexNet包含约6000万个参数。当用与训练图像和数据集时，AlexNet能够处理非常相似的基本构造模块，这些模块往往包含着大量的隐藏单元或数据，这一点AlexNet表现出色。AlexNet比LeNet表现更为出色的另一个原因是它使用了ReLu激活函数。</p>
+<p>同样的，我还会讲一些比较深奥的内容，如果你并不打算阅读论文，不听也没有关系。<br>第一点，在写这篇论文的时候，GPU的处理速度还比较慢，所以AlexNet采用了非常复杂的方法在两个GPU上进行训练。大致原理是，这些层分别拆分到两个不同的GPU上，同时还专门有一个方法用于两个GPU进行交流。</p>
+<p>论文还提到，经典的AlexNet结果还有另一种类型的层，叫做“局部响应归一化”（Local Response Normalization），即LRN层，这类层应用得并不多，所以没有专门讲。</p>
+<p>局部响应归一层的基本思路是，假如这是网络的一块，比如是13x13x256，LRN要做的就是选取一个位置，比如说这样一个位置，从这个位置穿过整个通道，能得到256个数字，并进行归一化。</p>
+<p>进行局部响应归一化的动机是，对于这张13x13的图像中的每个位置来说，我们可能并不需要太多的高激活神经元。但是后来，很多研究者发现LRN起不到太大作用，这应该是被我划掉的内容之一，因为并不重要，而且我们现在并不用LRN来训练网络。</p>
+<p>如果你对深度学习的历史感兴趣的话，我认为在AlexNet之前，深度学习已经在语言识别和其它几个领域获得了一些关注，但正是通过这篇论文，计算机视觉群体开始重视深度学习，并确信深度学习可以应用于计算机视觉领域。此后，深度学习在计算机视觉及其他领域的影响力与日俱增。</p>
+<p>AlexNet网络结构看起来相对复杂，包含大量超参数，这些数字（55x55x96、 27x27x96、27x27x256……）都是Alex Krizhevsky及其合著者不得不给出的。</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>吴恩达深度学习第四门课：卷积神经网络</p>
 
       
@@ -325,7 +315,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/DL_CNN10/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/DL_CNN12/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -339,18 +329,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/DL_CNN11/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          卷积神经网络（十一）---经典网络之LeNet
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/DL_CNN9/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">卷积神经网络（九）---卷积神经网络示例</div>
+    <a href="/2019/LeetCode1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode1_Python</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -389,7 +370,7 @@ var _hmt = _hmt || [];
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://daisy0x00.github.io/2019/DL_CNN10/",
+  id: "http://daisy0x00.github.io/2019/DL_CNN12/",
   owner: 'daisy0x00',
   repo: 'daisy0x00.github.io',
   oauth: {

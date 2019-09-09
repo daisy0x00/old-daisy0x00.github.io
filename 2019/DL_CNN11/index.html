@@ -22,7 +22,7 @@
 <meta property="og:description" content="本篇博客将介绍经典的网络结构—LeNet5">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN11\DL_CNN11_1.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN11\DL_CNN11_2.png">
-<meta property="og:updated_time" content="2019-09-07T13:45:53.524Z">
+<meta property="og:updated_time" content="2019-09-09T07:01:08.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积神经网络（十一）---经典网络之LeNet">
 <meta name="twitter:description" content="本篇博客将介绍经典的网络结构—LeNet5">
@@ -208,6 +208,8 @@ var _hmt = _hmt || [];
 <p>读到这篇经典论文时，你会发现，过去，人们使用sigmoid函数和tanh函数，而不是ReLU函数，这篇论文中使用的正是sigmoid函数和tanh函数。这种网络结构的特别之处还在于，各网络层之间是有关联的，这在今天看来显得很有趣。</p>
 <p>比如说，你有一个nH xnW xnC的网络，有nC个通道，使用尺寸为fxfxnC的过滤器，每个过滤器的通道数和它上一层的通道数相同。这是由于在当时，计算机的运行速度非常慢，为了减少计算量和参数，经典的LeNet-5网络使用了非常复杂 的计算方式，每个过滤器都采用和输入模块一样的通道数量。论文中提到的这些复杂细节，现在一般都不用了。</p>
 <p>我认为当时所进行的最后一步其实到现在也还没有真正完成，就是经典的LeNet-5网络在池化后进行了非线性函数处理，在这个例子中，池化层之后使用了sigmoid函数。如果你真的去 读这篇论文，这会是最难理解的部分之一，我们会在后面讲到。</p>
+<p>图片的大部分内容来自于论文的第二段和第三段，论文的后几段介绍了一种思路。文中提到的这种图像变形网络如今并没有得到广泛应用，所以在读这篇论文的时候，我建议精读第二段，这段重点介绍了这种网络结构。泛读第三段，这里面主要是一些有趣的实验结果。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>吴恩达深度学习第四门课：卷积神经网络</p>
 
       
 
