@@ -6,20 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Archives: 2019/9 | daisy&#39;s space</title>
+  <title>卷积神经网络（十三）---经典网络之VGG-16 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="卷积神经网络， CNN, VGG-16网络,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/archives/2019/09/index.html">
+  <meta name="description" content="本篇博客将介绍经典的网络结构—VGG-16网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="卷积神经网络（十三）---经典网络之VGG-16">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/DL_CNN13/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本篇博客将介绍经典的网络结构—VGG-16网络">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN13\DL_CNN13_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN13\DL_CNN13_2.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN13\DL_CNN13_3.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN13\DL_CNN13_4.png">
+<meta property="og:updated_time" content="2019-09-11T13:58:51.084Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="卷积神经网络（十三）---经典网络之VGG-16">
+<meta name="twitter:description" content="本篇博客将介绍经典的网络结构—VGG-16网络">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\DL_CNN13\DL_CNN13_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,36 +175,83 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-DL_CNN13" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      卷积神经网络（十三）---经典网络之VGG-16
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN13/" class="archive-article-date">
+
+        
+        <a href="/2019/DL_CNN13/" class="archive-article-date">
   	<time datetime="2019-09-11T13:54:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN13/">卷积神经网络（十三）---经典网络之VGG-16</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>本篇博客将介绍经典的网络结构—VGG-16网络</p>
+<a id="more"></a>
+<p>本篇博客讲述的是VGG,也叫做VGG-16网络。值得注意的一点是VGG-16网络没有那么多超参数，这是一种只需要专注于构建卷积层的简单网络。首先用3x3，步幅为1的过滤器构建卷积层，padding参数为same卷积中的参数。然后用一个2x2，步幅为2的过滤器构建最大池化层。因此VGG网络的一大优点是它确实简化了神经网络结构，下面我们具体讲讲这种网络结构。</p>
+<p><img src="\photo\DL_CNN13\DL_CNN13_1.png" alt="avatar"></p>
+<p>假设要识别这个图像，在最开始的两层用64个3x3的过滤器对输入图像进行卷积，输出结果是224x224x64，因为使用了same卷积，通道数量也一样。</p>
+<p><img src="\photo\DL_CNN13\DL_CNN13_2.png" alt="avatar"></p>
+<p>VGG-16其实是一个很深的网络，这里并没有把所有卷积层都画出来。</p>
+<p>假设这个小图是我们的输入图像，尺寸是224x224x3，进行第一个卷积之后得到224x224x64的特征图，接着还有一层224x224x64，得到这样2个厚度为64的卷积层，意味着我们用64个过滤器进行两次卷积。</p>
+<p><img src="\photo\DL_CNN13\DL_CNN13_3.png" alt="avatar"></p>
+<p>正如前面提到的，这里采用的都是大小为3x3，步幅为1的过滤器，并且都是采用same卷积，所以这里就不再把所有的层都画出来了，只用一串数字代表这些网络。</p>
+<p>接下来创建一个池化层，池化层将输入图像进行压缩，从224x224x64缩小到112x112x64。然后又是若干个卷积层，使用128个过滤器，以及一些same卷积，我们看看输出什么结果，112x112x128。然后进行池化，可以推导出池化后的结果是这样（56x56x128）。</p>
+<p>接着再用256个相同的过滤器进行三次卷积操作，然后再池化，然后再卷积三次，再池化。如此进行几轮操作后，将最后得到的7x7x512的特征图进行全连接操作，得到4096个单元，然后进行softmax激活，输出从1000个对象中识别的结果。</p>
+<p>顺便说一下，VGG-16的这个数字16，是指在这个网络中包含13个卷积层和3个全连接层，这16层具有权重系数，又被称为权重层，这就是VGG-16中16的来源（网络中也有5个池化层，但是池化层不涉及权重，因此不属于权重层，故不被计数。）。VGG-16确实是个很大的网络，总共包含约1.38亿个参数，即便以现在的标准来看都算是非常大的网络。但VGG-16的结构并不复杂，这点非常吸引人，而且这种网络结构很规整，都是几个卷积层后面跟着可以压缩图像大小的池化层，池化层缩小图像的高度和宽度。同时，卷积层的过滤器数量变化存在一定的规律，由64翻倍变成128，再到256和512。作者可能认为512已经足够大了，所以后面的层就不再翻倍了。无论如何，每一步都进行翻倍，或者说在每一组卷积层进行过滤器翻倍操作，正是设计此种网络结构的另一个简单原则。这种相对一致的网络结构对研究者很有吸引力，而它的主要缺点是需要训练的特征数量非常巨大。</p>
+<p><img src="\photo\DL_CNN13\DL_CNN13_4.png" alt="avatar"></p>
+<p>有些文章还介绍了VGG-19网络，它甚至比VGG-16还要大，如果想了解更多细节的话，建议阅读有Karen Simonyan和Andrew Zisserman撰写的论文《Very deep convolutional networks for large-scale image recognition》。由于VGG-16的表现几乎和VGG-19不分高下，所以很多人还是会使用VGG-16。我最喜欢它的一点是文中揭示了，随着网络的加深，图像的高度和宽度都在以一定的规律不断缩小，每次池化后刚好缩小一半，而通道数量在不断增加，而且刚好也是在每组卷积操作后增加一倍。也就是说，图像缩小的比例和通道数增加的比例是有规律的。从这个角度来看，这篇论文很吸引人。</p>
+<p>至此，三种经典的网络结构就介绍完了，如果想看论文的话，建议从AlexNet的论文开始，然后就是VGG的论文，最后是LeNet的论文。虽然有些晦涩难懂，但是对于了解这些网络结构很有帮助。</p>
+<p>学完这些经典的网络之后，后面我们会学习一下更高级更强大的神经网络，下一篇博客见~~~</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -211,313 +267,122 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/DL_CNN13/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN12/" class="archive-article-date">
-  	<time datetime="2019-09-09T03:57:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/DL_CNN12/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">卷积神经网络（十二）---经典网络之AlexNet</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN12/">卷积神经网络（十二）---经典网络之AlexNet</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/LeetCode1/" class="archive-article-date">
-  	<time datetime="2019-09-08T07:27:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/LeetCode1/">LeetCode1_Python</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN11/" class="archive-article-date">
-  	<time datetime="2019-09-07T13:33:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN11/">卷积神经网络（十一）---经典网络之LeNet</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN10/" class="archive-article-date">
-  	<time datetime="2019-09-05T04:15:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-        </div>
-    	 
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2019/DL_CNN13/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN10/">卷积神经网络（十）---为什么使用卷积</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN9/" class="archive-article-date">
-  	<time datetime="2019-09-04T01:56:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN9/">卷积神经网络（九）---卷积神经网络示例</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN8/" class="archive-article-date">
-  	<time datetime="2019-09-03T03:01:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN8/">卷积神经网络（八）---池化层</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN7/" class="archive-article-date">
-  	<time datetime="2019-09-02T10:15:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN7/">卷积神经网络（七）---构建一个简单的深度卷积神经网络</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -777,8 +642,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
