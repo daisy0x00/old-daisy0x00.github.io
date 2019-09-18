@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode2\LeetCode2_6.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode2\LeetCode2_7.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode2\LeetCode2_8.png">
-<meta property="og:updated_time" content="2019-09-18T03:49:58.815Z">
+<meta property="og:updated_time" content="2019-09-18T03:55:01.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode2_Python3">
 <meta name="twitter:description" content="用python语言解答LeetCode的2题">
@@ -255,18 +255,18 @@ var _hmt = _hmt || [];
 <p>问过大佬之后，来解释一下。</p>
 <p>要将数字转换为链表，必然会创建链表结点，l3.next = ListNode(num % 10)是用来创建链表结点的。</p>
 <p>准确的来说这一行有三个作用:</p>
-<ul>
-<li>1.创建链表结点</li>
-<li>2.给新结点的val属性赋值</li>
-<li>3.将新结点链接到当前结点上  </li>
-</ul>
+<ol>
+<li>创建链表结点</li>
+<li>给新结点的val属性赋值</li>
+<li>将新结点链接到当前结点上  </li>
+</ol>
 <p>将数字转换为链表的过程：</p>
-<ul>
-<li>1.创建链表结点</li>
-<li>2.给新结点的val属性赋值</li>
-<li>3.将新结点链接到当前结点上</li>
-<li>4.移动当前结点指针，指向新结点</li>
-</ul>
+<ol>
+<li>创建链表结点</li>
+<li>给新结点的val属性赋值</li>
+<li>将新结点链接到当前结点上</li>
+<li>移动当前结点指针，指向新结点</li>
+</ol>
 <p>注2：</p>
 <p>这个方法有一个弊端就是没有考虑到int溢出情况，只不过测试用例没有给出这个边界值情况，所以可以通过。</p>
 <h2 id="方法二：初等数学法"><a href="#方法二：初等数学法" class="headerlink" title="方法二：初等数学法"></a>方法二：初等数学法</h2><p>这个是在官方解答里找到的，也是网上最多的解法，这个方法可以解决方法一的不足之处。下面来看一下思路吧~~~</p>
