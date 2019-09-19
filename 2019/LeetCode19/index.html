@@ -6,20 +6,54 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Archives | daisy&#39;s space</title>
+  <title>LeetCode19_Python3 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="python面试题，LeetCode，删除链表的倒数第N个节点,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/archives/index.html">
+  <meta name="description" content="用python语言解答LeetCode的19题
+这道题目前有六种方法解法，本文目前只重点解析了常用的两种方法（方法二和方法三），后面会根据学习进度补齐其他解法的详细分析。
+
+方法一：将链表转列表处理，之后再转链表输出
+方法二：扫描两次，第一次获得链表长度，第二次执行删除操作
+方法三：快慢指针法
+方法四：遍历一遍链表，用字典辅助进行删除操作
+方法五：利用堆栈，但是会用到负数索引，故不算是遍历一次链表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode19_Python3">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/LeetCode19/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="用python语言解答LeetCode的19题
+这道题目前有六种方法解法，本文目前只重点解析了常用的两种方法（方法二和方法三），后面会根据学习进度补齐其他解法的详细分析。
+
+方法一：将链表转列表处理，之后再转链表输出
+方法二：扫描两次，第一次获得链表长度，第二次执行删除操作
+方法三：快慢指针法
+方法四：遍历一遍链表，用字典辅助进行删除操作
+方法五：利用堆栈，但是会用到负数索引，故不算是遍历一次链表">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode19\LeetCode19_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode19\LeetCode19_2.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode19\LeetCode19_3.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode19\LeetCode19_4.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode19\LeetCode19_5.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode19\LeetCode19_6.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode19\LeetCode19_7.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode19\LeetCode19_8.png">
+<meta property="og:updated_time" content="2019-09-19T03:57:59.642Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="LeetCode19_Python3">
+<meta name="twitter:description" content="用python语言解答LeetCode的19题
+这道题目前有六种方法解法，本文目前只重点解析了常用的两种方法（方法二和方法三），后面会根据学习进度补齐其他解法的详细分析。
+
+方法一：将链表转列表处理，之后再转链表输出
+方法二：扫描两次，第一次获得链表长度，第二次执行删除操作
+方法三：快慢指针法
+方法四：遍历一遍链表，用字典辅助进行删除操作
+方法五：利用堆栈，但是会用到负数索引，故不算是遍历一次链表">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\LeetCode19\LeetCode19_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,36 +200,239 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-LeetCode19" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      LeetCode19_Python3
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/LeetCode19/" class="archive-article-date">
+
+        
+        <a href="/2019/LeetCode19/" class="archive-article-date">
   	<time datetime="2019-09-19T03:55:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/LeetCode19/">LeetCode19_Python3</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>用python语言解答LeetCode的19题</p>
+<p>这道题目前有六种方法解法，本文目前只重点解析了常用的两种方法（方法二和方法三），后面会根据学习进度补齐其他解法的详细分析。</p>
+<ul>
+<li>方法一：将链表转列表处理，之后再转链表输出</li>
+<li>方法二：扫描两次，第一次获得链表长度，第二次执行删除操作</li>
+<li>方法三：快慢指针法</li>
+<li>方法四：遍历一遍链表，用字典辅助进行删除操作</li>
+<li>方法五：利用堆栈，但是会用到负数索引，故不算是遍历一次链表</li>
+<li>方法六：递归，目前还不知道怎么操作，有这个思路 ，后期会回来学习补上</li>
+</ul>
+<a id="more"></a>
+<h2 id="碎碎念（不用看！下一节开始才是重点-）："><a href="#碎碎念（不用看！下一节开始才是重点-）：" class="headerlink" title="碎碎念（不用看！下一节开始才是重点~~~）："></a>碎碎念（不用看！下一节开始才是重点~~~）：</h2><p>如果要是数组的话，那就好处理了，不过应该不会遇到这种考题。。。<br>链表能不能逆序遍历？关键是题目给的是倒数第N个节点至少需要遍历两遍吧。</p>
+<ul>
+<li>第一步，遍历链表，设置计数器记录链表的结点数，</li>
+<li>第二步，然后再怎么算出这个数的正序数，</li>
+<li>第三步，再次遍历链表，用计数器计数，找出要删除的这个数。</li>
+</ul>
+<p>思路就是这么个思路，代码不会写。。。</p>
+<h2 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h2><p>先将链表转list处理再转链表输出 </p>
+<h2 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h2><p>如果没有扫次数限制的话，就是我想到的那个思路，第一趟扫描获得链表长度L，然后删除从前往后的第L-N+1个节点。</p>
+<p>但是如果题目说了使用一趟扫描实现删除操作，那这个方法就不行啦~</p>
+<p>下面来具体谈谈这个方法。我们注意到这个问题可以容易地简化成另一个问题：删除从列表开头数起的第（L-N+1）个结点，其中L是链表的长度，只要我们找到链表的长度L，这个问题就很容易解决。</p>
+<p>算法思路：</p>
+<p>首先我们添加一个哑结点作为辅助，该结点位于链表头部。哑结点用来简化某些极端情况，例如链表中只含有一个节点，或需要删除链表的头部。在第一次遍历中，我们找出链表的长度L。然后设置一个指向哑结点的指针，并移动它遍历链表，直至它到达第（L-N）个结点那里。我们把第（L-N）个结点的next指针重新链接至第（L-N+2）个结点。完成这个算法。</p>
+<p>上述算法的过程如图所示：</p>
+<p><img src="\photo\LeetCode19\LeetCode19_1.png" alt="avatar"></p>
+<p>方法二的代码：</p>
+<pre><code class="python">
+    # Definition for singly-linked list.
+    # class ListNode:
+    #     def __init__(self, x):
+    #         self.val = x
+    #         self.next = None
 
-        <div class="article-info info-on-right">
-          
+    class Solution:
+        def __init__(self):
+            self.head = ListNode(0)
+        def removeNthFromEnd(self, head: ListNode, n: int) -&gt; ListNode:
+            p = self.head
+            p.next = head
+            length = 0
+            while p:
+                p = p.next
+                length += 1
+
+            p = self.head
+            target = 0
+            while True:
+                if target == length - n - 1:
+                    p.next = p.next.next
+                    return self.head.next
+                p = p.next
+                target += 1
+</code></pre>
+<p>方法二的运行结果：</p>
+<p><img src="\photo\LeetCode19\LeetCode19_2.png" alt="avatar"></p>
+<h2 id="方法三：快慢指针法"><a href="#方法三：快慢指针法" class="headerlink" title="方法三：快慢指针法"></a>方法三：快慢指针法</h2><p>典型的利用双指针法解题。<br>首先让指针first指向头结点，然后让其向后移动n步，接着让指针sec指向头结点，并和first一起向后移动。</p>
+<p>当first的next指针为NULL时，sec即指向了要删除节点的前一个节点，接着让first指向的next指针指向要删除节点的下一个结点即可。</p>
+<p>注意如果要删除的结点是首节点，那么first向后移动结束时会 为NULL，这样加一个判断其是否为NULL的条件，若为NULL则返回 头结点的next指针。</p>
+<p>其实这个方法又叫快慢指针法，first指针是快指针，sec为慢指针，快指针先走N步，然后快慢指针一起走，当快指针指向链表尾部的最后一个元素时，慢指针指向元素的下一个元素就是需要删除的那个元素。</p>
+<p>为啥要这么操作嘞，因为倒数第N个节点，与最后一个节点的间隔是固定的（N-1）。所以这里先将快指针和慢指针同时指向头结点，然后快指针移动N步，使得两个指针的间隔为N-1.之后两个指针同步后移，当快指针直到最后的时候，慢指针则指向了要删除节点的前一个节点 ，此时该指针只需要跳过这个结点即可完成删除操作。</p>
+<p>再换一种解释，假设链表长度为L，定义一个指针先走N步，此时该指针还剩下L-N个节点即可完成该链表的遍历。而第L-N个节点就是题目要求的要删除的倒数第N个节点，此时只需要再定义一个指针，让它与之前的指针同时遍历，当第一个指针遇到空节点时（NULL节点)，该指针即指向删除的结点。</p>
+<p>值得注意的是，指向应当删除的结点并无法删除它，故应该指向该删除节点的前一个节点。</p>
+<p>伪代码：</p>
+<ul>
+<li>定义一个快指针first，一个慢指针second，并将这两个指针都指向头结点</li>
+<li>快指针先走N步</li>
+<li>判断快指针的下一个指针是否指向空指针，若指向空指针，这说明倒数第N个元素是正向数的第一个节点 ，返回第一个结点的下一个结点即可执行删除第一个节点的操作（题目说了给定的n是保证有效的，所以不用多做考虑）</li>
+<li>此时快指针和慢指针同步向后移动，直到快指针指向最后一个节点<br>将慢指针</li>
+</ul>
+<p>下面演示了该解法的操作过程 ：</p>
+<p><img src="\photo\LeetCode19\LeetCode19_3.png" alt="avatar"><br><img src="\photo\LeetCode19\LeetCode19_4.png" alt="avatar"><br><img src="\photo\LeetCode19\LeetCode19_5.png" alt="avatar"></p>
+<p>方法三（快慢指针法）的代码：</p>
+<pre><code class="python">
+    #coding:utf-8
+
+    # 用快慢指针法解决删除链表中倒数第N个元素的问题
+    class ListNode():
+        def __init__(self, x):
+            self.val = x
+            self.next = None
+    class Solution():
+        def removeNthFromEnd(self, head, n):
+            &quot;&quot;&quot;
+
+            :param head: ListNode
+            :param n: int
+            :return: ListNode
+            &quot;&quot;&quot;
+            # 设置两个指针，均指向头结点
+            first = second = head
+            # 快指针先移动N步
+            for _ in range(n):
+                first = first.next
+            # 当极端情况下，即first指向了最后一个节点，且要删除的是第一个节点（倒数第N个）
+            if not first:
+                return head.next
+            # 将两个指针同步移动
+            # 直到first指向了最后一个节点（两个指针始终保持相同的间隔N-1）
+            while first.next:
+                first = first.next
+                second = second.next
+            second.next = second.next.next
+            return head
+</code></pre>
+<p>方法三（快慢指针法）的运行结果：</p>
+<p><img src="\photo\LeetCode19\LeetCode19_6.png" alt="avatar"></p>
+<h2 id="方法四（一个博客里的思路）："><a href="#方法四（一个博客里的思路）：" class="headerlink" title="方法四（一个博客里的思路）："></a>方法四（一个博客里的思路）：</h2><p>遍历一遍链表，用一个字典，记录每一步的结点，当遍历完成以后就知道倒数第N个元素的位置，然后可以在字典中找出来，删除该元素，将字典转换成链表返回，这样空间复杂度会变高</p>
+<p>其实本质上和方法一是一样的，只不过方法一是将链表转换为列表，而这个方法是将 链表转换成字典。</p>
+<p>方法四的代码：</p>
+<pre><code class="python">
+    # Definition for singly-linked list.
+    # class ListNode:
+    #     def __init__(self, x):
+    #         self.val = x
+    #         self.next = None
+
+    class Solution:
+        def removeNthFromEnd(self, head: ListNode, n: int) -&gt; ListNode:
+            c_dict = {}
+            r = head
+            index = 0
+            while True:
+                index += 1
+                c_dict[index] = r
+                if r.next is not None:
+                    r = r.next
+                else:
+                    break
+            if n == 1:
+                if index == 1:
+                    return None
+                else:
+                    c_dict[index - 1].next = None
+                    return head
+            elif n == index:
+                return head.next
+            else:
+                c_dict[index - n].next = c_dict[index - n + 2]
+                return head
+</code></pre>
+<p>方法四的运行结果：</p>
+<p><img src="\photo\LeetCode19\LeetCode19_7.png" alt="avatar"></p>
+<h2 id="方法五（LeetCode评论区里的思路）："><a href="#方法五（LeetCode评论区里的思路）：" class="headerlink" title="方法五（LeetCode评论区里的思路）："></a>方法五（LeetCode评论区里的思路）：</h2><p>利用堆栈，将所有节点从头按顺序入栈，这个时候stack[-n]就是我们要删除的那个节点，stack[-n-1]是删除节点的前置节点。因为用到了负数的index，故不算是在一次遍历完成了题目</p>
+<p>方法五的代码：</p>
+<pre><code class="python">
+    # Definition for singly-linked list.
+    # class ListNode:
+    #     def __init__(self, x):
+    #         self.val = x
+    #         self.next = None
+
+    class Solution:
+        def removeNthFromEnd(self, head: ListNode, n: int) -&gt; ListNode:
+            stack,node=[],head
+            while(node):
+                if node:
+                    stack.append(node)
+                    node=node.next
+            if stack[-n]==head:return head.next
+            prenode=stack[-n-1]
+            prenode.next=prenode.next.next
+            return head
+</code></pre>
+<p>方法五的运行结果：</p>
+<p><img src="\photo\LeetCode19\LeetCode19_8.png" alt="avatar"></p>
+<p>方法六（LeetCode评论区里的思路）：递归<br>先专攻链表，这个后序补上</p>
+<h2 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h2><ol>
+<li>方法四的思路来源<br><a href="https://www.jianshu.com/p/5182faaf528a" target="_blank" rel="external">https://www.jianshu.com/p/5182faaf528a</a></li>
+<li>快慢指针法解题思路解析（一）<br><a href="http://www.imooc.com/article/289754" target="_blank" rel="external">http://www.imooc.com/article/289754</a></li>
+<li>快慢指针法解题思路分析（二）<br><a href="https://yq.aliyun.com/articles/622771" target="_blank" rel="external">https://yq.aliyun.com/articles/622771</a></li>
+<li>方法五和方法六的思路来源<br><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/comments/" target="_blank" rel="external">https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/comments/</a></li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -211,400 +448,121 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/LeetCode19/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/LeetCode2/" class="archive-article-date">
-  	<time datetime="2019-09-18T03:26:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/LeetCode2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode2_Python3</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/LeetCode2/">LeetCode2_Python3</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN14/" class="archive-article-date">
-  	<time datetime="2019-09-12T09:29:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN14/">卷积神经网络（十四）---经典网络之残差网络ResNets（上）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN13/" class="archive-article-date">
-  	<time datetime="2019-09-11T13:54:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN13/">卷积神经网络（十三）---经典网络之VGG-16</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN12/" class="archive-article-date">
-  	<time datetime="2019-09-09T03:57:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN12/">卷积神经网络（十二）---经典网络之AlexNet</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/LeetCode1/" class="archive-article-date">
-  	<time datetime="2019-09-08T07:27:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/LeetCode1/">LeetCode1_Python3</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN11/" class="archive-article-date">
-  	<time datetime="2019-09-07T13:33:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN11/">卷积神经网络（十一）---经典网络之LeNet</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN10/" class="archive-article-date">
-  	<time datetime="2019-09-05T04:15:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN10/">卷积神经网络（十）---为什么使用卷积</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN9/" class="archive-article-date">
-  	<time datetime="2019-09-04T01:56:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN9/">卷积神经网络（九）---卷积神经网络示例</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN8/" class="archive-article-date">
-  	<time datetime="2019-09-03T03:01:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN8/">卷积神经网络（八）---池化层</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2019/LeetCode19/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -865,8 +823,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
