@@ -6,20 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Archives: 2019/9 | daisy&#39;s space</title>
+  <title>卷积神经网络（十五）---经典网络之残差网络ResNets（下） | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="卷积神经网络， CNN, 残差网络，ResNet,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/archives/2019/09/page/2/index.html">
+  <meta name="description" content="本篇博客将介绍经典的网络结构—残差网络ResNets">
+<meta property="og:type" content="article">
+<meta property="og:title" content="卷积神经网络（十五）---经典网络之残差网络ResNets（下）">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/DL_CNN15/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本篇博客将介绍经典的网络结构—残差网络ResNets">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN15\DL_CNN15_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN15\DL_CNN15_2.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN15\DL_CNN15_3.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN15\DL_CNN15_4.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN15\DL_CNN15_5.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN15\DL_CNN15_6.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN15\DL_CNN15_7.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\DL_CNN15\DL_CNN15_8.png">
+<meta property="og:updated_time" content="2019-09-20T05:30:55.927Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="卷积神经网络（十五）---经典网络之残差网络ResNets（下）">
+<meta name="twitter:description" content="本篇博客将介绍经典的网络结构—残差网络ResNets">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\DL_CNN15\DL_CNN15_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,36 +179,90 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-DL_CNN15" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN8/" class="archive-article-date">
-  	<time datetime="2019-09-03T03:01:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN8/">卷积神经网络（八）---池化层</a>
+    <h1 class="article-title" itemprop="name">
+      卷积神经网络（十五）---经典网络之残差网络ResNets（下）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/DL_CNN15/" class="archive-article-date">
+  	<time datetime="2019-09-20T05:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>本篇博客将介绍经典的网络结构—残差网络ResNets</p>
+<a id="more"></a>
+<p>为什么残差网络能有如此好的表现呢？我们来看一个例子，它解释了其中的原因，至少可以说明，如何构建更深层次的ResNets网络的同时还不降低它们在训练集上的效率。</p>
+<p>通常来讲，网络在训练集上表现好，才能在Hold-Out交叉验证集或者Dev集和测试集上有好的表现。所以至少在训练集上训练好ResNets是第一步。</p>
+<p>先来看一个例子，上一篇博客中我们了解到，一个网络深度越深，它在训练集上训练的效率就会有所减弱，这也是有时候我们不希望加深网络的原因。而事实并非如此，至少在训练ResNets网络时，并非完全如此，举个栗子。</p>
+<p><img src="\photo\DL_CNN15\DL_CNN15_1.png" alt="avatar"></p>
+<p>假设有一个大型神经网络，其输入为X，输出激活值a[l]。假如你想增加这个神经网络的深度，那么用BigNN表示，输出为a[l]。再给这个网络额外添加两层，依次添加两层，最后输出为a[l+2]，可以把这两层看作一个ResNets块，即具有捷径连接的残差块。为了方便说明，假设我们在整个网络中使用ReLU激活函数，所以激活值都大于等于0，包括输入X的非零异常值。因为ReLU激活函数输出的数字要么是0，要么是整数。</p>
+<p><img src="\photo\DL_CNN15\DL_CNN15_2.png" alt="avatar"></p>
+<p>我们看一下a[l+2]的值，也就是上节课讲过的表达式，即a[l+2] = g(z[l+2] + a[l]),添加项a[l]是刚添加的跳跃连接的输入。展开这个表达式a[l+2] = g(W[l+2]a[l+1] + b[l+2] + a[l])，其中z[l+2] = W[l+2]a[l+1]+b[l+2]。注意一点，如果使用L2正则化或权重衰减，它会压缩W[l+2]的值。如果对b应用权重衰减也可达到同样的效果，尽管实际应用中，你有时会对b应用权重衰减，有时不会。这里的W是关键项，如果W[l+2] = 0,为了方便起见，假设b[l+2] = 0,这几项就没有了，因为它们（W[l+2]a[l+1]+b[l+2]）的值为0.最后a[l+2] = g(a[l]) = a[l],因为我们假定使用ReLU激活函数，并且所有激活值都是非负的，g(a[l])是应用于非负数的ReLU函数，所以a[l+2] = a[l]。</p>
+<p><img src="\photo\DL_CNN15\DL_CNN15_3.png" alt="avatar"></p>
+<p>结果表明，残差块学习这个恒等式函数并不难，跳跃连接使我们很容易得出a[l+2] = a[l]。<br>这意味着，即使给神经网络增加了这两层，它的效率也并不逊色于更简单的神经网络，因为学习恒等函数对它来说很简单。尽管它多了两层，也只把a[l]的值赋值给a[l+2]。所以给大型神经网络增加两层，不论是把残差块添加到神经网络的中间还是末端位置，都不会影响网络的表现。</p>
+<p><img src="\photo\DL_CNN15\DL_CNN15_4.png" alt="avatar"></p>
+<p>当然，我们 的目标不仅仅是保持网络的效率，还要提升它的效率。想象一下，如果这些隐藏层单元学到一些有用信息，那么它可能比学习恒等函数表现得更好。而这些不含有残差块或跳跃连接的深度普通网络情况就不一样了，当网络不断加深时，就算是选用学习恒等函数的参数都很困难，所以很多层最后的表现不但没有更好，反而更糟。</p>
+<p>我认为残差网络起作用的主要原因就是这些残差块学习恒等函数非常容易，你能确定网络性能不会受到影响，很多时候甚至可以提高效率，或者说至少不会 降低网络的效率，因此创建类似残差网络可以提高网络性能。</p>
+<p><img src="\photo\DL_CNN15\DL_CNN15_5.png" alt="avatar"></p>
+<p>除此以外，关于残差网络，另一个值得探讨的细节是，假设z[l+2]与a[l]具有相同维度，所以ResNets使用了许多same卷积，所以这个a[l]的维度等于这个输出层的维度。之所以能实现跳跃连接是因为same卷积保留了维度，所以很容易得出这个捷径连接，并输出这两个相同维度的向量。<br>如果输入和输出有不同维度，比如输入的维度是128，a[l+2]的维度是256，再增加一个矩阵，这里标记为Ws，Ws是一个256x128维度的矩阵，所以Wsa[l]的维度是256，这个新增项是256维度的向量。你不需要对Ws做任何操作，它是网络通过学习得到的矩阵或参数，它是一个固定矩阵，padding值为0，用0填充a[l],其维度为256，所以这几个表达式都可以。</p>
+<p><img src="\photo\DL_CNN15\DL_CNN15_6.png" alt="avatar"></p>
+<p>最后我们来看看ResNets的图片识别。这些图片是从何凯明等人的论文中截取的，这是一个普通网络，我们给它输入一张图片，它有多个卷积层，最后输出了一个Softmax。</p>
+<p><img src="\photo\DL_CNN15\DL_CNN15_7.png" alt="avatar"></p>
+<p>如何把它转化为ResNets呢？只需要添加跳跃连接。这里我们只讨论几个细节，这个网络有很多层3x3卷积，而且它们大多都是same卷积，这就是添加等维特征向量的原因。所以这些都是卷积层，而不是全连接层，因为它们是same卷积，维度得以保留，这也解释了添加项z[l+2]+a[l]（维度相同所以能够相加）。</p>
+<p><img src="\photo\DL_CNN15\DL_CNN15_8.png" alt="avatar"></p>
+<p>ResNets类似于其他很多网络，也会有很多卷积层，其中偶尔会有池化层或者类池化层的层。不论这些层是什么类型，正如我们在上一张图片上看到的，你都需要调整矩阵Ws的维度。普通网络和ResNets网络常用的结构是：卷积层-卷积层-卷积层-池化层-卷积层-卷积层-卷积层-池化层….依次重复。直到最后，有一个通过softmax进行预测的全连接层。</p>
+<p>以上就是ResNets的内容。</p>
+<p>使用1x1的过滤器，即1x1卷积，这个想法很有意思，为什么呢？我们下一篇博客再讲。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -211,64 +278,121 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/DL_CNN15/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN7/" class="archive-article-date">
-  	<time datetime="2019-09-02T10:15:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/LeetCode19/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode19_Python3</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN7/">卷积神经网络（七）---构建一个简单的深度卷积神经网络</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/09/">&laquo; Prev</a><a class="page-number" href="/archives/2019/09/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2019/DL_CNN15/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -529,8 +653,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
