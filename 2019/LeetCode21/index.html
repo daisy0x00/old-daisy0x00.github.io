@@ -6,20 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>daisy&#39;s space</title>
+  <title>LeetCode21_Python3 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="python面试题，LeetCode，合并两个有序链表,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/page/4/index.html">
+  <meta name="description" content="用python语言解答LeetCode的21题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode21_Python3">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/LeetCode21/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="用python语言解答LeetCode的21题">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode21\LeetCode21_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode21\LeetCode21_2.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode21\LeetCode21_3.png">
+<meta property="og:updated_time" content="2019-09-23T13:58:26.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="LeetCode21_Python3">
+<meta name="twitter:description" content="用python语言解答LeetCode的21题">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\LeetCode21\LeetCode21_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,22 +174,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Noj3_L" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-LeetCode21" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/Noj3_L/">Noj3_L</a>
+    <h1 class="article-title" itemprop="name">
+      LeetCode21_Python3
     </h1>
   
 
         
-        <a href="/2018/Noj3_L/" class="archive-article-date">
-  	<time datetime="2018-10-10T08:30:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-10</time>
+        <a href="/2019/LeetCode21/" class="archive-article-date">
+  	<time datetime="2019-09-23T13:58:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
 </a>
         
       </header>
@@ -189,664 +195,86 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-		
-	  
-        <p>用回溯法解踩气球问题</p>
-        
-          <a class="article-more-a" href="/2018/Noj3_L/#more">more >></a>
-        
+        <p>用python语言解答LeetCode的21题</p>
+<a id="more"></a>
+<h2 id="碎碎念（不用看！下一节开始才是重点-）"><a href="#碎碎念（不用看！下一节开始才是重点-）" class="headerlink" title="碎碎念（不用看！下一节开始才是重点~~~）"></a>碎碎念（不用看！下一节开始才是重点~~~）</h2><p>似乎以前做过合并有序数组的题，不对，是绝对做过，之前c语言加强课（其实就是算法课）的题库里面有这道题，记得当时还搞懂了，不过现在又忘记了，果然知识还是得反复学习才行啊。<br>感觉这个题在考察链表的插入诶，题目要求是将两个有序链表合并成一个新的有序链表并返回。而且新链表是通过拼接给定的两个链表的所有节点组成的，意思也就是不要创建新的节点，而是拼接原有的结点。说了这么多，脑袋里面还是木有解题思路，其实有一个，但是感觉好复杂。。。<br>把一个链表固定着，然后遍历另一个链表，根据元素大小把这个链表的结点插入那个固定的链表里面。实现的话。。。不会。。。我知道这题很简单，，，可是我就是不会。。。好了，没啥想说的了。。。我去看网上各路大神的思路了。</p>
+<p>合并两个有序链表和合并两个有序数组</p>
+<h2 id="方法一：非递归"><a href="#方法一：非递归" class="headerlink" title="方法一：非递归"></a>方法一：非递归</h2><p>新建一个带有哨兵结点的链表，依次比较两个有序链表的结点值，将较小值的结点插入到新链表后面。直到其中一个比较完毕，将另一个链表剩余的结点全部放到新链表最后面即可。最后，可以删除哨兵结点，或者直接返回哨兵结点后第一个结点指针。</p>
+<h2 id="方法二：递归"><a href="#方法二：递归" class="headerlink" title="方法二：递归"></a>方法二：递归</h2><p><img src="\photo\LeetCode21\LeetCode21_1.png" alt="avatar"></p>
+<p>其实这个思路我也没太理顺，但是递归的思想是大概理顺了的，这里先讲一个经典的例子，帮助理解递归，至于这道题的递归思路 ，后面多做点题估计就可以过来讲这道题的思路了<br>f(n) = 1+2+3+…+n</p>
+<p>这个代码很好写：</p>
+<pre><code class="python">
+    def f(n)
+        if n == 0
+            return 0
+        else
+            return n + f(n - 1)
+</code></pre>
+<p>假设我们要求f(3),那么它的过程就是这样子的：</p>
+<p><img src="\photo\LeetCode21\LeetCode21_2.png" alt="avatar"></p>
+<p>最后一级一级的返回回去，就可以求出f(3)的值啦<br>写递归有两个很重要的元素：<br>其一是出口，出口一定要有啊，否则会导致栈溢出的<br>其二就是递归体啦。</p>
+<p>合并两个有序链表用递归解的大致思想就是：</p>
+<p>每次递归的时候都能保证子链的头结点是剩余所有元素中最小的那个。</p>
+<p>因为链表是有序的，所以只要链表一的头结点小于链表二的头结点，那么链表一的头结点就一定是当前元素中最小的那个元素了，那么每一个元素的后续节点都是剩余所有元素中最小的那个，最后自然排出来就是一个有序的链表了。</p>
+<p>方法二的代码：</p>
+<pre><code class="python">
+    # Definition for singly-linked list.
+    # class ListNode
+    #     def __init__(self, x)
+    #         self.val = x
+    #         self.next = None
+
+    class Solution
+        def mergeTwoLists(self, l1 ListNode, l2 ListNode) - ListNode
+            if l1 is None
+                return l2
+            if l2 is None
+                return l1
+            elif l1.val  l2.val
+                l1.next = self.mergeTwoLists(l1.next, l2)
+                return l1
+            else
+                l2.next = self.mergeTwoLists(l1, l2.next)
+                return l2
+
+</code></pre>
+<p>方法二的运行结果：</p>
+<p><img src="\photo\LeetCode21\LeetCode21_3.png" alt="avatar"></p>
+<h2 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h2><p>1.https<a href="http://www.cnblogs.comyqpyp9545645.html" target="_blank" rel="external">www.cnblogs.comyqpyp9545645.html</a><br>2.归并排序和本题解题思路进行对比httpsblog.csdn.netJXH_123articledetails38371523<br>3.对递归的理解https<a href="http://www.bilibili.comvideoav61692380from=search&amp;seid=8154685392981106848" target="_blank" rel="external">www.bilibili.comvideoav61692380from=search&amp;seid=8154685392981106848</a></p>
+
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Noj3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/Noj3_L/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Noj3_B" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/Noj3_B/">Noj3_B</a>
-    </h1>
-  
-
-        
-        <a href="/2018/Noj3_B/" class="archive-article-date">
-  	<time datetime="2018-09-19T13:36:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>求k阶斐波那契数列的第m项值的函数算法</p>
-        
-          <a class="article-more-a" href="/2018/Noj3_B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Noj3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/Noj3_B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GaoDeJSAPI4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/GaoDeJSAPI4/">高德JavaScript API示例中心（四）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/GaoDeJSAPI4/" class="archive-article-date">
-  	<time datetime="2018-06-09T14:21:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——异步加载地图】</p>
-        
-          <a class="article-more-a" href="/2018/GaoDeJSAPI4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">高德JavaScript API示例中心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/GaoDeJSAPI4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GaoDeJSAPI3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/GaoDeJSAPI3/">高德JavaScript API示例中心（三）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/GaoDeJSAPI3/" class="archive-article-date">
-  	<time datetime="2018-06-05T04:13:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——带功能控件的地图】</p>
-        
-          <a class="article-more-a" href="/2018/GaoDeJSAPI3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">高德JavaScript API示例中心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/GaoDeJSAPI3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GaoDeJSAPI2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/GaoDeJSAPI2/">高德JavaScript API示例中心（二）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/GaoDeJSAPI2/" class="archive-article-date">
-  	<time datetime="2018-05-28T09:29:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——英文、中英文地图】</p>
-        
-          <a class="article-more-a" href="/2018/GaoDeJSAPI2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">高德JavaScript API示例中心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/GaoDeJSAPI2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-GaoDeJSAPI1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/GaoDeJSAPI1/">高德JavaScript API示例中心（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/GaoDeJSAPI1/" class="archive-article-date">
-  	<time datetime="2018-05-27T09:25:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本系列文章主要记录了自己学习高德JavaScript API示例代码中遇到的知识点。【地图基础功能——地图显示】</p>
-        
-          <a class="article-more-a" href="/2018/GaoDeJSAPI1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">高德JavaScript API示例中心</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/GaoDeJSAPI1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PythonAndGaoDeAPI5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/PythonAndGaoDeAPI5/">Python+高德API解决租房问题（五）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/PythonAndGaoDeAPI5/" class="archive-article-date">
-  	<time datetime="2018-05-27T05:15:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>当前依旧在解读Python+高德API的代码，爬虫部分已经搞定，但是index.html部分代码尚未看懂，前几日简单学习了html+css+js的基本知识。近期的主要学习高德JavaScript API示例中心的代码。</p>
-<ul>
-<li>1.CSS中class和id的区别</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/PythonAndGaoDeAPI5/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Python+高德API解决租房问题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/PythonAndGaoDeAPI5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PythonAndGaoDeAPI4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/PythonAndGaoDeAPI4/">Python+高德API解决租房问题（四）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/PythonAndGaoDeAPI4/" class="archive-article-date">
-  	<time datetime="2018-05-08T15:53:23.760Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。</p>
-<ul>
-<li>urllib.parse.urljoin()</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/PythonAndGaoDeAPI4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Python+高德API解决租房问题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/PythonAndGaoDeAPI4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-LeetCode283" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/LeetCode283/">LeetCode283_Python</a>
-    </h1>
-  
-
-        
-        <a href="/2018/LeetCode283/" class="archive-article-date">
-  	<time datetime="2018-05-08T10:02:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>用python语言解答LeetCode的283题</p>
-        
-          <a class="article-more-a" href="/2018/LeetCode283/#more">more >></a>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -870,16 +298,75 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/LeetCode283/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/LeetCode21/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/DL_CNN16/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">卷积神经网络（十六）---网络中的网络以及1x1卷积</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -899,98 +386,30 @@ var _hmt = _hmt || [];
 
 
 
-
-  
-    <article id="post-PythonAndGaoDeAPI3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/PythonAndGaoDeAPI3/">Python+高德API解决租房问题（三）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/PythonAndGaoDeAPI3/" class="archive-article-date">
-  	<time datetime="2018-05-07T09:53:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	   
-      
-		
-	  
-        <p>本文记录了自己在对Python+高德API的代码进行解读时遇到的知识点障碍。</p>
-<ul>
-<li>Beautiful中的select方法</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/PythonAndGaoDeAPI3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Python+高德API解决租房问题</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/PythonAndGaoDeAPI3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2019/LeetCode21/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -1250,8 +669,8 @@ var _hmt = _hmt || [];
 	});
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
