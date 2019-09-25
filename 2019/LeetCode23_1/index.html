@@ -6,20 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Archives: 2019 | daisy&#39;s space</title>
+  <title>LeetCode23_番外篇(一) | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="python面试题，LeetCode，合并k个有序链表,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/archives/2019/index.html">
+  <meta name="description" content="本篇博客主要记录在使用官方题解的方法三解决LeetCode23合并K个顺序链表时遇到的问题，以及解决问题的过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode23_番外篇(一)">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/LeetCode23_1/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本篇博客主要记录在使用官方题解的方法三解决LeetCode23合并K个顺序链表时遇到的问题，以及解决问题的过程。">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode23_1\LeetCode23_1_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode23_1\LeetCode23_1_2.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode23_1\LeetCode23_1_3.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode23_1\LeetCode23_1_4.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode23_1\LeetCode23_1_5.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode23_1\LeetCode23_1_6.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode23_1\LeetCode23_1_7.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode23_1\LeetCode23_1_8.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode23_1\LeetCode23_1_9.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode23_1\LeetCode23_1_10.png">
+<meta property="og:updated_time" content="2019-09-25T02:48:47.549Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="LeetCode23_番外篇(一)">
+<meta name="twitter:description" content="本篇博客主要记录在使用官方题解的方法三解决LeetCode23合并K个顺序链表时遇到的问题，以及解决问题的过程。">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\LeetCode23_1\LeetCode23_1_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,36 +181,323 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-LeetCode23_1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      LeetCode23_番外篇(一)
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/LeetCode23_1/" class="archive-article-date">
+
+        
+        <a href="/2019/LeetCode23_1/" class="archive-article-date">
   	<time datetime="2019-09-25T02:43:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/LeetCode23_1/">LeetCode23_番外篇(一)</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>本篇博客主要记录在使用官方题解的方法三解决LeetCode23合并K个顺序链表时遇到的问题，以及解决问题的过程。</p>
+<a id="more"></a>
+<p>先来回顾一下方法三的解题思路：</p>
+<p>第一步：用优先队列比较K个节点（每个链表的首节点），获得最小值的结点<br>第二步：将选中的节点接在最终有序链表的后面</p>
+<p>先解释一下什么是优先队列：</p>
+<p>我们都知道普通的队列是一种先进先出的数据结构，元素在队列尾部追加，而从队列头删除。在优先队列中，元素被赋予优先级。当访问元素时，具有最高优先级的元素最先删除。优先队列具有最高级先出的行为特征。通常采用堆数据结构来实现。</p>
+<h3 id="官网题解代码"><a href="#官网题解代码" class="headerlink" title="官网题解代码"></a>官网题解代码</h3><pre><code class="python">
+    #coding:utf-8
 
-        <div class="article-info info-on-right">
-          
+    from queue import PriorityQueue
+
+    class ListNode():
+        def __init__(self, x):
+            self.val = x
+            self.next = None
+
+    class Solution():
+        def mergeKList(self, lists):
+            &quot;&quot;&quot;
+
+            :param lists: ListNode
+            :return: ListNode
+            &quot;&quot;&quot;
+            head = point = ListNode(0)
+            q = PriorityQueue()
+            for l in lists:
+                if l:
+                    q.put((l.val, l))
+
+            while not q.empty():
+                val, node = q.get()
+                point.next = ListNode(val)
+                point = point.next
+                node = node.next
+                if node:
+                    q.put((node.val, node))
+
+            return head.next
+</code></pre>
+<h3 id="遇到问题一："><a href="#遇到问题一：" class="headerlink" title="遇到问题一："></a>遇到问题一：</h3><pre><code class="shell">
+    TypeError: &#39;&lt;&#39; not supported between instances of &#39;ListNode&#39; and &#39;ListNode&#39;
+        heappush(self.queue, item)
+    Line 227 in _put (/usr/lib/python3.6/queue.py)
+        self._put(item)
+    Line 143 in put (/usr/lib/python3.6/queue.py)
+    Line 16 in mergeKLists (Solution.py)
+    Line 48 in _driver (Solution.py)
+    Line 61 in &lt;module&gt; (Solution.py)
+</code></pre>
+<p><img src="\photo\LeetCode23_1\LeetCode23_1_1.png" alt="avatar"><br>这个是因为如果有两个节点的val相同，那优先队列会比较二元组的第二个元素，也就是该结点，但是该结点是不可以比较的，因此会得到一个错误<code>TypeError: &#39;&lt;&#39; not supported between instances of &#39;ListNode&#39; and &#39;ListNode&#39;</code>。</p>
+<p>官方解答下面的讨论去也有同学遇到了这个问题，他的解决方案使新建了一个可比较的类，重写了<strong>lt</strong>函数来实现自定义比较。（这个目前不会实现）</p>
+<p>有位大佬给了解决方案</p>
+<pre><code class="python">
+    for index, node in enumerate(lists):
+    if node:
+    q.put((node.val, index, node)) #index是绝对不可能重的
+</code></pre>
+<p>于是我改了一下代码：</p>
+<pre><code class="python">
+    #coding:utf-8
+
+    from queue import PriorityQueue
+
+
+    class ListNode():
+        def __init__(self, x):
+            self.val = x
+            self.next = None
+
+    class Solution():
+        def mergeKList(self, lists):
+            &quot;&quot;&quot;
+
+            :param lists: ListNode
+            :return: ListNode
+            &quot;&quot;&quot;
+            head = point = ListNode(0)
+            q = PriorityQueue()
+            ##############修改部分##########
+            for index, l in enumerate(lists):
+                if l:
+                    q.put((l.val, index, l))
+            ###############################
+            while not q.empty():
+                val, node = q.get()
+                point.next = ListNode(val)
+                point = point.next
+                node = node.next
+                if node:
+                    q.put((node.val, node))
+
+            return head.next
+</code></pre>
+<p>按照上述方法解决问题一之后又遇到了问题二</p>
+<h3 id="问题二："><a href="#问题二：" class="headerlink" title="问题二："></a>问题二：</h3><pre><code class="shell">
+    ValueError: too many values to unpack (expected 2)
+    Line 19 in mergeKLists (Solution.py)
+    Line 48 in _driver (Solution.py)
+    Line 61 in &lt;module&gt; (Solution.py)
+</code></pre>
+<p><img src="\photo\LeetCode23_1\LeetCode23_1_2.png" alt="avatar"></p>
+<p><code>too many values to unpack (expected 2)</code>这种错误是指一个tuple值赋给另一个tuple变量时，变量个数不够造成的，例如图：</p>
+<p><img src="\photo\LeetCode23_1\LeetCode23_1_3.png" alt="avatar"></p>
+<p>修改一下问题就解决了：</p>
+<p><img src="\photo\LeetCode23_1\LeetCode23_1_4.png" alt="avatar"></p>
+<p>用同样的方法解决这个问题，修改代码如下：</p>
+<pre><code class="python">
+    #coding:utf-8
+
+    from queue import PriorityQueue
+
+
+    class ListNode():
+        def __init__(self, x):
+            self.val = x
+            self.next = None
+
+    class Solution():
+        def mergeKList(self, lists):
+            &quot;&quot;&quot;
+
+            :param lists: ListNode
+            :return: ListNode
+            &quot;&quot;&quot;
+            head = point = ListNode(0)
+            q = PriorityQueue()
+            ##############修改部分##########
+            for index, l in enumerate(lists):
+                if l:
+                    q.put((l.val, index, l))
+            ###############################
+            while not q.empty():
+                ##############修改部分##########
+                val, index, node = q.get()
+                ###############################
+                point.next = ListNode(val)
+                point = point.next
+                node = node.next
+                if node:
+                    q.put((node.val, node))
+
+            return head.next
+</code></pre>
+<p>你以为问题就解决了？图样图森破，它又报错。。。</p>
+<h3 id="问题三："><a href="#问题三：" class="headerlink" title="问题三："></a>问题三：</h3><pre><code class="shell">
+    ValueError: not enough values to unpack (expected 3, got 2)
+    Line 19 in mergeKLists (Solution.py)
+    Line 48 in _driver (Solution.py)
+    Line 61 in &lt;module&gt; (Solution.py)
+</code></pre>
+<p><img src="\photo\LeetCode23_1\LeetCode23_1_5.png" alt="avatar"></p>
+<p>然后我就是这样的：</p>
+<p><img src="\photo\LeetCode23_1\LeetCode23_1_6.png" alt="avatar"></p>
+<p>又折腾了一会儿发现还是不行，去吃饭了。。。</p>
+<p>我找到解决方案啦~~~~还是在评论区里，有位大佬给的解决方案</p>
+<p><img src="\photo\LeetCode23_1\LeetCode23_1_7.png" alt="avatar"></p>
+<p>我看了一遍，木有照着改，而是把我上面的代码又进行了一次修改：</p>
+<pre><code class="python">
+    #coding:utf-8
+
+    from queue import PriorityQueue
+
+
+    class ListNode():
+        def __init__(self, x):
+            self.val = x
+            self.next = None
+
+    class Solution():
+        def mergeKList(self, lists):
+            &quot;&quot;&quot;
+
+            :param lists: ListNode
+            :return: ListNode
+            &quot;&quot;&quot;
+            head = point = ListNode(0)
+            q = PriorityQueue()
+            ##############修改部分##########
+            for index, l in enumerate(lists):
+                if l:
+                    q.put((l.val, index, l))
+            ###############################
+            while not q.empty():
+                ##############修改部分##########
+                val, index, node = q.get()
+                ##############修改部分##########
+                point.next = ListNode(val)
+                point = point.next
+                node = node.next
+                if node:
+                    ##############修改部分##########
+                    q.put((node.val, index, node))
+                    ##############修改部分##########
+
+
+            return head.next
+</code></pre>
+<p>这是执行结果：</p>
+<p><img src="\photo\LeetCode23_1\LeetCode23_1_8.png" alt="avatar"></p>
+<p>原以为大功告成了。。。提交之后并木有通过。。。还是有bug。。。简直是人生的大起大落。。。</p>
+<pre><code class="shell">
+    TypeError: &#39;&lt;&#39; not supported between instances of &#39;ListNode&#39; and &#39;ListNode&#39;
+        heappush(self.queue, item)
+    Line 227 in _put (/usr/lib/python3.6/queue.py)
+        self._put(item)
+    Line 143 in put (/usr/lib/python3.6/queue.py)
+    Line 24 in mergeKLists (Solution.py)
+    Line 48 in _driver (Solution.py)
+    Line 61 in &lt;module&gt; (Solution.py)
+</code></pre>
+<p><img src="\photo\LeetCode23_1\LeetCode23_1_9.png" alt="avatar"></p>
+<p>还是乖乖的按照上面大佬给代码修改一下：</p>
+<pre><code class="python">
+    #coding:utf-8
+
+    from queue import PriorityQueue
+
+
+    class ListNode():
+        def __init__(self, x):
+            self.val = x
+            self.next = None
+
+    class Solution():
+        def mergeKList(self, lists):
+            &quot;&quot;&quot;
+
+            :param lists: ListNode
+            :return: ListNode
+            &quot;&quot;&quot;
+            head = point = ListNode(0)
+            q = PriorityQueue()
+            ##############修改部分##########
+            for index, l in enumerate(lists):
+                if l:
+                    q.put((l.val, index, 0, l))  # 存ListNode.val，链表序号，链表中的元素下标，ListNode
+            ###############################
+            while not q.empty():
+                ##############修改部分##########
+                val, id, index, node = q.get()
+                ##############修改部分##########
+                point.next = ListNode(val)
+                point = point.next
+                node = node.next
+                if node:
+                    ##############修改部分##########
+                    q.put((node.val, id, index + 1, node))
+                    ##############修改部分##########
+
+
+            return head.next
+
+</code></pre>
+<p>提交之后运行通过啦<del>~~哇咔咔咔</del>~~</p>
+<p><img src="\photo\LeetCode23_1\LeetCode23_1_10.png" alt="avatar"></p>
+<p>具体原理的话，我现在也解释不清楚，每篇博客都有遗留问题。。。。不过这样再次看的时候才好优化嘛~~~</p>
+<h2 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h2><p>1.什么是优先队列<br><a href="http://www.sohu.com/a/256022793_478315" target="_blank" rel="external">http://www.sohu.com/a/256022793_478315</a><br>2.LeetCode官方题解<br><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode/" target="_blank" rel="external">https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode/</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -211,400 +513,121 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/LeetCode23_1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/LeetCode23/" class="archive-article-date">
-  	<time datetime="2019-09-24T12:09:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-24</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/LeetCode23/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode23_Python3</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/LeetCode23/">LeetCode23_Python3</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/LeetCode21/" class="archive-article-date">
-  	<time datetime="2019-09-23T13:58:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/LeetCode21/">LeetCode21_Python3</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN16/" class="archive-article-date">
-  	<time datetime="2019-09-21T06:49:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN16/">卷积神经网络（十六）---网络中的网络以及1x1卷积</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN15/" class="archive-article-date">
-  	<time datetime="2019-09-20T05:28:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN15/">卷积神经网络（十五）---经典网络之残差网络ResNets（下）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/LeetCode19/" class="archive-article-date">
-  	<time datetime="2019-09-19T03:55:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/LeetCode19/">LeetCode19_Python3</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/LeetCode2/" class="archive-article-date">
-  	<time datetime="2019-09-18T03:26:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/LeetCode2/">LeetCode2_Python3</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN14/" class="archive-article-date">
-  	<time datetime="2019-09-12T09:29:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN14/">卷积神经网络（十四）---经典网络之残差网络ResNets（上）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN13/" class="archive-article-date">
-  	<time datetime="2019-09-11T13:54:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN13/">卷积神经网络（十三）---经典网络之VGG-16</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN12/" class="archive-article-date">
-  	<time datetime="2019-09-09T03:57:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN12/">卷积神经网络（十二）---经典网络之AlexNet</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="page-number" href="/archives/2019/page/3/">3</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &raquo;</a>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2019/LeetCode23_1/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -865,8 +888,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
