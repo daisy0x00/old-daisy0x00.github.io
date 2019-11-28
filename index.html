@@ -272,26 +272,12 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>方法一的代码：</p>
-<p>#coding:utf-8</p>
-<p>class ListNode:<br>    def <strong>init</strong>(self, x):<br>        self.val = x<br>        self.next = None</p>
-<p>class Solution:<br>    def deleteDuplicates(self, head):<br>        “””</p>
-<pre><code>    :param head: ListNode
-    :return: ListNode
-    &quot;&quot;&quot;
-    thead = ListNode(0)
-    thead.next = head
-    pre, cur = None, thead
-    while cur:
-        pre = cur
-        cur = cur.next
-        while cur and cur.next and cur.next.val == cur.val:
-            t = cur.val
-            while cur and cur.val == t:
-                cur = cur.next
-            pre.next = cur
-    return thead.next
-</code></pre>
+		
+	  
+        <p>用python语言解答LeetCode的82题</p>
+        
+          <a class="article-more-a" href="/2019/LeetCode82/#more">more >></a>
+        
       
 
       
@@ -369,51 +355,12 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <h3 id="方法一：迭代法"><a href="#方法一：迭代法" class="headerlink" title="方法一：迭代法"></a>方法一：迭代法</h3><p>方法一的代码：</p>
-<pre><code class="python">    #coding:utf-8
-
-    class ListNode:
-        def __init__(self, x):
-            self.val = x
-            self.next = None
-
-    class Solution:
-        def reverseBetween(self, head, m, n):
-            &quot;&quot;&quot;
-
-            :param head: ListNode
-            :param m: int
-            :param n: int
-            :return: ListNode
-            &quot;&quot;&quot;
-            if not head:
-                return None
-
-            cur, pre = head, None
-
-            while m &gt; 1:
-                pre = cur
-                cur = cur.next
-                m, n = m - 1, n - 1
-
-            con, tail = pre, cur
-
-            while n:
-                third = cur.next
-                cur.next = pre
-                pre = cur
-                cur = third
-                n -= 1
-
-            if con:
-                con.next = pre
-            else:
-                head = pre
-
-            tail.next = cur
-            return head
-</code></pre>
-
+		
+	  
+        <p>用python语言解答LeetCode的92题</p>
+        
+          <a class="article-more-a" href="/2019/LeetCode92/#more">more >></a>
+        
       
 
       
@@ -491,45 +438,12 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <p>方法一：</p>
-<p>方法一的代码：</p>
-<pre><code class="python">
-    #coding:utf-8
-
-
-    class ListNode:
-        def __init__(self, x):
-            self.val = x
-            self.next = None
-
-    class Solution:
-        def partition(self, head, x):
-            &quot;&quot;&quot;
-
-            :param head: ListNode
-            :param x: int
-            :return: ListNode
-            &quot;&quot;&quot;
-
-            before = before_head = ListNode(0)
-            after = after_head = ListNode(0)
-
-            while head:
-                if head.val &lt; x:
-                    before.next = head
-                    before = before.next
-                else:
-                    after.next = head
-                    after = after.next
-
-                head = head.next
-
-            after.next = None
-            before.next = after_head.next
-
-            return before_head.next
-</code></pre>
-
+		
+	  
+        <p>用python语言解答LeetCode的86题</p>
+        
+          <a class="article-more-a" href="/2019/LeetCode86/#more">more >></a>
+        
       
 
       
