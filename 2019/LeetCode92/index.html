@@ -6,26 +6,51 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>LeetCode83_Python3 | daisy&#39;s space</title>
+  <title>LeetCode92_Python3 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
-	<meta name="keywords" content="python面试题，LeetCode，删除排序链表中的重复元素,">
+	<meta name="keywords" content="python面试题，LeetCode，反转链表II,">
 
 	
   
-  <meta name="description" content="用python语言解答LeetCode的83题">
+  <meta name="description" content="方法一：迭代法方法一的代码：
+    #coding:utf-8
+
+    class ListNode:
+        def __init__(self, x):
+            self.val = x
+            self.next = None
+
+    class Solution:
+        def reverseBetween(self, head, m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode83_Python3">
-<meta property="og:url" content="http://daisy0x00.github.io/2019/LeetCode83/index.html">
+<meta property="og:title" content="LeetCode92_Python3">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/LeetCode92/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="用python语言解答LeetCode的83题">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode83\LeetCode83_1.png">
-<meta property="og:updated_time" content="2019-10-14T12:29:37.842Z">
+<meta property="og:description" content="方法一：迭代法方法一的代码：
+    #coding:utf-8
+
+    class ListNode:
+        def __init__(self, x):
+            self.val = x
+            self.next = None
+
+    class Solution:
+        def reverseBetween(self, head, m">
+<meta property="og:updated_time" content="2019-11-28T08:57:53.841Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode83_Python3">
-<meta name="twitter:description" content="用python语言解答LeetCode的83题">
-<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\LeetCode83\LeetCode83_1.png">
+<meta name="twitter:title" content="LeetCode92_Python3">
+<meta name="twitter:description" content="方法一：迭代法方法一的代码：
+    #coding:utf-8
+
+    class ListNode:
+        def __init__(self, x):
+            self.val = x
+            self.next = None
+
+    class Solution:
+        def reverseBetween(self, head, m">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -172,20 +197,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode83" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LeetCode92" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      LeetCode83_Python3
+      LeetCode92_Python3
     </h1>
   
 
         
-        <a href="/2019/LeetCode83/" class="archive-article-date">
-  	<time datetime="2019-10-14T12:26:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
+        <a href="/2019/LeetCode92/" class="archive-article-date">
+  	<time datetime="2019-11-28T08:56:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-28</time>
 </a>
         
       </header>
@@ -193,44 +218,50 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <p>用python语言解答LeetCode的83题</p>
-<a id="more"></a>
-<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>第一反应是:</p>
-<ul>
-<li>1.把链表转化成列表</li>
-<li>2.用set()函数删除重复元素</li>
-<li>3.将处理过后的列表转化为链表</li>
-</ul>
-<h2 id="方法一：非递归法"><a href="#方法一：非递归法" class="headerlink" title="方法一：非递归法"></a>方法一：非递归法</h2><p>方法一的代码：</p>
-<pre><code class="python">
-    #coding:utf-8
+        <h3 id="方法一：迭代法"><a href="#方法一：迭代法" class="headerlink" title="方法一：迭代法"></a>方法一：迭代法</h3><p>方法一的代码：</p>
+<pre><code class="python">    #coding:utf-8
 
-    class LinkNode:
+    class ListNode:
         def __init__(self, x):
             self.val = x
             self.next = None
 
     class Solution:
-        def deleteDuplicates(self, head):
-            dummy_head = ListNode(None)
-            dummy_head.next = head
+        def reverseBetween(self, head, m, n):
+            &quot;&quot;&quot;
 
-            pre = dummy_head
-            cur = head
+            :param head: ListNode
+            :param m: int
+            :param n: int
+            :return: ListNode
+            &quot;&quot;&quot;
+            if not head:
+                return None
 
-            while cur:
-                if pre and cur.val == pre.val:
-                    pre.next = cur.next
-                    cur.next = None
-                    cur = pre.next
-                    continue
+            cur, pre = head, None
 
+            while m &gt; 1:
                 pre = cur
                 cur = cur.next
-            return dummy_head.next
+                m, n = m - 1, n - 1
+
+            con, tail = pre, cur
+
+            while n:
+                third = cur.next
+                cur.next = pre
+                pre = cur
+                cur = third
+                n -= 1
+
+            if con:
+                con.next = pre
+            else:
+                head = pre
+
+            tail.next = cur
+            return head
 </code></pre>
-<p>方法一的运行结果：</p>
-<p><img src="\photo\LeetCode83\LeetCode83_1.png" alt="avatar"></p>
 
       
 
@@ -335,7 +366,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/LeetCode83/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/LeetCode92/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -349,18 +380,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/LeetCode86/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/LeetCode82/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          LeetCode86_Python3
+          LeetCode82_Python3
         
       </div>
     </a>
   
   
-    <a href="/2019/LeetCode61/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode61_Python3</div>
+    <a href="/2019/LeetCode86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode86_Python3</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -399,7 +430,7 @@ var _hmt = _hmt || [];
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://daisy0x00.github.io/2019/LeetCode83/",
+  id: "http://daisy0x00.github.io/2019/LeetCode92/",
   owner: 'daisy0x00',
   repo: 'daisy0x00.github.io',
   oauth: {

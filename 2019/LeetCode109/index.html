@@ -6,26 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>LeetCode83_Python3 | daisy&#39;s space</title>
+  <title>LeetCode109_Python3 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
-	<meta name="keywords" content="python面试题，LeetCode，删除排序链表中的重复元素,">
+	<meta name="keywords" content="python面试题，LeetCode，有序链表转换二叉搜索树,">
 
 	
   
-  <meta name="description" content="用python语言解答LeetCode的83题">
+  <meta name="description" content="这道题忍不住写个博客记录一下第一次接触二叉搜索树的自己。。。在那里找个例子手动演示代码过程的时候，被自己的愚蠢成功的逗笑了。。。写博客的时候也忍不住的想笑。。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode83_Python3">
-<meta property="og:url" content="http://daisy0x00.github.io/2019/LeetCode83/index.html">
+<meta property="og:title" content="LeetCode109_Python3">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/LeetCode109/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="用python语言解答LeetCode的83题">
-<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode83\LeetCode83_1.png">
-<meta property="og:updated_time" content="2019-10-14T12:29:37.842Z">
+<meta property="og:description" content="这道题忍不住写个博客记录一下第一次接触二叉搜索树的自己。。。在那里找个例子手动演示代码过程的时候，被自己的愚蠢成功的逗笑了。。。写博客的时候也忍不住的想笑。。。">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode109\LeetCode109_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode109\LeetCode109_2.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode109\LeetCode109_3.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode109\LeetCode109_4.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode109\LeetCode109_5.png">
+<meta property="og:updated_time" content="2019-11-28T09:08:01.007Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode83_Python3">
-<meta name="twitter:description" content="用python语言解答LeetCode的83题">
-<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\LeetCode83\LeetCode83_1.png">
+<meta name="twitter:title" content="LeetCode109_Python3">
+<meta name="twitter:description" content="这道题忍不住写个博客记录一下第一次接触二叉搜索树的自己。。。在那里找个例子手动演示代码过程的时候，被自己的愚蠢成功的逗笑了。。。写博客的时候也忍不住的想笑。。。">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\LeetCode109\LeetCode109_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -172,20 +176,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode83" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LeetCode109" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      LeetCode83_Python3
+      LeetCode109_Python3
     </h1>
   
 
         
-        <a href="/2019/LeetCode83/" class="archive-article-date">
-  	<time datetime="2019-10-14T12:26:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-14</time>
+        <a href="/2019/LeetCode109/" class="archive-article-date">
+  	<time datetime="2019-11-28T09:02:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-28</time>
 </a>
         
       </header>
@@ -193,44 +197,88 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <p>用python语言解答LeetCode的83题</p>
+        <p>这道题忍不住写个博客记录一下第一次接触二叉搜索树的自己。。。在那里找个例子手动演示代码过程的时候，被自己的愚蠢成功的逗笑了。。。写博客的时候也忍不住的想笑。。。</p>
 <a id="more"></a>
-<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>第一反应是:</p>
+<h2 id="方法一：递归"><a href="#方法一：递归" class="headerlink" title="方法一：递归"></a>方法一：递归</h2><p>官方题解之一</p>
+<p>先来分析一下题目描述，</p>
 <ul>
-<li>1.把链表转化成列表</li>
-<li>2.用set()函数删除重复元素</li>
-<li>3.将处理过后的列表转化为链表</li>
+<li><p>首先题目给定的这个 单链表中的元素是按升序排序的，这就大大降低的题目难度；</p>
+</li>
+<li><p>其次，题目要求我们将该升序单链表转换为一个高度平衡的二叉搜索树，这就意味着，我们每次都只需要找到中间节点即可。</p>
+</li>
 </ul>
-<h2 id="方法一：非递归法"><a href="#方法一：非递归法" class="headerlink" title="方法一：非递归法"></a>方法一：非递归法</h2><p>方法一的代码：</p>
+<p>所谓高度平衡二叉树是指一个二叉树每个节点的左右两个子树的高度差的绝对值不超过1。</p>
+<p>一颗二叉搜索树是一颗有根二叉树并且对于所有节点满足特殊性质：<br>对于树中任意一个点，它的权值必然&gt;=所有左子树节点的权值，&lt;=所有右子树节点的权值。<br>因为二叉树具有递归的子结构，二叉搜索树也同理：所有子树也是二叉搜索树。</p>
+<p>方法一的主要思路：</p>
+<p>给定列表总的中间元素将会作为二叉搜索树的根，该点左侧的所有元素递归的去构造左子树，同理右侧的元素构造右子树。这必然能保证最后构造出的二叉搜索树是平衡的。</p>
+<p>算法：</p>
+<ul>
+<li>1.由于我们得到的是一个有序链表而不是数组，我们不能直接使用下标来访问元素。我们需要知道链表中的中间元素。</li>
+<li>2.（Q1_为什么这样就可以访问到中间节点了？）我们可以利用两个指针来访问链表中的中间节点。假设我们有两个指针slow_ptr和fast_ptr.<ul>
+<li>slow_ptr每次向后移动一个节点</li>
+<li>fast_ptr每次向后移动两个节点</li>
+<li>当fast_ptr到达链表的末尾时，slow_ptr就访问到链表的中间元素。</li>
+<li>对于一个偶数长度的数组，中间两个元素都可用来做二叉搜索树的根</li>
+</ul>
+</li>
+<li>3.当找到链表中的中间元素后，我们将链表从中间元素的左侧断开，做法是使用一个prev_ptr的指针记录slow_ptr之前的元素，也就是满足prev_ptr.next = slow_ptr。断开左侧部分就是让prev_ptr.next = None。</li>
+<li>4.我们只需要将链表的头指针传递给转换函数，进行高度平衡二叉搜索树的转换。所以递归调用的时候，左半部分我们传递原始的头指针 ；右半部分传递slow_ptr.next作为头指针。</li>
+</ul>
+<p>以官方题解给的样例为例吧，</p>
+<p><img src="\photo\LeetCode109\LeetCode109_1.png" alt="avatar"></p>
+<p><img src="\photo\LeetCode109\LeetCode109_2.png" alt="avatar"></p>
+<p><img src="\photo\LeetCode109\LeetCode109_3.png" alt="avatar"></p>
+<p><img src="\photo\LeetCode109\LeetCode109_4.png" alt="avatar"></p>
+<p>理解了演示过程之后代码就很好写啦</p>
+<p>方法一的代码：</p>
 <pre><code class="python">
     #coding:utf-8
 
-    class LinkNode:
+    # Definition for singly-linked list.
+    class ListNode:
         def __init__(self, x):
             self.val = x
             self.next = None
 
+    # Definition for a binary tree node.
+    class TreeNode:
+        def __init__(self, x):
+            self.val = x
+            self.left = None
+            self.right = None
+
     class Solution:
-        def deleteDuplicates(self, head):
-            dummy_head = ListNode(None)
-            dummy_head.next = head
+        def findMiddle(self, head):
+            prevPtr = None
+            slowPtr = head
+            fastPtr = head
 
-            pre = dummy_head
-            cur = head
+            while fastPtr and fastPtr.next:
+                prevPtr = slowPtr
+                slowPtr = slowPtr.next
+                fastPtr = fastPtr.next.next
+            if prevPtr:
+                prevPtr.next = None
 
-            while cur:
-                if pre and cur.val == pre.val:
-                    pre.next = cur.next
-                    cur.next = None
-                    cur = pre.next
-                    continue
+            return slowPtr
+        def sortedListToBST(self, head: ListNode) -&gt; TreeNode:
+            if not head:
+                return None
 
-                pre = cur
-                cur = cur.next
-            return dummy_head.next
+            mid = self.findMiddle(head)
+            node = TreeNode(mid.val)
+            if head == mid:
+                return node
+
+            node.left = self.sortedListToBST(head)
+            node.right = self.sortedListToBST(mid.next)
+            return node
+
 </code></pre>
-<p>方法一的运行结果：</p>
-<p><img src="\photo\LeetCode83\LeetCode83_1.png" alt="avatar"></p>
+<p>说一下我自己在理解官方题解时蠢在了那里，我在看代码的时候不明白为啥要有这一步</p>
+<p><img src="\photo\LeetCode109\LeetCode109_5.png" alt="avatar"></p>
+<p>然后自己手动演示的时候，到处理左半部分的时候我每次都是把整个链表传进去，发现咦，这不是死循环了么，去认真看了一遍算法的解析过程之后把自己的死循环解开了，这一步的作用也知道了。<br>这一步是为了断开链表的两侧，准确来说是左半部分。然后我就忍不住笑了。。。应该木有跟我一样的人了。。。</p>
+<h2 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h2><p>1.LeetCode官方题解<br><a href="https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/solution/you-xu-lian-biao-zhuan-huan-er-cha-sou-suo-shu-by-/" target="_blank" rel="external">https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree/solution/you-xu-lian-biao-zhuan-huan-er-cha-sou-suo-shu-by-/</a></p>
 
       
 
@@ -335,7 +383,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/LeetCode83/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/LeetCode109/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -349,18 +397,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/LeetCode86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          LeetCode86_Python3
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/LeetCode61/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode61_Python3</div>
+    <a href="/2019/LeetCode82/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode82_Python3</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -399,7 +438,7 @@ var _hmt = _hmt || [];
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://daisy0x00.github.io/2019/LeetCode83/",
+  id: "http://daisy0x00.github.io/2019/LeetCode109/",
   owner: 'daisy0x00',
   repo: 'daisy0x00.github.io',
   oauth: {
