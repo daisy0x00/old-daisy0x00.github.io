@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode138\LeetCode138_3.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode138\LeetCode138_4.png">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode138\LeetCode138_5.png">
-<meta property="og:updated_time" content="2019-12-01T07:29:05.504Z">
+<meta property="og:updated_time" content="2019-12-01T07:33:25.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode138_Python3">
 <meta name="twitter:description" content="本篇博客主要参考了Reference1的内容，但是这篇博客里面没细讲random指针的复制，于是我又结合官方题解的方法三理解了一下给出了详细解析过程，最后用python语言解答LeetCode的138题">
@@ -224,6 +224,11 @@ var _hmt = _hmt || [];
 </ul>
 <p>这个思路第二步 的意思是将新创建的结点先插在旧链表中间，最后逐个断开的意思。解释起来有点复杂，看下面的图就懂啦</p>
 <p>因为要遍历链表所有结点，需要多次发生创建结点的行为，所以我们选择将它封装成一个函数,进行调用。</p>
+<pre><code class="python">
+    def create_node(self, val):
+        p = Node(val, None, None)
+        return p
+</code></pre>
 <ul>
 <li>1.判断极端情况，如果链表为空，那么无法拷贝，或者说拷贝之后仍是一个空链表，直接返回NULL</li>
 <li>2.创建新结点，逐个申请空间，赋值原链表中每个结点</li>
