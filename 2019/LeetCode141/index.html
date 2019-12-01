@@ -21,7 +21,9 @@
 <meta property="og:site_name" content="daisy's space">
 <meta property="og:description" content="用python语言解答LeetCode的141题">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode141\LeetCode141_1.png">
-<meta property="og:updated_time" content="2019-12-01T10:20:32.528Z">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode141\LeetCode141_2.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode141\LeetCode141_3.png">
+<meta property="og:updated_time" content="2019-12-01T13:28:41.560Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode141_Python3">
 <meta name="twitter:description" content="用python语言解答LeetCode的141题">
@@ -228,7 +230,41 @@ var _hmt = _hmt || [];
             return False
 
 </code></pre>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><p>1.LeetCode题解–141.环形链表<br><a href="https://blog.csdn.net/qq_33297776/article/details/81034628" target="_blank" rel="external">https://blog.csdn.net/qq_33297776/article/details/81034628</a></p>
+<p>方法二：双指针法（快慢指针法）</p>
+<p>解题思路：</p>
+<p>答案有两种情况，有环无环。</p>
+<p>分别设置快慢指针，若有环，则快慢指针必然相遇；若无环，则快指针指向NULL，返回False。</p>
+<p>快慢指针在链表的操作中比较常见，应该作为一种常用的思路记住。还是以上面的图为例，我们设置两个指针从head开始遍历，规定两个指针的前进速度不一样，分别称为快指针、慢指针。快指针fast每次前进两个节点，慢指针slow每次前进一个节点.</p>
+<p><img src="\photo\LeetCode141\LeetCode141_2.png" alt="avatar"></p>
+<p>因为快指针fast每次前进两个节点，一定比慢指针slow先到达环的入口处。而当慢指针slow进入环的时候，快指针fast已经经过了两个节点，如下图所示。</p>
+<p>这个时候，我们将这个过程想象成400m跑步的追击问题。如果存在环的话，因为快指针fast速度更快，一定会追上慢指针slow。而如果快指针fast没有追上慢指针slow，则一定是因为链表不存在环。</p>
+<p><img src="\photo\LeetCode141\LeetCode141_3.png" alt="avatar"></p>
+<h2 id="方法二的代码实现："><a href="#方法二的代码实现：" class="headerlink" title="方法二的代码实现："></a>方法二的代码实现：</h2><pre><code class="python">
+    #coding:utf-8
+
+    class ListNode:
+        def __init__(self, val):
+            self.val = val
+            self.next = None
+
+    class Solution:
+        def hasCycle(self, head):
+            if head == None:
+                return False
+
+            slow  = fast = head
+
+            while fast != None and fast.next != None:
+                slow = slow.next
+                fast = fast.next.next
+                if slow == fast:
+                    return True
+
+            return False
+
+
+</code></pre>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><p>1.LeetCode题解–141.环形链表<br><a href="https://blog.csdn.net/qq_33297776/article/details/81034628" target="_blank" rel="external">https://blog.csdn.net/qq_33297776/article/details/81034628</a><br>2.leetcode环形链表_python<br><a href="https://blog.csdn.net/qq_37366291/article/details/82960220" target="_blank" rel="external">https://blog.csdn.net/qq_37366291/article/details/82960220</a></p>
 
       
 
