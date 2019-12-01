@@ -6,20 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>Archives | daisy&#39;s space</title>
+  <title>LeetCode138_Python3 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
+	<meta name="keywords" content="python面试题，LeetCode，复制带随机指针的链表,">
+
+	
   
-  <meta name="description" content="daisy&apos;s space">
-<meta property="og:type" content="website">
-<meta property="og:title" content="daisy's space">
-<meta property="og:url" content="http://daisy0x00.github.io/archives/page/3/index.html">
+  <meta name="description" content="本篇博客主要参考了Reference1的内容，但是这篇博客里面没细讲random指针的复制，于是我又结合官方题解的方法三理解了一下给出了详细解析过程，最后用python语言解答LeetCode的138题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode138_Python3">
+<meta property="og:url" content="http://daisy0x00.github.io/2019/LeetCode138/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="daisy&apos;s space">
+<meta property="og:description" content="本篇博客主要参考了Reference1的内容，但是这篇博客里面没细讲random指针的复制，于是我又结合官方题解的方法三理解了一下给出了详细解析过程，最后用python语言解答LeetCode的138题">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode138\LeetCode138_1.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode138\LeetCode138_2.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode138\LeetCode138_3.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode138\LeetCode138_4.png">
+<meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode138\LeetCode138_5.png">
+<meta property="og:updated_time" content="2019-12-01T07:29:05.504Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="daisy's space">
-<meta name="twitter:description" content="daisy&apos;s space">
+<meta name="twitter:title" content="LeetCode138_Python3">
+<meta name="twitter:description" content="本篇博客主要参考了Reference1的内容，但是这篇博客里面没细讲random指针的复制，于是我又结合官方题解的方法三理解了一下给出了详细解析过程，最后用python语言解答LeetCode的138题">
+<meta name="twitter:image" content="http://daisy0x00.github.io/\photo\LeetCode138\LeetCode138_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
   
@@ -166,78 +176,170 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LeetCode138" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN12/" class="archive-article-date">
-  	<time datetime="2019-09-09T03:57:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN12/">卷积神经网络（十二）---经典网络之AlexNet</a>
+    <h1 class="article-title" itemprop="name">
+      LeetCode138_Python3
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/LeetCode1/" class="archive-article-date">
-  	<time datetime="2019-09-08T07:27:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-08</time>
+        
+        <a href="/2019/LeetCode138/" class="archive-article-date">
+  	<time datetime="2019-12-01T07:21:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-01</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/LeetCode1/">LeetCode1_Python3</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+	   
+      
+        <p>本篇博客主要参考了Reference1的内容，但是这篇博客里面没细讲random指针的复制，于是我又结合官方题解的方法三理解了一下给出了详细解析过程，最后用python语言解答LeetCode的138题</p>
+<a id="more"></a>
+<h2 id="题目解析："><a href="#题目解析：" class="headerlink" title="题目解析："></a>题目解析：</h2><p>给定一个链表，每个节点包含一个额外增加的随机指针，该指针可以指向链表中的任何节点或者空节点。</p>
+<p>要求返回这个链表的深拷贝。<br>（必须返回给定头的拷贝作为克隆列表的引用）</p>
+<p>深度拷贝为拷贝出的新对象在堆中重新分配一块内存区域。所以对新对象的操作不会影响原始对象</p>
+<p>深拷贝也就是复制一份链表，这份新链表的所有结点都有自己独立的内存空间，比如新链表的1号结点指向新链表自己的3号结点，而不是原链表的3号结点</p>
+<p>定义带随机指针的链表节点</p>
+<pre><code class="python">
+    class Node:
+        def __init__(self, val, next, random):
+            self.val = val
+            self.next = next
+            self.random = random
+</code></pre>
+<p>我们可以看到，它的定义相比于普通链表的定义多了一个random随机指针。</p>
+<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>需要返回链表的深拷贝，不能指向原链表的结点，那么是否有什么办法可以使新老两链表产生一定映射关系，建立联系，通过索引老结点来找到新结点。</p>
+<p>这里介绍一种思路：</p>
+<ul>
+<li>1.因为是单链表，除随机指针外只有next可以利用。</li>
+<li>2.将旧链表中各个节点逐个拷贝后，将每个结点安插在旧结点的next结点。</li>
+<li>3.旧链表指针只遍历旧链表，</li>
+<li>4.新链表指针只遍历新结点，</li>
+<li>5.然后将两个链表拆分，</li>
+<li>6.返回新链表即可</li>
+</ul>
+<p>这个思路第二步 的意思是将新创建的结点先插在旧链表中间，最后逐个断开的意思。解释起来有点复杂，看下面的图就懂啦</p>
+<p>因为要遍历链表所有结点，需要多次发生创建结点的行为，所以我们选择将它封装成一个函数,进行调用。</p>
+<ul>
+<li>1.判断极端情况，如果链表为空，那么无法拷贝，或者说拷贝之后仍是一个空链表，直接返回NULL</li>
+<li>2.创建新结点，逐个申请空间，赋值原链表中每个结点</li>
+</ul>
+<p><img src="\photo\LeetCode138\LeetCode138_1.png" alt="avatar"></p>
+<ul>
+<li>3.通过更改指向，让新结点跟在老结点后面<br>（红箭头表示老结点向新结点的指向，蓝箭头表示新结点向老结点的指向）</li>
+</ul>
+<p><img src="\photo\LeetCode138\LeetCode138_2.png" alt="avatar"></p>
+<p>4.补充random指针的复制</p>
+<ul>
+<li>Case1.结点的random指针指的是链表内的某一结点（该结点非空，非自身）</li>
+<li>Case2.结点的random指针指的是空指针</li>
+<li>Case3.结点的random指针指的是自己（这个情况其实是Case1的一个特例，合并到Case1中处理）</li>
+</ul>
+<p><img src="\photo\LeetCode138\LeetCode138_3.png" alt="avatar"></p>
+<p><img src="\photo\LeetCode138\LeetCode138_4.png" alt="avatar"></p>
+<p>5.拆分新老链表，使它们成为独立的两个链表，最终在没有改动老链表的前提下，返回新链表接口</p>
+<p><img src="\photo\LeetCode138\LeetCode138_5.png" alt="avatar"></p>
+<p>至此，链表的深拷贝逻辑返回成功</p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><pre><code class="python">
+    #coding:utf-8
 
-        <div class="article-info info-on-right">
-          
+    class Node:
+        def __init__(self, val, next, random):
+            self.val = val
+            self.next = next
+            self.random = random
+
+
+    class Solution:
+        def __init__(self):
+            pass
+
+        def create_node(self, val):
+            p = Node(val, None, None)
+            return p
+
+        def copyRandomList(self, head: &#39;Node&#39;) -&gt; &#39;Node&#39;:
+            if head == None:
+                return None
+
+            cur, pre = head, None
+
+            # 复制原链表，将新建的结点依次穿插在旧链表的结点之间
+            while cur != None:
+                pre = cur.next
+                cur_copy = self.create_node(cur.val)
+                cur_copy.next = pre
+                cur.next = cur_copy
+                cur = pre
+
+            cur = head
+
+            # # 处理random指针
+            while cur:
+                cur.next.random = cur.random.next if cur.random else None
+                cur = cur.next.next
+
+            # 断开新旧链表    
+            cur = head
+            head_copy = cur.next
+            cur_copy = head_copy
+            pre = cur_copy.next
+            while pre != None:
+                cur.next = pre
+                cur_copy.next = pre.next
+                cur_copy  = cur_copy.next
+                cur = pre
+                pre = cur_copy.next
+
+            cur.next = None
+            return head_copy
+
+</code></pre>
+<h2 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h2><p>1.【图文解析】复制带随机指针的链表（返回链表的深拷贝）<br><a href="https://blog.csdn.net/qq_42351880/article/details/88984429" target="_blank" rel="external">https://blog.csdn.net/qq_42351880/article/details/88984429</a></p>
+<p>2.官方题解<br><a href="https://leetcode-cn.com/problems/copy-list-with-random-pointer/solution/fu-zhi-dai-sui-ji-zhi-zhen-de-lian-biao-by-leetcod/" target="_blank" rel="external">https://leetcode-cn.com/problems/copy-list-with-random-pointer/solution/fu-zhi-dai-sui-ji-zhi-zhen-de-lian-biao-by-leetcod/</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/ali.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/wx.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -253,358 +355,121 @@ var _hmt = _hmt || [];
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://daisy0x00.github.io/2019/LeetCode138/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN11/" class="archive-article-date">
-  	<time datetime="2019-09-07T13:33:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/DL_FasterRCNN1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">目标检测之Faster-RCNN</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN11/">卷积神经网络（十一）---经典网络之LeNet</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN10/" class="archive-article-date">
-  	<time datetime="2019-09-05T04:15:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN10/">卷积神经网络（十）---为什么使用卷积</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN9/" class="archive-article-date">
-  	<time datetime="2019-09-04T01:56:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN9/">卷积神经网络（九）---卷积神经网络示例</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN8/" class="archive-article-date">
-  	<time datetime="2019-09-03T03:01:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN8/">卷积神经网络（八）---池化层</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN7/" class="archive-article-date">
-  	<time datetime="2019-09-02T10:15:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN7/">卷积神经网络（七）---构建一个简单的深度卷积神经网络</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN6/" class="archive-article-date">
-  	<time datetime="2019-08-23T08:49:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN6/">卷积神经网络（六）---如何构建卷积神经网络的卷积层</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN5/" class="archive-article-date">
-  	<time datetime="2019-08-20T15:59:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN5/">卷积神经网络（五）---对三维立体做卷积</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/DL_CNN4/" class="archive-article-date">
-  	<time datetime="2019-08-19T14:38:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/DL_CNN4/">卷积神经网络（四）---卷积步长</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">卷积神经网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/4/">Next &raquo;</a>
-    </nav>
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://daisy0x00.github.io/2019/LeetCode138/",
+  owner: 'daisy0x00',
+  repo: 'daisy0x00.github.io',
+  oauth: {
+    client_id: '20482fae7180afcc896e',
+    client_secret: '89faec2be2dd99642ec604ce99ceec7c8f5ec6aa',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
@@ -865,8 +730,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
