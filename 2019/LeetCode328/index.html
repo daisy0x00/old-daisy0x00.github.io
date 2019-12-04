@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://daisy0x00.github.io">
-  <title>LeetCode328_Python3 | daisy&#39;s space</title>
+  <title>LeetCode328_奇偶链表 | daisy&#39;s space</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -14,17 +14,17 @@
 
 	
   
-  <meta name="description" content="用python语言解答LeetCode的160题">
+  <meta name="description" content="用python语言解答LeetCode的328题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode328_Python3">
+<meta property="og:title" content="LeetCode328_奇偶链表">
 <meta property="og:url" content="http://daisy0x00.github.io/2019/LeetCode328/index.html">
 <meta property="og:site_name" content="daisy's space">
-<meta property="og:description" content="用python语言解答LeetCode的160题">
+<meta property="og:description" content="用python语言解答LeetCode的328题">
 <meta property="og:image" content="http://daisy0x00.github.io/\photo\LeetCode328\LeetCode328_1.png">
-<meta property="og:updated_time" content="2019-12-04T00:09:24.154Z">
+<meta property="og:updated_time" content="2019-12-04T00:12:07.854Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode328_Python3">
-<meta name="twitter:description" content="用python语言解答LeetCode的160题">
+<meta name="twitter:title" content="LeetCode328_奇偶链表">
+<meta name="twitter:description" content="用python语言解答LeetCode的328题">
 <meta name="twitter:image" content="http://daisy0x00.github.io/\photo\LeetCode328\LeetCode328_1.png">
   
     <link rel="alternative" href="/atom.xml" title="daisy&#39;s space" type="application/atom+xml">
@@ -179,7 +179,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      LeetCode328_Python3
+      LeetCode328_奇偶链表
     </h1>
   
 
@@ -193,7 +193,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
 	   
       
-        <p>用python语言解答LeetCode的160题</p>
+        <p>用python语言解答LeetCode的328题</p>
 <a id="more"></a>
 <p>解题思路：<br>把奇节点放在一个链表里，偶节点放在另一个链表里，最后把偶链表接在奇链表的尾部</p>
 <p>算法实现：<br>一个LinkedList需要一个头指针和一个尾指针来支持双端操作。</p>
@@ -203,12 +203,28 @@ var _hmt = _hmt || [];
 <p>解决链表问题最好的办法就是在脑中或者纸上把链表画出来！！！</p>
 <p><img src="\photo\LeetCode328\LeetCode328_1.png" alt="avatar"></p>
 <p>代码实现：</p>
-<p>#coding:utf-8</p>
-<p>class ListNode:<br>    def <strong>init</strong>(self, val):<br>        self.val = val<br>        self.next = next</p>
-<p>class Solution:<br>    def oddEvenList(self, head):<br>        if not head:<br>            return head<br>        p = head<br>        t = q = p.next<br>        while p and p.next and q and q.next:<br>            p.next, q.next = p.next.next, q.next.next<br>            p, q = p.next, q.next</p>
-<pre><code>    p.next = t
-    return head
+<pre><code class="python">
+    #coding:utf-8
+
+    class ListNode:
+        def __init__(self, val):
+            self.val = val
+            self.next = next
+
+    class Solution:
+        def oddEvenList(self, head):
+            if not head:
+                return head
+            p = head
+            t = q = p.next
+            while p and p.next and q and q.next:
+                p.next, q.next = p.next.next, q.next.next
+                p, q = p.next, q.next
+
+            p.next = t
+            return head
 </code></pre>
+
       
 
       
@@ -328,7 +344,7 @@ var _hmt = _hmt || [];
   
   
     <a href="/2019/LeetCode160/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode160_Python3</div>
+      <div class="article-nav-title">LeetCode160_相交链表</div>
       <i class="icon-circle-right"></i>
     </a>
   
